@@ -1,0 +1,4 @@
+arm,arm_label,repeats,accepted_orders,accepted_order_quantity,accepted_buy_quantity,accepted_sell_quantity,executed_trades,transaction_volume,fully_filled_order_legs,partially_filled_orders,unfilled_orders,buy_side_fill_rate,sell_side_fill_rate,all_order_leg_fill_rate,market_maker_accepted_quantity,market_maker_executed_leg_quantity,market_maker_order_leg_fill_rate
+current,Current,3,27,27000,3000,24000,3,3000,6,0,21,1.0,0.125,0.2222222222222222,11000,0,0.0
+earliest_public,Earliest public,3,27,1017000,3000,1014000,2,2000,4,0,23,0.6666666666666666,0.0019723865877712033,0.003933136676499509,1002000,0,0.0
+mandatory_two_sided,Mandatory two-sided,3,29,29000,10000,19000,7,7000,14,0,15,0.7,0.3684210526315789,0.4827586206896552,12000,3000,0.25

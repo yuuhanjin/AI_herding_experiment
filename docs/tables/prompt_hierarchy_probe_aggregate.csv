@@ -1,0 +1,4 @@
+arm,arm_label,repeats,market_maker_agent_decisions,market_makers_quoting_both_sides,two_sided_compliance_rate,market_maker_buy_orders,runs_with_any_trade,total_trades,total_trade_volume,market_maker_involved_trades,market_maker_bid_trades,maximum_accepted_order_quantity,configured_max_order_size,distinct_final_recorded_prices,cost_usd
+current,Current,3,6,0,0.0,0,2,3,3000,0,0,1000,1000,50.40/56.00,0.11796000000000001
+earliest_public,Earliest public,3,6,1,0.16666666666666666,1,2,2,2000,0,0,100000,1000,50.40/56.00,0.116425
+mandatory_two_sided,Mandatory two-sided,3,6,6,1.0,6,3,7,7000,3,3,1000,1000,54.32/56.00,0.11898

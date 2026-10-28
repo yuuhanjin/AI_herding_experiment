@@ -1,0 +1,11 @@
+# Keep research evidence byte-stable so manifest checksums work on every OS.
+data/**/*.csv text eol=lf
+data/**/*.json text eol=lf
+data/**/*.jsonl text eol=lf
+data/**/*.txt text eol=lf
+
+# Use one line-ending convention for shared source and documentation.
+*.py text eol=lf
+*.md text eol=lf
+*.html text eol=lf
+*.tex text eol=lf

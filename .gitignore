@@ -117,3 +117,7 @@ dmypy.json
 # Backup files (use git instead)
 *.backup
 src/llm_config.py
+
+# Local presentation exports and browser QA captures
+docs/fig6_comparison_figures.zip
+docs/figures/*_preview.png

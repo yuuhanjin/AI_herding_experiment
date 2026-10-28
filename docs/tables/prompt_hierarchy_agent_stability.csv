@@ -1,0 +1,9 @@
+agent_id,agent_type,observations,unique_exact_rendered_prompts,unique_structured_decisions,sides_observed,valuations_observed,prompt_sha256
+0,Default Trader,9,1,2,Sell,28.0,ea10b2de71f4f626d962b1129ad411e7a0ed530144c5e742805de48d2baeb207
+1,Default Trader,9,1,2,Sell,28.0,ea10b2de71f4f626d962b1129ad411e7a0ed530144c5e742805de48d2baeb207
+2,Optimistic,9,1,4,Buy/Hold/Sell,48.0/96.0/100.0,6df55caf89e1d9c4b49e7318eeb6424182c0f2bd6aeca0b12fbd3fb2ed775e82
+3,Optimistic,9,1,4,Buy/Hold/Sell,48.0/96.0,6df55caf89e1d9c4b49e7318eeb6424182c0f2bd6aeca0b12fbd3fb2ed775e82
+4,Market Maker,9,3,3,Buy/Sell,28.0,multiple
+5,Market Maker,9,3,4,Buy/Sell,28.0,multiple
+6,Speculator,9,1,2,Sell,21.49/28.0,711c99efb3c37a84b491d5e7d265d50680ea3e0e4c663991f31e5cd209fcacc8
+7,Speculator,9,1,3,Sell,21.49/28.0,711c99efb3c37a84b491d5e7d265d50680ea3e0e4c663991f31e5cd209fcacc8

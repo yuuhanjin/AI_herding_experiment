@@ -1,0 +1,884 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="AI trading simulation prompt hierarchy, order-size enforcement, stochasticity, and fill-mechanism audit.">
+  <title>AI Trading Mechanism Audit</title>
+  <style>
+    :root {
+      --paper: #f4f1e9;
+      --paper-2: #ebe6db;
+      --ink: #17201f;
+      --muted: #66706d;
+      --line: #c9c5ba;
+      --card: rgba(255, 255, 255, .66);
+      --teal: #0d766e;
+      --teal-soft: #d7ebe7;
+      --orange: #d25b32;
+      --orange-soft: #f6dfd4;
+      --blue: #315d8a;
+      --blue-soft: #dde7f0;
+      --yellow: #c5901d;
+      --yellow-soft: #f2e7c6;
+      --shadow: 0 18px 50px rgba(32, 40, 37, .09);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        linear-gradient(rgba(23, 32, 31, .035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(23, 32, 31, .035) 1px, transparent 1px),
+        var(--paper);
+      background-size: 32px 32px;
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", sans-serif;
+      line-height: 1.58;
+    }
+
+    a { color: inherit; }
+    button { font: inherit; }
+    .shell { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      border-bottom: 1px solid rgba(23, 32, 31, .12);
+      background: rgba(244, 241, 233, .88);
+      backdrop-filter: blur(16px);
+    }
+    .topbar .shell {
+      min-height: 62px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .brand { display: flex; align-items: center; gap: 11px; font-weight: 760; letter-spacing: -.02em; }
+    .brand-mark {
+      width: 28px;
+      height: 28px;
+      display: grid;
+      place-items: center;
+      color: white;
+      background: var(--ink);
+      border-radius: 8px;
+      font-size: 12px;
+    }
+    .nav { display: flex; align-items: center; gap: 6px; }
+    .nav a, .mode-button {
+      padding: 8px 10px;
+      border-radius: 9px;
+      border: 0;
+      background: transparent;
+      text-decoration: none;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 13px;
+    }
+    .nav a:hover, .mode-button:hover { background: rgba(23, 32, 31, .07); color: var(--ink); }
+    .mode-button { border: 1px solid var(--line); color: var(--ink); }
+
+    header { padding: 82px 0 48px; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 20px;
+      color: var(--teal);
+      font-size: 13px;
+      font-weight: 760;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 34px; height: 2px; background: currentColor; }
+    h1 {
+      max-width: 950px;
+      margin: 0;
+      font-family: Georgia, "Times New Roman", "Noto Serif SC", serif;
+      font-size: clamp(48px, 7vw, 88px);
+      line-height: .98;
+      letter-spacing: -.055em;
+      font-weight: 650;
+    }
+    .lede {
+      max-width: 800px;
+      margin: 28px 0 34px;
+      color: #3e4946;
+      font-size: clamp(18px, 2vw, 23px);
+      line-height: 1.55;
+    }
+    .verdict {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 18px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-left: 5px solid var(--orange);
+      border-radius: 14px;
+      background: var(--card);
+      box-shadow: var(--shadow);
+    }
+    .verdict strong { display: block; margin-bottom: 4px; font-size: 18px; }
+    .verdict p { margin: 0; color: var(--muted); }
+    .verdict .scope { padding-left: 22px; border-left: 1px solid var(--line); }
+
+    .meta-strip {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      margin: 26px 0 0;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, .45);
+    }
+    .meta-item { padding: 15px 17px; border-right: 1px solid var(--line); }
+    .meta-item:last-child { border-right: 0; }
+    .meta-label { display: block; color: var(--muted); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+    .meta-value { display: block; margin-top: 3px; font-weight: 740; }
+
+    main { padding-bottom: 80px; }
+    section { padding: 72px 0 10px; scroll-margin-top: 72px; }
+    .section-head {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 24px;
+      align-items: start;
+      margin-bottom: 28px;
+    }
+    .section-number { color: var(--orange); font: 700 14px/1 monospace; letter-spacing: .12em; }
+    h2 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", "Noto Serif SC", serif;
+      font-size: clamp(33px, 4vw, 50px);
+      line-height: 1.08;
+      letter-spacing: -.035em;
+    }
+    .section-intro { max-width: 760px; margin: 12px 0 0; color: var(--muted); font-size: 17px; }
+
+    .finding-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .finding-card {
+      min-height: 270px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--card);
+      box-shadow: var(--shadow);
+    }
+    .finding-card:nth-child(2) { transform: translateY(20px); }
+    .finding-card:nth-child(3) { transform: translateY(40px); }
+    .tag {
+      display: inline-flex;
+      padding: 4px 8px;
+      border-radius: 99px;
+      background: var(--teal-soft);
+      color: var(--teal);
+      font-size: 11px;
+      font-weight: 760;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .finding-card h3 { margin: 18px 0 8px; font-size: 23px; line-height: 1.18; letter-spacing: -.025em; }
+    .finding-card p { margin: 0; color: var(--muted); }
+    .big-stat { display: block; margin-top: 22px; font: 650 38px/1 Georgia, serif; color: var(--orange); }
+    .stat-note { color: var(--muted); font-size: 12px; }
+
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, .62);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .panel-head { padding: 20px 22px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; gap: 16px; align-items: center; }
+    .panel-head h3 { margin: 0; font-size: 18px; }
+    .panel-head span { color: var(--muted); font-size: 12px; }
+    .panel-body { padding: 22px; }
+
+    .prompt-table-wrap, .data-table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 14px 13px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    th { color: var(--muted); font-size: 11px; letter-spacing: .065em; text-transform: uppercase; }
+    td { font-size: 14px; }
+    tr:last-child td { border-bottom: 0; }
+    .arm { min-width: 140px; font-weight: 760; }
+    .arm small { display: block; margin-top: 2px; color: var(--muted); font-weight: 500; }
+    .result-pill { display: inline-flex; min-width: 46px; justify-content: center; padding: 3px 8px; border-radius: 99px; font-weight: 760; }
+    .bad { color: #9c3f25; background: var(--orange-soft); }
+    .mid { color: #8a6715; background: var(--yellow-soft); }
+    .good { color: var(--teal); background: var(--teal-soft); }
+
+    details { border-top: 1px solid var(--line); }
+    summary { padding: 16px 22px; cursor: pointer; font-weight: 720; list-style: none; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; float: right; color: var(--orange); font-size: 20px; }
+    details[open] summary::after { content: "–"; }
+    pre {
+      margin: 0 22px 22px;
+      padding: 18px;
+      white-space: pre-wrap;
+      color: #dfe9e4;
+      background: #17201f;
+      border-radius: 12px;
+      font: 12px/1.58 ui-monospace, SFMono-Regular, Consolas, monospace;
+    }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      align-items: stretch;
+    }
+    .flow-step { position: relative; min-height: 145px; padding: 18px; border: 1px solid var(--line); border-radius: 14px; background: white; }
+    .flow-step:not(:last-child)::after { content: "→"; position: absolute; right: -20px; top: 51px; z-index: 3; color: var(--muted); font-weight: 800; }
+    .flow-step.broken { border: 2px dashed var(--orange); background: var(--orange-soft); }
+    .flow-step.broken::after { content: "⇢"; color: var(--orange); }
+    .flow-kicker { color: var(--muted); font: 700 10px/1 monospace; text-transform: uppercase; letter-spacing: .1em; }
+    .flow-step strong { display: block; margin: 12px 0 6px; line-height: 1.25; }
+    .flow-step p { margin: 0; color: var(--muted); font-size: 12px; }
+    code { padding: 1px 5px; border-radius: 5px; background: rgba(23, 32, 31, .08); font: .92em ui-monospace, SFMono-Regular, Consolas, monospace; }
+
+    .evidence-split { display: grid; grid-template-columns: .9fr 1.1fr; gap: 18px; margin-top: 18px; }
+    .callout { padding: 23px; border-radius: 15px; border: 1px solid var(--line); background: white; }
+    .callout h4 { margin: 0 0 8px; font-size: 17px; }
+    .callout p { margin: 0; color: var(--muted); }
+    .callout.alert { background: var(--orange-soft); border-color: #e8b9a6; }
+    .metric-line { display: grid; grid-template-columns: 135px 1fr 62px; gap: 12px; align-items: center; margin: 13px 0; }
+    .metric-label { font-size: 13px; }
+    .track { height: 10px; border-radius: 99px; background: var(--paper-2); overflow: hidden; }
+    .bar { height: 100%; border-radius: inherit; background: var(--teal); }
+    .bar.orange { background: var(--orange); }
+    .bar.yellow { background: var(--yellow); }
+    .metric-value { text-align: right; font: 700 12px/1 ui-monospace, monospace; }
+
+    .stochastic-stage { display: grid; grid-template-columns: 1fr 82px 1fr; align-items: center; gap: 16px; }
+    .prompt-token, .output-cloud { min-height: 210px; padding: 22px; border-radius: 16px; }
+    .prompt-token { border: 1px solid var(--blue); background: var(--blue-soft); }
+    .prompt-token .hash { margin-top: 22px; word-break: break-all; color: var(--blue); font: 11px/1.45 ui-monospace, monospace; }
+    .arrow-column { text-align: center; color: var(--muted); font-size: 28px; }
+    .output-cloud { display: flex; flex-wrap: wrap; align-content: center; gap: 10px; border: 1px solid var(--line); background: white; }
+    .decision { padding: 8px 12px; border-radius: 99px; font-weight: 760; }
+    .buy { color: var(--teal); background: var(--teal-soft); }
+    .sell { color: var(--orange); background: var(--orange-soft); }
+    .hold { color: var(--blue); background: var(--blue-soft); }
+    .valuation { width: 100%; color: var(--muted); font-size: 13px; }
+    .identity-banner {
+      margin-bottom: 18px;
+      padding: 15px 18px;
+      border: 1px solid #b9cddd;
+      border-radius: 13px;
+      background: var(--blue-soft);
+      color: #294f74;
+    }
+    .identity-banner strong { color: var(--ink); }
+    .observation-plot { margin-top: 18px; border-top: 1px solid var(--line); padding-top: 20px; }
+    .plot-title { display: flex; justify-content: space-between; gap: 16px; align-items: end; margin-bottom: 12px; }
+    .plot-title h4 { margin: 0; font-size: 16px; }
+    .plot-title span { color: var(--muted); font-size: 12px; }
+    .observation-grid {
+      display: grid;
+      grid-template-columns: 150px repeat(3, minmax(145px, 1fr));
+      gap: 8px;
+      min-width: 650px;
+    }
+    .matrix-scroll { overflow-x: auto; }
+    .matrix-head, .matrix-label, .obs-cell { border-radius: 10px; padding: 12px; }
+    .matrix-head { color: var(--muted); background: var(--paper-2); text-align: center; font: 700 11px/1.2 ui-monospace, monospace; text-transform: uppercase; }
+    .matrix-label { display: flex; align-items: center; background: var(--paper); font-size: 12px; font-weight: 760; }
+    .obs-cell { min-height: 78px; border: 1px solid var(--line); background: white; }
+    .obs-cell .obs-action { display: inline-block; margin-bottom: 8px; padding: 3px 7px; border-radius: 99px; font-size: 11px; font-weight: 820; }
+    .obs-cell .obs-detail { display: block; color: var(--muted); font: 11px/1.45 ui-monospace, monospace; }
+    .obs-cell.action-buy { border-left: 5px solid var(--teal); }
+    .obs-cell.action-sell { border-left: 5px solid var(--orange); }
+    .obs-cell.action-hold { border-left: 5px solid var(--blue); }
+    .obs-cell.action-buy .obs-action { color: var(--teal); background: var(--teal-soft); }
+    .obs-cell.action-sell .obs-action { color: var(--orange); background: var(--orange-soft); }
+    .obs-cell.action-hold .obs-action { color: var(--blue); background: var(--blue-soft); }
+    .plot-legend { margin-top: 10px; color: var(--muted); font-size: 12px; }
+    .causal-equation { margin-top: 14px; padding: 13px 15px; border-radius: 10px; background: #17201f; color: white; text-align: center; font: 13px/1.5 ui-monospace, monospace; }
+    .consequence-example { margin-top: 10px !important; color: #74402f !important; }
+    .run-snapshot { margin-top: 18px; }
+    .run-snapshot table td:nth-child(1) { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-weight: 760; }
+    .run-snapshot table td:nth-child(3) { font-weight: 780; }
+    .run-totals { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); }
+    .run-total { padding: 15px 18px; border-right: 1px solid var(--line); }
+    .run-total:last-child { border-right: 0; }
+    .run-total strong { display: block; font-size: 20px; }
+    .run-total span { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .06em; }
+
+    .fill-layout { display: grid; grid-template-columns: 1.28fr .72fr; gap: 18px; }
+    .fill-table td:not(:first-child), .fill-table th:not(:first-child) { text-align: right; }
+    .zero { color: var(--teal); font-weight: 820; }
+    .note { color: var(--muted); font-size: 12px; }
+    .tabs { display: flex; gap: 8px; margin-bottom: 16px; }
+    .tab {
+      padding: 7px 11px;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+    }
+    .tab[aria-selected="true"] { color: white; background: var(--ink); border-color: var(--ink); }
+    .matching-demo { min-height: 330px; }
+    .book { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .book-side { padding: 15px; border-radius: 12px; background: var(--paper); }
+    .book-side h4 { margin: 0 0 12px; font-size: 13px; }
+    .order { display: flex; justify-content: space-between; gap: 10px; margin-top: 7px; padding: 9px 10px; border-radius: 8px; background: white; font: 700 12px/1.2 ui-monospace, monospace; }
+    .order.ask { border-left: 4px solid var(--orange); }
+    .order.bid { border-left: 4px solid var(--teal); }
+    .match-rule { margin-top: 15px; padding: 14px; border-radius: 11px; background: #17201f; color: white; font: 13px/1.55 ui-monospace, monospace; }
+    .demo-result { margin-top: 12px; color: var(--muted); font-size: 13px; }
+    .demo-result strong { color: var(--ink); }
+    .quantity-origin { margin-top: 18px; }
+    .quantity-origin-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 12px; }
+    .quantity-origin-card { padding: 15px; border: 1px solid var(--line); border-radius: 12px; background: white; }
+    .quantity-origin-card strong { display: block; margin-bottom: 5px; }
+    .quantity-origin-card p { margin: 0; color: var(--muted); font-size: 12px; }
+
+    .claim-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .claim-card { padding: 26px; border-radius: var(--radius); border: 1px solid var(--line); background: white; }
+    .claim-card h3 { margin: 0 0 14px; }
+    .claim-card ul { margin: 0; padding-left: 20px; }
+    .claim-card li { margin: 9px 0; }
+    .claim-card.can { border-top: 5px solid var(--teal); }
+    .claim-card.cannot { border-top: 5px solid var(--orange); }
+
+    .sources { margin-top: 22px; padding: 20px 22px; border: 1px solid var(--line); border-radius: 14px; color: var(--muted); font-size: 12px; background: rgba(255,255,255,.45); }
+    .sources strong { color: var(--ink); }
+    footer { padding: 40px 0 58px; color: var(--muted); font-size: 12px; }
+
+    body.presentation .topbar { display: none; }
+    body.presentation section { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding-top: 50px; }
+    body.presentation header { min-height: 100vh; display: flex; align-items: center; padding: 40px 0; }
+    body.presentation .shell { width: min(1240px, calc(100% - 64px)); }
+
+    @media (max-width: 900px) {
+      .nav a { display: none; }
+      .verdict, .section-head, .evidence-split, .fill-layout, .claim-grid { grid-template-columns: 1fr; }
+      .verdict .scope { padding: 16px 0 0; border-left: 0; border-top: 1px solid var(--line); }
+      .meta-strip { grid-template-columns: repeat(2, 1fr); }
+      .meta-item { border-bottom: 1px solid var(--line); }
+      .finding-grid { grid-template-columns: 1fr; }
+      .finding-card:nth-child(n) { transform: none; min-height: unset; }
+      .flow { grid-template-columns: 1fr; }
+      .flow-step:not(:last-child)::after { content: "↓"; right: auto; left: 50%; top: auto; bottom: -23px; }
+      .stochastic-stage { grid-template-columns: 1fr; }
+      .arrow-column { transform: rotate(90deg); }
+      .quantity-origin-grid { grid-template-columns: 1fr; }
+      .run-totals { grid-template-columns: repeat(2, 1fr); }
+      .run-total:nth-child(2) { border-right: 0; }
+    }
+    @media (max-width: 600px) {
+      .shell { width: min(100% - 24px, 1180px); }
+      header { padding-top: 54px; }
+      h1 { font-size: 45px; }
+      .meta-strip { grid-template-columns: 1fr; }
+      .meta-item { border-right: 0; }
+      .section-head { gap: 10px; }
+      .book { grid-template-columns: 1fr; }
+    }
+
+    @media print {
+      .topbar, .mode-button, .tabs { display: none !important; }
+      body { background: white; }
+      .panel, .finding-card { box-shadow: none; break-inside: avoid; }
+      section { break-before: page; }
+      header { padding-top: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="topbar" aria-label="Page navigation">
+    <div class="shell">
+      <div class="brand"><span class="brand-mark">AI</span> Mechanism Audit</div>
+      <div class="nav">
+        <a href="#overview">Findings</a>
+        <a href="#prompts">Prompts</a>
+        <a href="#cap">Order cap</a>
+        <a href="#stochasticity">Stochasticity</a>
+        <a href="#fills">Fills</a>
+        <button class="mode-button" id="modeButton" type="button">Presentation mode</button>
+      </div>
+    </div>
+  </nav>
+
+  <header>
+    <div class="shell">
+      <div>
+        <div class="eyebrow">Figure 6 mechanism probe · $56 initial state</div>
+        <h1>Prompt design changes liquidity.<br>It does not remove uncertainty.</h1>
+        <p class="lede">Three one-round prompt variants, repeated three times, reveal a prompt-role conflict, a configuration-to-runtime gap, and response variation that persists even under fixed model, seed, and temperature.</p>
+
+        <div class="verdict">
+          <div>
+            <strong>What the evidence supports</strong>
+            <p>An explicit two-sided market-making rule restores bid liquidity. The current and earliest-public prompts do not do so reliably.</p>
+          </div>
+          <div class="scope">
+            <strong>What it does not support</strong>
+            <p>These probes do not yet establish a transaction-driven market crash or a stable causal price effect.</p>
+          </div>
+        </div>
+
+        <div class="meta-strip" aria-label="Probe design">
+          <div class="meta-item"><span class="meta-label">Market state</span><span class="meta-value">$56 vs. $28 fundamental</span></div>
+          <div class="meta-item"><span class="meta-label">Design</span><span class="meta-value">3 prompts × 3 repeats</span></div>
+          <div class="meta-item"><span class="meta-label">Agents</span><span class="meta-value">8 per run</span></div>
+          <div class="meta-item"><span class="meta-label">Model</span><span class="meta-value">gpt-4o-2024-11-20</span></div>
+          <div class="meta-item"><span class="meta-label">Controls</span><span class="meta-value">temperature 0 · seed 42</span></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="overview">
+      <div class="shell">
+        <div class="section-head">
+          <div class="section-number">01 / FINDINGS</div>
+          <div>
+            <h2>Three findings from the mechanism probes</h2>
+            <p class="section-intro">The findings sit at three different layers: prompt instructions, simulator implementation, and model response stability. They should not be collapsed into one explanation.</p>
+          </div>
+        </div>
+
+        <div class="finding-grid">
+          <article class="finding-card">
+            <span class="tag">Prompt hierarchy</span>
+            <h3>Liquidity provision must be explicit</h3>
+            <p>Loose market-maker wording was overridden by the agents' directional belief that the asset was overpriced. Making two-sided quoting mandatory changed the targeted behavior.</p>
+            <span class="big-stat">0/6 → 6/6</span>
+            <span class="stat-note">market makers quoting both bid and ask</span>
+          </article>
+          <article class="finding-card">
+            <span class="tag">Implementation gap</span>
+            <h3>The declared order cap is inert</h3>
+            <p>The scenario declares a 1,000-share maximum, but that value is neither shown to the LLM nor enforced in the live order path. Valid inventory was enough for oversized asks to be accepted.</p>
+            <span class="big-stat">100×</span>
+            <span class="stat-note">largest accepted order relative to declared cap</span>
+          </article>
+          <article class="finding-card">
+            <span class="tag">Response stability</span>
+            <h3>Fixed settings are not fixed outputs</h3>
+            <p>Byte-identical non-market-maker prompts produced different actions and valuations. A single prompt comparison is therefore not a matched causal experiment.</p>
+            <span class="big-stat">Buy · Sell · Hold</span>
+            <span class="stat-note">observed from the same rendered prompt</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="prompts">
+      <div class="shell">
+        <div class="section-head">
+          <div class="section-number">02 / PROMPTS</div>
+          <div>
+            <h2>Three system-prompt variants</h2>
+            <p class="section-intro">Only the market makers' system prompt changed. The scenario, user-prompt data, model, temperature, seed, and the other six agents were held fixed.</p>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head"><h3>Instruction differences and observed compliance</h3><span>Six market-maker decisions per arm</span></div>
+          <div class="prompt-table-wrap">
+            <table>
+              <thead>
+                <tr><th>System prompt</th><th>Short selling</th><th>Liquidity instruction</th><th>Priority rule</th><th>Two-sided result</th><th>Largest order</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="arm">Current<small>present repository</small></td>
+                  <td>Permitted when shares can be borrowed</td>
+                  <td>“Place” bids and asks within a suggested spread</td>
+                  <td>No rule says liquidity provision overrides valuation</td>
+                  <td><span class="result-pill bad">0 / 6</span></td>
+                  <td>1,000</td>
+                </tr>
+                <tr>
+                  <td class="arm">Earliest public<small>commit 027bbf5</small></td>
+                  <td>Not allowed; sell only owned shares</td>
+                  <td>Suggests both sides and inventory management</td>
+                  <td>No mandatory simultaneous bid and ask</td>
+                  <td><span class="result-pill mid">1 / 6</span></td>
+                  <td><strong>100,000</strong></td>
+                </tr>
+                <tr>
+                  <td class="arm">Mandatory two-sided<small>diagnostic treatment</small></td>
+                  <td>Not allowed; sell only owned shares</td>
+                  <td>At least one limit bid and one limit ask each round</td>
+                  <td>Explicitly overrides directional valuation; Hold prohibited</td>
+                  <td><span class="result-pill good">6 / 6</span></td>
+                  <td>1,000</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <details>
+            <summary>Current system prompt — exact text</summary>
+            <pre>You are a professional market maker who provides liquidity to the market.
+
+Your profit comes from capturing the spread between bid and ask prices, not from directional price movement.
+
+Short selling is permitted when shares can be borrowed. Manage both long and short inventory carefully.
+
+Trading Guidelines:
+- Place LIMIT buy orders slightly below the current market price (1-3% lower)
+- Place LIMIT sell orders slightly above the current market price (1-3% higher)
+- Your spread should be proportional to volatility but typically 2-6% of price
+- NEVER place sell orders more than 10% above your buy orders
+- Adjust your spread width based on recent price volatility
+
+Inventory Management:
+- Monitor your current inventory including borrowed shares
+- You may sell shares you do not own by borrowing them when available
+- If inventory grows too large in either direction, adjust your orders
+- Balance buy and sell orders based on current net position</pre>
+          </details>
+
+          <details>
+            <summary>Earliest-public system prompt — exact substantive text</summary>
+            <pre>You are a professional market maker who provides liquidity to the market.
+
+Your profit comes from capturing the spread between bid and ask prices, not from directional price movement.
+
+IMPORTANT: There is NO SHORT SELLING allowed. You can only sell shares you already own.
+
+Trading Guidelines:
+- Place LIMIT buy orders slightly below the current market price (1-3% lower)
+- Place LIMIT sell orders slightly above the current market price (1-3% higher)
+- Your spread should be proportional to volatility but typically 2-6% of price
+- NEVER place sell orders more than 10% above your buy orders
+- Adjust your spread width based on recent price volatility
+
+Inventory Management (No Short Selling):
+- Monitor your current inventory in the market data
+- Only place sell orders for quantities you actually own
+- If you have no inventory, focus on buy orders first
+- As you acquire inventory, gradually place sell orders
+- If inventory grows too large, reduce or pause buy orders
+- Adjust your buy/sell ratio based on current inventory level</pre>
+          </details>
+
+          <details>
+            <summary>Mandatory two-sided system prompt — exact text</summary>
+            <pre>You are a professional market maker whose mandatory role is to provide two-sided liquidity.
+
+Your profit comes from capturing the spread between bid and ask prices, not from taking a directional position.
+
+Short selling is NOT allowed. You can only sell shares you already own.
+
+Mandatory quoting rule:
+- In every round, submit at least one LIMIT buy order and at least one LIMIT sell order whenever your available cash and owned shares permit.
+- This two-sided quoting requirement overrides your directional valuation view.
+- Place buy orders 1-3% below the current market price and sell orders 1-3% above the current market price.
+- Use a total spread of approximately 2-6% and never place the sell quote more than 10% above the buy quote.
+- Do not use market orders.
+
+Manage order quantities so that they remain within available cash and owned inventory. If both sides are feasible, a one-sided decision or Hold is not permitted.</pre>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="cap">
+      <div class="shell">
+        <div class="section-head">
+          <div class="section-number">03 / ORDER CAP</div>
+          <div>
+            <h2>Declared in configuration, absent at runtime</h2>
+            <p class="section-intro">The key issue is not that an agent disobeyed a visible 1,000-share instruction. The agent never received that instruction, and the simulator did not enforce it after generation.</p>
+          </div>
+        </div>
+
+        <div class="flow" aria-label="Order size configuration flow">
+          <div class="flow-step">
+            <span class="flow-kicker">Scenario</span>
+            <strong><code>max_order_size = 1000</code></strong>
+            <p>Declared in <code>src/scenarios/base.py:290,358</code>.</p>
+          </div>
+          <div class="flow-step broken">
+            <span class="flow-kicker">Prompt construction</span>
+            <strong>Value not inserted</strong>
+            <p>The user template only requests a positive quantity; no maximum is rendered.</p>
+          </div>
+          <div class="flow-step broken">
+            <span class="flow-kicker">Response schema</span>
+            <strong>Only quantity &gt; 0</strong>
+            <p><code>agents_api.py:24,30</code> checks positivity, not the scenario cap.</p>
+          </div>
+          <div class="flow-step broken">
+            <span class="flow-kicker">Runtime validation</span>
+            <strong>Cash / inventory only</strong>
+            <p>A large sell is accepted when the agent owns enough shares.</p>
+          </div>
+          <div class="flow-step">
+            <span class="flow-kicker">Observed output</span>
+            <strong>100,000-share asks</strong>
+            <p>Ten oversized market-maker asks were accepted across three earliest-public repeats.</p>
+          </div>
+        </div>
+
+        <div class="evidence-split">
+          <div class="callout alert">
+            <h4>Interpretation</h4>
+            <p>This is a configuration-to-runtime plumbing defect. It creates ambiguity between <em>running the repository as written</em> and <em>running the experiment as its declared parameters imply</em>.</p>
+          </div>
+          <div class="callout">
+            <h4>Accepted size is not traded volume</h4>
+            <div class="metric-line"><span class="metric-label">Earliest accepted qty</span><span class="track"><span class="bar orange" style="width:100%"></span></span><span class="metric-value">1.017m</span></div>
+            <div class="metric-line"><span class="metric-label">Earliest volume</span><span class="track"><span class="bar" style="width:.197%"></span></span><span class="metric-value">2,000</span></div>
+            <p class="note">The oversized asks mostly changed displayed sell depth. They did not become 100,000-share transactions.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="stochasticity">
+      <div class="shell">
+        <div class="section-head">
+          <div class="section-number">04 / STOCHASTICITY</div>
+          <div>
+            <h2>One exact prompt, multiple decisions</h2>
+            <p class="section-intro">To test response stability, we isolate one untreated agent and follow that same agent across nine runs. This is a longitudinal slice of Agent ID 2—not a summary of all eight agents in a run.</p>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head"><h3>Agent ID 2 · Optimistic trader</h3><span>9 observations · 1 prompt · 3 action categories · 4 distinct full outputs</span></div>
+          <div class="panel-body">
+            <div class="identity-banner"><strong>“2” is an agent identifier, not a round or repeat.</strong> The scenario contains agents numbered 0–7. IDs 2 and 3 are the two Optimistic traders; only IDs 4 and 5 received the market-maker prompt treatment.</div>
+            <div class="stochastic-stage">
+              <div class="prompt-token">
+                <strong>Identical input package for agent 2</strong>
+                <p>Same scenario, model, temperature, LLM seed, system prompt, user prompt, and response schema.</p>
+                <div class="hash">SHA-256<br>6df55caf89e1d9c4b49e7318eeb6424182c0f2bd6aeca0b12fbd3fb2ed775e82</div>
+              </div>
+              <div class="arrow-column">→</div>
+              <div class="output-cloud" aria-label="Observed outputs">
+                <span class="decision buy">BUY × 5</span>
+                <span class="decision sell">SELL × 1</span>
+                <span class="decision hold">HOLD × 3</span>
+                <div class="valuation">Reported valuations observed: <strong>$48 · $96 · $100</strong></div>
+              </div>
+            </div>
+
+            <div class="observation-plot" aria-label="Agent 2 decisions across nine observations">
+              <div class="plot-title"><h4>Agent ID 2 only: all nine outputs</h4><span>3 market-maker arms × 3 repeats</span></div>
+              <div class="matrix-scroll">
+                <div class="observation-grid">
+                  <div class="matrix-head">Market-maker arm</div><div class="matrix-head">Repeat 1</div><div class="matrix-head">Repeat 2</div><div class="matrix-head">Repeat 3</div>
+                  <div class="matrix-label">Current</div>
+                  <div class="obs-cell action-hold"><span class="obs-action">HOLD</span><span class="obs-detail">qty 0 · value $48</span></div>
+                  <div class="obs-cell action-hold"><span class="obs-action">HOLD</span><span class="obs-detail">qty 0 · value $48</span></div>
+                  <div class="obs-cell action-buy"><span class="obs-action">BUY</span><span class="obs-detail">qty 1,000 · value $96</span></div>
+                  <div class="matrix-label">Earliest public</div>
+                  <div class="obs-cell action-buy"><span class="obs-action">BUY</span><span class="obs-detail">qty 1,000 · value $96</span></div>
+                  <div class="obs-cell action-buy"><span class="obs-action">BUY</span><span class="obs-detail">qty 1,000 · value $100</span></div>
+                  <div class="obs-cell action-hold"><span class="obs-action">HOLD</span><span class="obs-detail">qty 0 · value $48</span></div>
+                  <div class="matrix-label">Mandatory two-sided</div>
+                  <div class="obs-cell action-sell"><span class="obs-action">SELL</span><span class="obs-detail">qty 1,000 · value $48</span></div>
+                  <div class="obs-cell action-buy"><span class="obs-action">BUY</span><span class="obs-detail">qty 1,000 · value $96</span></div>
+                  <div class="obs-cell action-buy"><span class="obs-action">BUY</span><span class="obs-detail">qty 1,000 · value $96</span></div>
+                </div>
+              </div>
+              <div class="plot-legend">Arm labels describe the market-maker condition in the surrounding run. Agent 2 itself received the same prompt in every cell.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel run-snapshot">
+          <div class="panel-head"><h3>Whole-run cross-section · Current arm, Repeat 1</h3><span>All eight agents are shown below</span></div>
+          <div class="data-table-wrap">
+            <table>
+              <thead><tr><th>Agent ID</th><th>Role</th><th>Decision</th><th>Orders returned inside that decision</th><th>Valuation</th></tr></thead>
+              <tbody>
+                <tr><td>0</td><td>Default trader</td><td><span class="result-pill bad">Sell</span></td><td>1 market sell × 1,000</td><td>$28.00</td></tr>
+                <tr><td>1</td><td>Default trader</td><td><span class="result-pill bad">Sell</span></td><td>1 market sell × 1,000</td><td>$28.00</td></tr>
+                <tr><td>2</td><td>Optimistic</td><td><span class="result-pill" style="color:var(--blue);background:var(--blue-soft)">Hold</span></td><td>No order</td><td>$48.00</td></tr>
+                <tr><td>3</td><td>Optimistic</td><td><span class="result-pill bad">Sell</span></td><td>1 limit sell × 1,000</td><td>$48.00</td></tr>
+                <tr><td>4</td><td>Market maker</td><td><span class="result-pill bad">Sell</span></td><td>2 limit sells × 1,000</td><td>$28.00</td></tr>
+                <tr><td>5</td><td>Market maker</td><td><span class="result-pill bad">Sell</span></td><td>2 limit sells × 1,000</td><td>$28.00</td></tr>
+                <tr><td>6</td><td>Speculator</td><td><span class="result-pill bad">Sell</span></td><td>1 limit sell × 1,000</td><td>$21.49</td></tr>
+                <tr><td>7</td><td>Speculator</td><td><span class="result-pill bad">Sell</span></td><td>1 limit sell × 1,000</td><td>$21.49</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="run-totals">
+            <div class="run-total"><strong>8</strong><span>agent decisions</span></div>
+            <div class="run-total"><strong>9</strong><span>sell orders</span></div>
+            <div class="run-total"><strong>0</strong><span>buy orders</span></div>
+            <div class="run-total"><strong>0</strong><span>executed trades</span></div>
+          </div>
+        </div>
+
+        <div class="evidence-split">
+          <div class="callout">
+            <h4>What “stochastic” means here</h4>
+            <p><code>temperature=0</code> and <code>seed=42</code> reduce variation, but they did not guarantee response-level determinism for this API/model combination.</p>
+          </div>
+          <div class="callout alert">
+            <h4>Research consequence</h4>
+            <p>In a one-run A/B comparison, the measured difference contains both the market-maker prompt effect and unrelated response variation from agents whose prompts were never changed.</p>
+            <div class="causal-equation">observed A–B difference = prompt effect + untreated-agent variation</div>
+            <p class="consequence-example">Concrete example: in Repeat 1, Agent 2 chose Hold in the Current arm and the market had no trade. Under the Earliest-public arm, the same Agent 2 prompt instead produced a 1,000-share Buy and one trade. Comparing only these two runs could wrongly attribute the trade to the market-maker prompt, even though the initiating buy came from an untreated Optimistic agent.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="fills">
+      <div class="shell">
+        <div class="section-head">
+          <div class="section-number">05 / FILLS</div>
+          <div>
+            <h2>Fully filled, partially filled, or unfilled?</h2>
+            <p class="section-intro">The engine supports partial fills, but the nine probe runs did not produce any. In this audit, the LLM happened to generate 1,000-share executable orders on both sides, so each trade fully consumed one buy leg and one sell leg.</p>
+          </div>
+        </div>
+
+        <div class="fill-layout">
+          <div class="panel">
+            <div class="panel-head"><h3>Observed fill audit</h3><span>Aggregated across three repeats per prompt</span></div>
+            <div class="data-table-wrap">
+              <table class="fill-table">
+                <thead><tr><th>Prompt arm</th><th>Accepted orders</th><th>Accepted qty</th><th>Trade volume</th><th>Full legs</th><th>Partial</th><th>Unfilled</th><th>Leg fill rate</th></tr></thead>
+                <tbody>
+                  <tr><td class="arm">Current</td><td>27</td><td>27,000</td><td>3,000</td><td>6</td><td class="zero">0</td><td>21</td><td>22.2%</td></tr>
+                  <tr><td class="arm">Earliest public</td><td>27</td><td>1,017,000</td><td>2,000</td><td>4</td><td class="zero">0</td><td>23</td><td>0.39%</td></tr>
+                  <tr><td class="arm">Mandatory two-sided</td><td>29</td><td>29,000</td><td>7,000</td><td>14</td><td class="zero">0</td><td>15</td><td>48.3%</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="panel-body note">One transaction is counted once in trade volume but fills two order legs. Therefore: <code>all-leg fill rate = 2 × transaction volume / accepted quantity</code>.</div>
+          </div>
+
+          <div class="panel matching-demo">
+            <div class="panel-head"><h3>Matching mechanics</h3><span>actual vs. hypothetical</span></div>
+            <div class="panel-body">
+              <div class="tabs" role="tablist" aria-label="Fill examples">
+                <button class="tab" type="button" role="tab" aria-selected="true" data-demo="actual">Actual probe</button>
+                <button class="tab" type="button" role="tab" aria-selected="false" data-demo="partial">Partial-fill example</button>
+              </div>
+              <div id="demoContent"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="evidence-split">
+          <div class="callout">
+            <h4>Your intuition — corrected precisely</h4>
+            <p>In the high-price market, asks greatly outnumber bids. When a crossing buy arrives, it matches the <strong>lowest-priced sell order</strong> first, with price-time priority—not “the smaller buy order.”</p>
+          </div>
+          <div class="callout alert">
+            <h4>Why the 100,000-share asks were not partial</h4>
+            <p>The observed 1,000-share buys reached lower-priced 1,000-share asks first. The oversized asks were accepted into the system but received zero execution, so their status was unfilled rather than partially filled.</p>
+          </div>
+        </div>
+
+        <div class="panel quantity-origin">
+          <div class="panel-head"><h3>Where did the 1,000-share buy size come from?</h3><span>It was generated, not enforced</span></div>
+          <div class="panel-body">
+            <p><strong>None of the three prompt arms received the numeric <code>max_order_size=1000</code> value.</strong> The shared user prompt only says “quantity: number of shares,” and the response schema only requires a positive integer. Therefore, a 1,000-share output is not evidence that the configured cap worked.</p>
+            <div class="quantity-origin-grid">
+              <div class="quantity-origin-card"><strong>Earliest-public · Repeat 1</strong><p>Agent ID 2 (Optimistic) independently generated a 1,000-share market buy. It was not a market-maker order.</p></div>
+              <div class="quantity-origin-card"><strong>Earliest-public · Repeat 2</strong><p>Agent ID 2 generated another 1,000-share market buy, and market maker ID 5 separately generated a 1,000-share limit bid.</p></div>
+              <div class="quantity-origin-card"><strong>Earliest-public · Repeat 3</strong><p>No buy order was generated, so none of the accepted asks traded.</p></div>
+            </div>
+            <p class="note">The exact reason the model repeatedly selected 1,000 cannot be identified from the code: it may be a learned round-number heuristic or a conservative choice relative to the displayed cash and inventory. The logs prove that the number came from the LLM response; they do not prove why the model preferred it.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="claims">
+      <div class="shell">
+        <div class="section-head">
+          <div class="section-number">06 / CLAIMS</div>
+          <div>
+            <h2>What we can say now</h2>
+            <p class="section-intro">Separating the claims keeps the replication result scientifically defensible.</p>
+          </div>
+        </div>
+        <div class="claim-grid">
+          <div class="claim-card can">
+            <h3>Supported</h3>
+            <ul>
+              <li>The $56 state creates strongly one-sided sell pressure under the current prompt.</li>
+              <li>Explicit two-sided priority reliably restores market-maker bids.</li>
+              <li>The configured 1,000-share order cap is not enforced by the live path.</li>
+              <li>Fixed seed and temperature do not produce identical LLM decisions.</li>
+              <li>No partial fill occurred in the nine one-round probes.</li>
+            </ul>
+          </div>
+          <div class="claim-card cannot">
+            <h3>Not yet supported</h3>
+            <ul>
+              <li>That AI herding causes a transaction-driven market crash.</li>
+              <li>That prompt wording alone caused the observed differences in total trade count.</li>
+              <li>That oversized accepted orders necessarily created executed volume.</li>
+              <li>That the current public repository exactly matches the code used for the paper's figures.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="sources">
+          <strong>Audit basis.</strong> Three one-round repeats for each of the current, earliest-public, and mandatory-two-sided market-maker prompts. Source tables: <code>docs/tables/prompt_hierarchy_probe_aggregate.csv</code>, <code>prompt_hierarchy_agent_stability.csv</code>, <code>prompt_hierarchy_fill_audit.csv</code>, and <code>prompt_hierarchy_fill_aggregate.csv</code>. Versioned runtime traces are preserved under <code>data/traces/</code>, with checksums in <code>data/manifest.json</code>.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell">AI Herding replication study · Mechanism evidence, not a final market-level causal claim.</div>
+  </footer>
+
+  <script>
+    const demos = {
+      actual: `
+        <div class="book">
+          <div class="book-side"><h4>Incoming bid</h4><div class="order bid"><span>BUY 1,000</span><span>LLM chose size</span></div></div>
+          <div class="book-side"><h4>Best resting ask</h4><div class="order ask"><span>SELL 1,000</span><span>lowest ask</span></div></div>
+        </div>
+        <div class="match-rule">trade_qty = min(1,000, 1,000) = 1,000</div>
+        <div class="demo-result"><strong>Observed result:</strong> both order legs reach zero remaining quantity → both fully filled. The 1,000 quantity came from the model response, not from an enforced cap.</div>`,
+      partial: `
+        <div class="book">
+          <div class="book-side"><h4>Incoming bid</h4><div class="order bid"><span>BUY 1,000</span><span>observed-sized example</span></div></div>
+          <div class="book-side"><h4>Best resting ask</h4><div class="order ask"><span>SELL 100,000</span><span>best price</span></div></div>
+        </div>
+        <div class="match-rule">trade_qty = min(1,000, 100,000) = 1,000</div>
+        <div class="demo-result"><strong>Hypothetical result:</strong> buy is fully filled; sell has 99,000 remaining → sell becomes partially filled. This did not occur in the nine probe logs.</div>`
+    };
+
+    const demoContent = document.getElementById('demoContent');
+    function renderDemo(name) {
+      demoContent.innerHTML = demos[name];
+      document.querySelectorAll('.tab').forEach((tab) => {
+        tab.setAttribute('aria-selected', String(tab.dataset.demo === name));
+      });
+    }
+    document.querySelectorAll('.tab').forEach((tab) => tab.addEventListener('click', () => renderDemo(tab.dataset.demo)));
+    renderDemo('actual');
+
+    const modeButton = document.getElementById('modeButton');
+    modeButton.addEventListener('click', () => {
+      document.body.classList.toggle('presentation');
+      const enabled = document.body.classList.contains('presentation');
+      modeButton.textContent = enabled ? 'Exit presentation' : 'Presentation mode';
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key.toLowerCase() === 'p' && !/input|textarea/i.test(document.activeElement.tagName)) {
+        document.body.classList.toggle('presentation');
+      }
+      if (event.key === 'Escape') document.body.classList.remove('presentation');
+    });
+  </script>
+</body>
+</html>

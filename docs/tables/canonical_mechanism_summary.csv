@@ -1,0 +1,5 @@
+run,median_limit_buy_price_to_seen_price,median_limit_sell_price_to_seen_price,median_limit_buy_abs_pct_from_seen_price,median_limit_sell_abs_pct_from_seen_price,market_maker_both_sides_agent_rounds,market_maker_total_agent_rounds,unique_trade_sellers,top_trade_seller_id,top_trade_seller_type,top_trade_seller_volume_share
+56 baseline,,1.0141093474426808,,0.014109347442680789,0,30,0,,NA,
+56 prompt adjusted,,1.0119047619047619,,0.011904761904761934,0,30,0,,NA,
+14 baseline,0.9901639344262295,1.0066666666666666,0.009884705575820704,0.006666666666666643,15,30,1,5,Market Maker,1.0
+14 prompt adjusted,0.970469319803393,1.02,0.0296495956873315,0.02000000000000005,29,30,2,4,Market Maker,0.8181818181818182

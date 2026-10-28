@@ -1,0 +1,10 @@
+repeat,arm,arm_label,accepted_orders,accepted_buy_orders,accepted_sell_orders,accepted_order_quantity,accepted_buy_quantity,accepted_sell_quantity,executed_trades,transaction_volume,fully_filled_order_legs,partially_filled_orders,unfilled_orders,buy_side_fill_rate,sell_side_fill_rate,all_order_leg_fill_rate,market_maker_accepted_quantity,market_maker_executed_leg_quantity,market_maker_order_leg_fill_rate,partial_fill_state_logged,run_directory
+1,current,Current,9,0,9,9000,0,9000,0,0,0,0,9,,0.0,0.0,4000,0,0.0,False,data/runs/prompt_probe_r1_current
+1,earliest_public,Earliest public,9,1,8,405000,1000,404000,1,1000,2,0,7,1.0,0.0024752475247524753,0.0049382716049382715,400000,0,0.0,False,data/runs/prompt_probe_r1_earliest_public
+1,mandatory_two_sided,Mandatory two-sided,9,2,7,9000,2000,7000,2,2000,4,0,5,1.0,0.2857142857142857,0.4444444444444444,4000,2000,0.5,False,data/runs/prompt_probe_r1_mandatory_two_sided
+2,current,Current,8,1,7,8000,1000,7000,1,1000,2,0,6,1.0,0.14285714285714285,0.25,3000,0,0.0,False,data/runs/prompt_probe_r2_current
+2,earliest_public,Earliest public,10,2,8,208000,2000,206000,1,1000,2,0,8,0.5,0.0048543689320388345,0.009615384615384616,202000,0,0.0,False,data/runs/prompt_probe_r2_earliest_public
+2,mandatory_two_sided,Mandatory two-sided,10,4,6,10000,4000,6000,3,3000,6,0,4,0.75,0.5,0.6,4000,1000,0.25,False,data/runs/prompt_probe_r2_mandatory_two_sided
+3,current,Current,10,2,8,10000,2000,8000,2,2000,4,0,6,1.0,0.25,0.4,4000,0,0.0,False,data/runs/prompt_probe_r3_current
+3,earliest_public,Earliest public,8,0,8,404000,0,404000,0,0,0,0,8,,0.0,0.0,400000,0,0.0,False,data/runs/prompt_probe_r3_earliest_public
+3,mandatory_two_sided,Mandatory two-sided,10,4,6,10000,4000,6000,2,2000,4,0,6,0.5,0.3333333333333333,0.4,4000,0,0.0,False,data/runs/prompt_probe_r3_mandatory_two_sided

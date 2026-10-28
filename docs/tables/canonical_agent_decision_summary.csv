@@ -1,0 +1,17 @@
+run,agent_type,buy_only_agent_rounds,sell_only_agent_rounds,both_sides_agent_rounds,hold_or_no_order_agent_rounds,total_agent_rounds
+56 baseline,Default Trader,0,22,0,8,30
+56 baseline,Market Maker,0,28,0,2,30
+56 baseline,Optimistic,0,8,0,22,30
+56 baseline,Speculator,0,14,0,16,30
+56 prompt adjusted,Default Trader,0,19,0,11,30
+56 prompt adjusted,Market Maker,0,28,0,2,30
+56 prompt adjusted,Optimistic,0,30,0,0,30
+56 prompt adjusted,Speculator,0,18,0,12,30
+14 baseline,Default Trader,30,0,0,0,30
+14 baseline,Market Maker,15,0,15,0,30
+14 baseline,Optimistic,30,0,0,0,30
+14 baseline,Speculator,30,0,0,0,30
+14 prompt adjusted,Default Trader,30,0,0,0,30
+14 prompt adjusted,Market Maker,0,0,29,1,30
+14 prompt adjusted,Optimistic,30,0,0,0,30
+14 prompt adjusted,Speculator,27,0,0,3,30

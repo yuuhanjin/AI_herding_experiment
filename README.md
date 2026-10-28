@@ -6,6 +6,19 @@ This repository contains the source code for a trading simulation environment po
 
 This project simulates a financial market where agents, powered by LLMs, make trading decisions.
 
+## AI Herding research branch
+
+This fork is also used by the AI Herding experiment team. The original public
+simulator is referred to as **LLMTS upstream**; this collaborative fork is
+referred to as **AHE**. The `main` branch preserves the upstream baseline, while
+personal research branches contain experiments and analysis.
+
+Team members should begin with [`docs/codebase_map.md`](docs/codebase_map.md).
+It explains the simulation flow, prompts, order matching, price calculation,
+shared data, experiment scripts, and branch workflow in plain English. The
+versioned evidence package is documented in [`data/README.md`](data/README.md).
+Offline analyses can be reproduced without an API key or paid model calls.
+
 ## Paper
 
 This repository accompanies the research paper:
