@@ -1,0 +1,132 @@
+{
+    "sim_type": "prompt_hierarchy_probe_20261021_mechanism_r3_current",
+    "description": "Price discovery: Initial price 2x above fundamental (infinite horizon)",
+    "timestamp": "20261021_213237",
+    "run_id": "prompt_hierarchy_probe_20261021_mechanism_r3_current_20261021_213237",
+    "config_hash": "15a9ace51f5b7dfe9e8fb2e18253f04d341f6086afebc61d9fe8285a043dfedf",
+    "parameters": {
+        "RANDOM_SEED": 42,
+        "NUM_ROUNDS": 1,
+        "INFINITE_ROUNDS": true,
+        "FUNDAMENTAL_INFO_MODE": "process_only",
+        "NEWS_ENABLED": false,
+        "INITIAL_PRICE": 56.0,
+        "TRANSACTION_COST": 0.0,
+        "LENDABLE_SHARES": 0,
+        "MODEL_OPEN_AI": "gpt-4o-2024-11-20",
+        "LLM_TEMPERATURE": 0.0,
+        "LLM_SEED": 42,
+        "LLM_MAX_CONCURRENCY": 8,
+        "SYSTEM_PROMPT_OVERRIDES": {
+            "market_maker": "You are a professional market maker who provides liquidity to the market.\n\n        Your profit comes from capturing the spread between bid and ask prices, not from directional price movement.\n\n        Short selling is permitted when shares can be borrowed. Manage both long and short inventory carefully.\n\n        Trading Guidelines:\n        - Place LIMIT buy orders slightly below the current market price (1-3% lower)\n        - Place LIMIT sell orders slightly above the current market price (1-3% higher)\n        - Your spread should be proportional to volatility but typically 2-6% of price\n        - NEVER place sell orders more than 10% above your buy orders\n        - Adjust your spread width based on recent price volatility\n\n        Inventory Management:\n        - Monitor your current inventory including borrowed shares\n        - You may sell shares you do not own by borrowing them when available\n        - If inventory grows too large in either direction, adjust your orders\n        - Balance buy and sell orders based on current net position\n\n        Example: If price = $100, you might place buy orders at $97-99 and sell orders at $101-103.\n\n        Remember that extreme spreads (e.g., buying at $3 and selling at $30) will not execute and will lead to losses."
+        },
+        "PROMPT_FAMILY": "baseline",
+        "AGENT_PARAMS": {
+            "MEMORY_ENABLED": false,
+            "SOCIAL_ENABLED": false,
+            "SELF_MODIFY_ENABLED": false,
+            "CONFIDENCE_ENABLED": false,
+            "SECOND_ORDER_ENABLED": false,
+            "allow_short_selling": false,
+            "margin_requirement": 0.5,
+            "margin_base": "cash",
+            "borrow_model": {
+                "rate": 0.01,
+                "payment_frequency": 1,
+                "allow_partial_borrows": true
+            },
+            "leverage_params": {
+                "max_leverage_ratio": 1.0,
+                "initial_margin": 0.5,
+                "maintenance_margin": 0.25,
+                "interest_rate": 0.05,
+                "cash_lending_pool": Infinity,
+                "allow_partial_borrows": true,
+                "enabled": false
+            },
+            "position_limit": 100000000,
+            "initial_cash": 1000000.0,
+            "initial_shares": 10000,
+            "max_order_size": 1000,
+            "agent_composition": {
+                "default": 2,
+                "optimistic": 2,
+                "market_maker": 2,
+                "speculator": 2
+            },
+            "deterministic_params": {
+                "gap_trader": {
+                    "threshold": 0.05,
+                    "max_proportion": 0.5,
+                    "scaling_factor": 2.0
+                }
+            },
+            "type_specific_params": {
+                "market_maker": {
+                    "initial_cash": 20000000.0,
+                    "initial_shares": 200000
+                }
+            }
+        },
+        "INTEREST_MODEL": {
+            "rate": 0.05,
+            "compound_frequency": "per_round",
+            "destination": "dividend"
+        },
+        "DIVIDEND_PARAMS": {
+            "type": "stochastic",
+            "base_dividend": 1.4,
+            "dividend_frequency": 1,
+            "dividend_growth": 0.0,
+            "dividend_probability": 0.5,
+            "dividend_variation": 1.0,
+            "destination": "dividend"
+        },
+        "FUNDAMENTAL_PRICE": 27.999999999999996
+    },
+    "llm_usage": {
+        "calls": 8,
+        "successful_calls": 8,
+        "failed_calls": 0,
+        "attempts": 8,
+        "prompt_tokens": 9618,
+        "completion_tokens": 1489,
+        "total_tokens": 11107,
+        "cost_usd": 0.038933,
+        "avg_tokens_per_call": 1388.4,
+        "avg_prompt_tokens_per_call": 1202.2,
+        "avg_completion_tokens_per_call": 186.1,
+        "by_model": {
+            "gpt-4o-2024-11-20": {
+                "calls": 8,
+                "successful_calls": 8,
+                "failed_calls": 0,
+                "attempts": 8,
+                "prompt_tokens": 9618,
+                "completion_tokens": 1489,
+                "total_tokens": 11107,
+                "cost_usd": 0.038933,
+                "avg_tokens_per_call": 1388.4,
+                "avg_prompt_tokens_per_call": 1202.2,
+                "avg_completion_tokens_per_call": 186.1
+            }
+        },
+        "by_call_type": {
+            "decision": {
+                "calls": 8,
+                "successful_calls": 8,
+                "failed_calls": 0,
+                "attempts": 8,
+                "prompt_tokens": 9618,
+                "completion_tokens": 1489,
+                "total_tokens": 11107,
+                "cost_usd": 0.038933,
+                "avg_tokens_per_call": 1388.4,
+                "avg_prompt_tokens_per_call": 1202.2,
+                "avg_completion_tokens_per_call": 186.1
+            }
+        },
+        "pricing_backend": "self_hosted",
+        "unpriced_models": []
+    }
+}

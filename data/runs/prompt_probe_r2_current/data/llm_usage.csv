@@ -1,0 +1,9 @@
+round,agent_id,model,call_type,prompt_tokens,completion_tokens,total_tokens,cost_usd,latency_s,attempts,success
+0,2,gpt-4o-2024-11-20,decision,1163,164,1327,0.004547,3.412,1,True
+0,1,gpt-4o-2024-11-20,decision,1133,148,1281,0.004313,3.492,1,True
+0,4,gpt-4o-2024-11-20,decision,1377,159,1536,0.005032,3.548,1,True
+0,3,gpt-4o-2024-11-20,decision,1163,199,1362,0.004897,3.586,1,True
+0,0,gpt-4o-2024-11-20,decision,1133,180,1313,0.004633,3.918,1,True
+0,7,gpt-4o-2024-11-20,decision,1136,214,1350,0.00498,4.204,1,True
+0,6,gpt-4o-2024-11-20,decision,1136,255,1391,0.00539,4.764,1,True
+0,5,gpt-4o-2024-11-20,decision,1377,141,1518,0.004853,4.922,1,True

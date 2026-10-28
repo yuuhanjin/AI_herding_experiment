@@ -1,0 +1,964 @@
+{
+  "schema_version": 1,
+  "generated_on": "2026-10-28",
+  "source_repository_commit": "a09d51b48ff7ac02b127e0fdcf0cc530f9ead90d",
+  "description": "Curated evidence for the Figure 6-7 replication and the market-maker prompt hierarchy probe.",
+  "runs": {
+    "fig6_above_baseline": {
+      "study": "figure_6_7",
+      "scenario": "above",
+      "variant": "baseline",
+      "original_local_source": "logs/replication_fig6_above_seed42/20261014_234547",
+      "files": [
+        {
+          "path": "data/runs/fig6_above_baseline/metadata.json",
+          "bytes": 4613,
+          "sha256": "beb0b6f8d18f04bbe11a82b3efca05a29a26ee64f7da7b9e1fe9799a33c39841"
+        },
+        {
+          "path": "data/runs/fig6_above_baseline/parameters.json",
+          "bytes": 2356,
+          "sha256": "82201440e9203d8f98dcf92350662b90c48d082883f7d954db2d4c89b2e9aa5d"
+        },
+        {
+          "path": "data/runs/fig6_above_baseline/structured_decisions.csv",
+          "bytes": 109656,
+          "sha256": "b2e9ed4adf013df6d9b20ce6b581591beb0dad95ec0ae9eaf18e59f6cf66fce0"
+        },
+        {
+          "path": "data/runs/fig6_above_baseline/validation_errors.csv",
+          "bytes": 80,
+          "sha256": "bff90e089773e58ccb5ec40d05351d374c2eb7b42fff7b7483a8c8d8c762ed64"
+        },
+        {
+          "path": "data/runs/fig6_above_baseline/order_state.txt",
+          "bytes": 322172,
+          "sha256": "d958690a2d4d7e986e4c9656cc3bf3e2f09a2aa4301d9c408dfe3f206c0751a0"
+        },
+        {
+          "path": "data/runs/fig6_above_baseline/data/agent_data.csv",
+          "bytes": 18977,
+          "sha256": "bc3843e2fc94510c8e7c1dcb42c05011c0c0aeeae3fe45347b43727cb02e5d06"
+        },
+        {
+          "path": "data/runs/fig6_above_baseline/data/dividend_data.csv",
+          "bytes": 1616,
+          "sha256": "98c2a4ac59e1daf9f67afb2b526ce667d40d480974ff64d5cecf8608dcd59d3a"
+        },
+        {
+          "path": "data/runs/fig6_above_baseline/data/llm_usage.csv",
+          "bytes": 8269,
+          "sha256": "1b3f88d2a1803e75fec5d1c997875d7958aed2942dc6699eb9b79b34fc227b33"
+        },
+        {
+          "path": "data/runs/fig6_above_baseline/data/market_data.csv",
+          "bytes": 6693,
+          "sha256": "6f4779b8250e2610276b71823cdac5dcc2b63d7caf3e3bd1baac7326435edf58"
+        },
+        {
+          "path": "data/runs/fig6_above_baseline/data/order_data.csv",
+          "bytes": 7037,
+          "sha256": "6873a03968eefe1270fccf75b4f429c33bb144a5cfb02fc30c6bb40e64827401"
+        },
+        {
+          "path": "data/runs/fig6_above_baseline/data/rendered_prompts.jsonl",
+          "bytes": 570514,
+          "sha256": "4f04aa426411847b4b69c1ca03ce183ca91765365b80fe1097347389fe1eacf1"
+        },
+        {
+          "path": "data/runs/fig6_above_baseline/data/trade_data.csv",
+          "bytes": 2,
+          "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+        }
+      ]
+    },
+    "fig6_below_baseline": {
+      "study": "figure_6_7",
+      "scenario": "below",
+      "variant": "baseline",
+      "original_local_source": "logs/replication_fig6_below_seed42/20261014_234649",
+      "files": [
+        {
+          "path": "data/runs/fig6_below_baseline/metadata.json",
+          "bytes": 4615,
+          "sha256": "6a7a4c558614039dd7fe402aaef94902ae2ca71f4414c7c526a3b1ec472f8ca6"
+        },
+        {
+          "path": "data/runs/fig6_below_baseline/parameters.json",
+          "bytes": 2356,
+          "sha256": "58d3ac1806b0da62b4baf4abf1fb685e9eac771d330a3a65e059336234245ea6"
+        },
+        {
+          "path": "data/runs/fig6_below_baseline/structured_decisions.csv",
+          "bytes": 134699,
+          "sha256": "94556566134928593caa34d4846f15382995792d778871a8bea4bc4cfc088376"
+        },
+        {
+          "path": "data/runs/fig6_below_baseline/validation_errors.csv",
+          "bytes": 80,
+          "sha256": "bff90e089773e58ccb5ec40d05351d374c2eb7b42fff7b7483a8c8d8c762ed64"
+        },
+        {
+          "path": "data/runs/fig6_below_baseline/order_state.txt",
+          "bytes": 715166,
+          "sha256": "71a1c9efe1b972c52e3116cc80618f2e637eecbe3239f573805fb18fd796e65b"
+        },
+        {
+          "path": "data/runs/fig6_below_baseline/data/agent_data.csv",
+          "bytes": 19409,
+          "sha256": "68b23424419899e654efe183699908d210fb3e7106d745d76a2a072d1f76e2c8"
+        },
+        {
+          "path": "data/runs/fig6_below_baseline/data/dividend_data.csv",
+          "bytes": 1615,
+          "sha256": "4bfdeda865049b21b12142f9569101dafcaeb56fa30baff40b21adabc77b8cd5"
+        },
+        {
+          "path": "data/runs/fig6_below_baseline/data/llm_usage.csv",
+          "bytes": 8263,
+          "sha256": "f792866bc04d30fe09b1c88e328c63d30245281af416bb908ebaf5e1af0842d8"
+        },
+        {
+          "path": "data/runs/fig6_below_baseline/data/market_data.csv",
+          "bytes": 12151,
+          "sha256": "b9214ee05821b58642bf44e9e46d43813538d6542643ba5045b27df390695f54"
+        },
+        {
+          "path": "data/runs/fig6_below_baseline/data/order_data.csv",
+          "bytes": 12640,
+          "sha256": "4078447b6d35c62379f48255c59b2d913fb58540363f01eda45df77b0a6af44f"
+        },
+        {
+          "path": "data/runs/fig6_below_baseline/data/rendered_prompts.jsonl",
+          "bytes": 606492,
+          "sha256": "9a9d233a2b63d5e835c590ac09e2740625baf3625342d2f10a94b10d01baa58f"
+        },
+        {
+          "path": "data/runs/fig6_below_baseline/data/trade_data.csv",
+          "bytes": 1388,
+          "sha256": "b726f4039fd0aa2727a501514f5a691e592afce3f0b9a4bcbadfef1221b07ba6"
+        }
+      ]
+    },
+    "fig6_above_prompt_adjusted": {
+      "study": "figure_6_7",
+      "scenario": "above",
+      "variant": "market_maker_no_short_wording",
+      "original_local_source": "logs/prompt_contrast_above_20261015_no_short_wording/20261015_000510",
+      "files": [
+        {
+          "path": "data/runs/fig6_above_prompt_adjusted/metadata.json",
+          "bytes": 5956,
+          "sha256": "922f43e7e0fa4bb52dd6d836ebffc0235207a977120d190b060dbf907c315b5c"
+        },
+        {
+          "path": "data/runs/fig6_above_prompt_adjusted/parameters.json",
+          "bytes": 3655,
+          "sha256": "7eec1bf6bec3a937550fb51a672b4fb21c36aacb91931603d67426d73e267573"
+        },
+        {
+          "path": "data/runs/fig6_above_prompt_adjusted/structured_decisions.csv",
+          "bytes": 134782,
+          "sha256": "92c82090fd7455cd674e730a24a9b747bae757edf7ea1d79b9868a81eb6eed98"
+        },
+        {
+          "path": "data/runs/fig6_above_prompt_adjusted/validation_errors.csv",
+          "bytes": 80,
+          "sha256": "bff90e089773e58ccb5ec40d05351d374c2eb7b42fff7b7483a8c8d8c762ed64"
+        },
+        {
+          "path": "data/runs/fig6_above_prompt_adjusted/order_state.txt",
+          "bytes": 296400,
+          "sha256": "e2f86806b49c71b525ec7679535a96423aeab259dddfae23e5674f495958755e"
+        },
+        {
+          "path": "data/runs/fig6_above_prompt_adjusted/comparison_trace.json",
+          "bytes": 4910,
+          "sha256": "abed9f12294e3fe208310b9bfe498cb4f96c4bb6526a916ed2cdf0fadc7a0281"
+        },
+        {
+          "path": "data/runs/fig6_above_prompt_adjusted/data/agent_data.csv",
+          "bytes": 18957,
+          "sha256": "31cb0c2c5ed52892cb1d978e990d088cc5aedba1a9dc35d28bbec55a98ab72aa"
+        },
+        {
+          "path": "data/runs/fig6_above_prompt_adjusted/data/dividend_data.csv",
+          "bytes": 1609,
+          "sha256": "a86f5d595d5cc9f50bb6b5298e10802c4e940fb95ddb4fe4cd6177463bc0dfee"
+        },
+        {
+          "path": "data/runs/fig6_above_prompt_adjusted/data/llm_usage.csv",
+          "bytes": 8258,
+          "sha256": "d7498abfbd1e2f6371dfe0dcdb698fb415530fcf19655f3f548c4847e725b2eb"
+        },
+        {
+          "path": "data/runs/fig6_above_prompt_adjusted/data/market_data.csv",
+          "bytes": 6167,
+          "sha256": "d286252f5e55b6af332090bdf1264045ff09dbc7a059477f89bd4ba1bc6f7175"
+        },
+        {
+          "path": "data/runs/fig6_above_prompt_adjusted/data/order_data.csv",
+          "bytes": 8229,
+          "sha256": "b18f814f0342eaf50b3745a401938e8abc6700ba63b3eb01ecd1391dc92452f6"
+        },
+        {
+          "path": "data/runs/fig6_above_prompt_adjusted/data/rendered_prompts.jsonl",
+          "bytes": 565240,
+          "sha256": "cef7c24cdf49145450ae3d2e3f6535958d033563017dc01b8ad182a2817d85f3"
+        },
+        {
+          "path": "data/runs/fig6_above_prompt_adjusted/data/trade_data.csv",
+          "bytes": 2,
+          "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+        }
+      ]
+    },
+    "fig6_below_prompt_adjusted": {
+      "study": "figure_6_7",
+      "scenario": "below",
+      "variant": "market_maker_no_short_wording",
+      "original_local_source": "logs/prompt_contrast_below_20261015_no_short_wording/20261015_000618",
+      "files": [
+        {
+          "path": "data/runs/fig6_below_prompt_adjusted/metadata.json",
+          "bytes": 5958,
+          "sha256": "a815f49c6fda7db586481e654ca0af743f0cab2f240099434c50b7d81bca9e30"
+        },
+        {
+          "path": "data/runs/fig6_below_prompt_adjusted/parameters.json",
+          "bytes": 3655,
+          "sha256": "67b5027401ebe2f2d91573ca70de310879576f626a8dbf224093dd2693989513"
+        },
+        {
+          "path": "data/runs/fig6_below_prompt_adjusted/structured_decisions.csv",
+          "bytes": 127858,
+          "sha256": "da8b38b5d1e08dcf5de411001bb8d3d15e85aa25f5010017992377b7e1364db9"
+        },
+        {
+          "path": "data/runs/fig6_below_prompt_adjusted/validation_errors.csv",
+          "bytes": 80,
+          "sha256": "bff90e089773e58ccb5ec40d05351d374c2eb7b42fff7b7483a8c8d8c762ed64"
+        },
+        {
+          "path": "data/runs/fig6_below_prompt_adjusted/order_state.txt",
+          "bytes": 510727,
+          "sha256": "a37615705a7589595effcb0059918e33586e1d89bc23467d02873c6fc76483e4"
+        },
+        {
+          "path": "data/runs/fig6_below_prompt_adjusted/comparison_trace.json",
+          "bytes": 5606,
+          "sha256": "d665d538c75f62794c8ee0d1d86247fcffcd1ee24ce7cb185c11d72ee64055ab"
+        },
+        {
+          "path": "data/runs/fig6_below_prompt_adjusted/data/agent_data.csv",
+          "bytes": 19415,
+          "sha256": "ec2b628d9d6150d314e25f169127554a71f40f6522d6fbf8bdf64edb08c73c03"
+        },
+        {
+          "path": "data/runs/fig6_below_prompt_adjusted/data/dividend_data.csv",
+          "bytes": 1612,
+          "sha256": "553a31eadce60eeca686bc4ce08db44d30fdb84ea0b5a2f0ea886757d9e07478"
+        },
+        {
+          "path": "data/runs/fig6_below_prompt_adjusted/data/llm_usage.csv",
+          "bytes": 8275,
+          "sha256": "728512bdc7c1f3132d92958f7856504902ae30294bf8bde741ca1a7be08a47d3"
+        },
+        {
+          "path": "data/runs/fig6_below_prompt_adjusted/data/market_data.csv",
+          "bytes": 6988,
+          "sha256": "59763d0cc43abef90d524ea51317b39dca99e957afc607ee3d4ad69af0c2c6d2"
+        },
+        {
+          "path": "data/runs/fig6_below_prompt_adjusted/data/order_data.csv",
+          "bytes": 10941,
+          "sha256": "efcfea4f611fbee9c8465d5df101293c9a1f388d03d6169d6a9d60d44ff878f3"
+        },
+        {
+          "path": "data/runs/fig6_below_prompt_adjusted/data/rendered_prompts.jsonl",
+          "bytes": 571566,
+          "sha256": "1693607dd528337098f642840019d8b61bced8580f288cdc1b2d4025b5c6c9cd"
+        },
+        {
+          "path": "data/runs/fig6_below_prompt_adjusted/data/trade_data.csv",
+          "bytes": 1465,
+          "sha256": "67061804cb431bdbe26fbea83b30460b5f05ec7f266003e1874c07aa338fff9b"
+        }
+      ]
+    },
+    "prompt_probe_r1_current": {
+      "study": "prompt_hierarchy_probe",
+      "repeat": 1,
+      "arm": "current",
+      "original_local_source": "logs/prompt_hierarchy_probe_20261021_mechanism_current/20261021_212843",
+      "files": [
+        {
+          "path": "data/runs/prompt_probe_r1_current/metadata.json",
+          "bytes": 5962,
+          "sha256": "1befc5240f23f0f178f9cf207ac7b2a057a5f3b03c42b08b7b6a78cd70229504"
+        },
+        {
+          "path": "data/runs/prompt_probe_r1_current/parameters.json",
+          "bytes": 3687,
+          "sha256": "e61106d85c41e01be1dc96f420eb1bd140d7ab63c1684339d2ff6988aada9272"
+        },
+        {
+          "path": "data/runs/prompt_probe_r1_current/structured_decisions.csv",
+          "bytes": 7162,
+          "sha256": "332267afb34c7a74d94fdab1683bcbc0704aedfc30c98e8ca8b3a28d5259a7fe"
+        },
+        {
+          "path": "data/runs/prompt_probe_r1_current/validation_errors.csv",
+          "bytes": 80,
+          "sha256": "bff90e089773e58ccb5ec40d05351d374c2eb7b42fff7b7483a8c8d8c762ed64"
+        },
+        {
+          "path": "data/runs/prompt_probe_r1_current/order_state.txt",
+          "bytes": 13186,
+          "sha256": "08067e65ad7cfbca21b42dc3c4dc0685b6ce233a7b8b0952c0d974cf4ae14e39"
+        },
+        {
+          "path": "data/runs/prompt_probe_r1_current/comparison_trace.json",
+          "bytes": 7306,
+          "sha256": "972b7e9a92ad74dc3bcf627b10a42511f014a3aae81636dd4465414eef95847c"
+        },
+        {
+          "path": "data/runs/prompt_probe_r1_current/data/agent_data.csv",
+          "bytes": 1493,
+          "sha256": "acffcc97211747af7d9362fbb1c30784d7837307aeb4fa4c7972b4e59721040f"
+        },
+        {
+          "path": "data/runs/prompt_probe_r1_current/data/dividend_data.csv",
+          "bytes": 2,
+          "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+        },
+        {
+          "path": "data/runs/prompt_probe_r1_current/data/llm_usage.csv",
+          "bytes": 652,
+          "sha256": "2cd46fde5a608705a699515f5d7f1426eb51015d125cbf19ef84a6eef93c80c1"
+        },
+        {
+          "path": "data/runs/prompt_probe_r1_current/data/market_data.csv",
+          "bytes": 440,
+          "sha256": "da7f8d7e7c029b6a6b66d19ab5c062b2b7e92c935476bda8813c8e71959a9508"
+        },
+        {
+          "path": "data/runs/prompt_probe_r1_current/data/order_data.csv",
+          "bytes": 681,
+          "sha256": "8ebe547b32ac977e6504b2c500ae7cfe8f12c2ba1f17877a9c09375a708d95ab"
+        },
+        {
+          "path": "data/runs/prompt_probe_r1_current/data/rendered_prompts.jsonl",
+          "bytes": 30174,
+          "sha256": "92d04f95dfebd6fb18f99fa9fd6a41f64cd033121289287de33b169d1a055418"
+        },
+        {
+          "path": "data/runs/prompt_probe_r1_current/data/trade_data.csv",
+          "bytes": 2,
+          "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+        }
+      ]
+    },
+    "prompt_probe_r1_earliest_public": {
+      "study": "prompt_hierarchy_probe",
+      "repeat": 1,
+      "arm": "earliest_public",
+      "original_local_source": "logs/prompt_hierarchy_probe_20261021_mechanism_earliest_public/20261021_212922",
+      "files": [
+        {
+          "path": "data/runs/prompt_probe_r1_earliest_public/metadata.json",
+          "bytes": 6160,
+          "sha256": "472c52975f68683a4bd6f3492294ead768e053d90d5dd9dd1a2924cd7905fca8"
+        },
+        {
+          "path": "data/runs/prompt_probe_r1_earliest_public/parameters.json",
+          "bytes": 3869,
+          "sha256": "6e71e0a665763e419389b01a051d3f8ba33a54655ac65faac8deb196d772c2be"
+        },
+        {
+          "path": "data/runs/prompt_probe_r1_earliest_public/structured_decisions.csv",
+          "bytes": 6213,
+          "sha256": "4eeec1944a72422c960daeb875d15702d22edd28fc8bbef133b30999b754b400"
+        },
+        {
+          "path": "data/runs/prompt_probe_r1_earliest_public/validation_errors.csv",
+          "bytes": 80,
+          "sha256": "bff90e089773e58ccb5ec40d05351d374c2eb7b42fff7b7483a8c8d8c762ed64"
+        },
+        {
+          "path": "data/runs/prompt_probe_r1_earliest_public/order_state.txt",
+          "bytes": 12869,
+          "sha256": "06c926d5105f7fad80ee14dcccda54b72dacf5fa831247d545dd370aa038875b"
+        },
+        {
+          "path": "data/runs/prompt_probe_r1_earliest_public/comparison_trace.json",
+          "bytes": 9810,
+          "sha256": "ea75b0e2276996bb5f491e6df395db67f7d809ddf8a469105f2e4f9526e133c2"
+        },
+        {
+          "path": "data/runs/prompt_probe_r1_earliest_public/data/agent_data.csv",
+          "bytes": 1478,
+          "sha256": "b1995e81f022338ac639f3e474221279d1489618a77df7f326366dbfee048a00"
+        },
+        {
+          "path": "data/runs/prompt_probe_r1_earliest_public/data/dividend_data.csv",
+          "bytes": 2,
+          "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+        },
+        {
+          "path": "data/runs/prompt_probe_r1_earliest_public/data/llm_usage.csv",
+          "bytes": 655,
+          "sha256": "f6c81c5634f7dc37f0ca26a9611d6c64ace1ad20a28268120abe252e5a2ea5ef"
+        },
+        {
+          "path": "data/runs/prompt_probe_r1_earliest_public/data/market_data.csv",
+          "bytes": 448,
+          "sha256": "a3146bd738f83470aea1b2cadfbdcf3c6a6303856a680f33ee76174831655699"
+        },
+        {
+          "path": "data/runs/prompt_probe_r1_earliest_public/data/order_data.csv",
+          "bytes": 684,
+          "sha256": "d91967795f412bcc92d3c84af66d9b052376326b5b7b121274dfc283a498f30f"
+        },
+        {
+          "path": "data/runs/prompt_probe_r1_earliest_public/data/rendered_prompts.jsonl",
+          "bytes": 30540,
+          "sha256": "6c37a1f1a30bba1cda7c89d92419e868443ac23cc453da27195f5cb818d32b61"
+        },
+        {
+          "path": "data/runs/prompt_probe_r1_earliest_public/data/trade_data.csv",
+          "bytes": 118,
+          "sha256": "5d1174390619375076424af2c191907f9c9df94f40e3fd284706eb7a9fd216af"
+        }
+      ]
+    },
+    "prompt_probe_r1_mandatory_two_sided": {
+      "study": "prompt_hierarchy_probe",
+      "repeat": 1,
+      "arm": "mandatory_two_sided",
+      "original_local_source": "logs/prompt_hierarchy_probe_20261021_mechanism_mandatory_two_sided/20261021_212955",
+      "files": [
+        {
+          "path": "data/runs/prompt_probe_r1_mandatory_two_sided/metadata.json",
+          "bytes": 5630,
+          "sha256": "f5bf7534aa257023db737a621ef60237cfb3e73db276df67e822e101a889d5b2"
+        },
+        {
+          "path": "data/runs/prompt_probe_r1_mandatory_two_sided/parameters.json",
+          "bytes": 3334,
+          "sha256": "61f412aec2cc917a25fa050877e40dfe303a727bf085b89f46caa6f7e1bec018"
+        },
+        {
+          "path": "data/runs/prompt_probe_r1_mandatory_two_sided/structured_decisions.csv",
+          "bytes": 7166,
+          "sha256": "39ff1c421931f128a995c91753e2ba305029b0516cec8a6368437c9199cd5a42"
+        },
+        {
+          "path": "data/runs/prompt_probe_r1_mandatory_two_sided/validation_errors.csv",
+          "bytes": 80,
+          "sha256": "bff90e089773e58ccb5ec40d05351d374c2eb7b42fff7b7483a8c8d8c762ed64"
+        },
+        {
+          "path": "data/runs/prompt_probe_r1_mandatory_two_sided/order_state.txt",
+          "bytes": 13137,
+          "sha256": "422163775ae600a35afd2ff8942addd46264e39b043d1a0c8fe6d7aa6f01c0f4"
+        },
+        {
+          "path": "data/runs/prompt_probe_r1_mandatory_two_sided/comparison_trace.json",
+          "bytes": 12328,
+          "sha256": "c708e432732003a704810aea2611c0581f442c834461bb2812277f8b2cea93d8"
+        },
+        {
+          "path": "data/runs/prompt_probe_r1_mandatory_two_sided/data/agent_data.csv",
+          "bytes": 1491,
+          "sha256": "c682158a7e53613127c85e2261982c01f4455e2578757466635c882c1813bd42"
+        },
+        {
+          "path": "data/runs/prompt_probe_r1_mandatory_two_sided/data/dividend_data.csv",
+          "bytes": 2,
+          "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+        },
+        {
+          "path": "data/runs/prompt_probe_r1_mandatory_two_sided/data/llm_usage.csv",
+          "bytes": 655,
+          "sha256": "1db9a6b85e290c03ac61c07fcdf5b2bb2829289f9b83936fd557c629801e9039"
+        },
+        {
+          "path": "data/runs/prompt_probe_r1_mandatory_two_sided/data/market_data.csv",
+          "bytes": 450,
+          "sha256": "c191079fb41cc97b83184008e4d7523db88bc1fc991a81dac4e0089a05996bc4"
+        },
+        {
+          "path": "data/runs/prompt_probe_r1_mandatory_two_sided/data/order_data.csv",
+          "bytes": 675,
+          "sha256": "a187c9180c217316a105d7edef5a514fef7b1b0fab5f1605d3a2d853ff2a5c46"
+        },
+        {
+          "path": "data/runs/prompt_probe_r1_mandatory_two_sided/data/rendered_prompts.jsonl",
+          "bytes": 29468,
+          "sha256": "809fc5ef6c029d0d019b964e2c48993bb06000c239ff8ba40b7abc227b64bd6f"
+        },
+        {
+          "path": "data/runs/prompt_probe_r1_mandatory_two_sided/data/trade_data.csv",
+          "bytes": 178,
+          "sha256": "4e47c6fa274766a852961c2a86e23fc16c9f9097cfd2c4ebb8092ccc25009cb8"
+        }
+      ]
+    },
+    "prompt_probe_r2_current": {
+      "study": "prompt_hierarchy_probe",
+      "repeat": 2,
+      "arm": "current",
+      "original_local_source": "logs/prompt_hierarchy_probe_20261021_mechanism_r2_current/20261021_213106",
+      "files": [
+        {
+          "path": "data/runs/prompt_probe_r2_current/metadata.json",
+          "bytes": 5968,
+          "sha256": "12bc941af6904b3ccf28f1b4c80bf8a61725324a5a474a36df4d400ca09387fa"
+        },
+        {
+          "path": "data/runs/prompt_probe_r2_current/parameters.json",
+          "bytes": 3687,
+          "sha256": "e61106d85c41e01be1dc96f420eb1bd140d7ab63c1684339d2ff6988aada9272"
+        },
+        {
+          "path": "data/runs/prompt_probe_r2_current/structured_decisions.csv",
+          "bytes": 5905,
+          "sha256": "61c24e51a5bb5c25ac21a44e8f2d2f1de9fe6d8f0226e8d820d15eeb4de0d241"
+        },
+        {
+          "path": "data/runs/prompt_probe_r2_current/validation_errors.csv",
+          "bytes": 80,
+          "sha256": "bff90e089773e58ccb5ec40d05351d374c2eb7b42fff7b7483a8c8d8c762ed64"
+        },
+        {
+          "path": "data/runs/prompt_probe_r2_current/order_state.txt",
+          "bytes": 12211,
+          "sha256": "1b2ef41cc138a982d6aed4becb2540c7c4c0152af993ae8907959439e94535d6"
+        },
+        {
+          "path": "data/runs/prompt_probe_r2_current/comparison_trace.json",
+          "bytes": 7337,
+          "sha256": "fe62287a5bff7df775b795e915a64a1dbe1d9d5036240e6c7fdfdfc50856ae78"
+        },
+        {
+          "path": "data/runs/prompt_probe_r2_current/data/agent_data.csv",
+          "bytes": 1484,
+          "sha256": "342e6cbb5c6208ff659d8ab3cab3433b21ff4e0f8d0fa3bb422d12a87bd2c6bc"
+        },
+        {
+          "path": "data/runs/prompt_probe_r2_current/data/dividend_data.csv",
+          "bytes": 2,
+          "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+        },
+        {
+          "path": "data/runs/prompt_probe_r2_current/data/llm_usage.csv",
+          "bytes": 655,
+          "sha256": "3f9811f242e2da81c9c1b89afccc526d0ef4831cc7852eed66bf384e24faef9a"
+        },
+        {
+          "path": "data/runs/prompt_probe_r2_current/data/market_data.csv",
+          "bytes": 448,
+          "sha256": "b4198570eb7e0306e8cb82f546d6d80a2373add02414a25650372bc86cdb9f9b"
+        },
+        {
+          "path": "data/runs/prompt_probe_r2_current/data/order_data.csv",
+          "bytes": 612,
+          "sha256": "b33dd08396f0a5ede9105417c5a0d817f89c408a8e9019d10f48e8c68c061a37"
+        },
+        {
+          "path": "data/runs/prompt_probe_r2_current/data/rendered_prompts.jsonl",
+          "bytes": 30174,
+          "sha256": "92d04f95dfebd6fb18f99fa9fd6a41f64cd033121289287de33b169d1a055418"
+        },
+        {
+          "path": "data/runs/prompt_probe_r2_current/data/trade_data.csv",
+          "bytes": 118,
+          "sha256": "5326a87d6014da0eb728245449ce71c3d676424e50e1bab032b98452adb2c44a"
+        }
+      ]
+    },
+    "prompt_probe_r2_earliest_public": {
+      "study": "prompt_hierarchy_probe",
+      "repeat": 2,
+      "arm": "earliest_public",
+      "original_local_source": "logs/prompt_hierarchy_probe_20261021_mechanism_r2_earliest_public/20261021_213132",
+      "files": [
+        {
+          "path": "data/runs/prompt_probe_r2_earliest_public/metadata.json",
+          "bytes": 6166,
+          "sha256": "40ede58a119dfc84e0b9cebee8badfc77ee1e5e3119cb1a68d605698d910fae6"
+        },
+        {
+          "path": "data/runs/prompt_probe_r2_earliest_public/parameters.json",
+          "bytes": 3869,
+          "sha256": "6e71e0a665763e419389b01a051d3f8ba33a54655ac65faac8deb196d772c2be"
+        },
+        {
+          "path": "data/runs/prompt_probe_r2_earliest_public/structured_decisions.csv",
+          "bytes": 6100,
+          "sha256": "795a6f72f26e873c6ad307ec2275cdbcdcda4961d6734c64d72f6627a37c24a7"
+        },
+        {
+          "path": "data/runs/prompt_probe_r2_earliest_public/validation_errors.csv",
+          "bytes": 80,
+          "sha256": "bff90e089773e58ccb5ec40d05351d374c2eb7b42fff7b7483a8c8d8c762ed64"
+        },
+        {
+          "path": "data/runs/prompt_probe_r2_earliest_public/order_state.txt",
+          "bytes": 14412,
+          "sha256": "982d52abbdf67df257860844bfecde96dbd39ecade69975e25f997c507fcbbe1"
+        },
+        {
+          "path": "data/runs/prompt_probe_r2_earliest_public/comparison_trace.json",
+          "bytes": 9850,
+          "sha256": "c3e72196e727143f986ef717eef8ca62c1aadb9e03ed4cf373e95ace08d1d5d5"
+        },
+        {
+          "path": "data/runs/prompt_probe_r2_earliest_public/data/agent_data.csv",
+          "bytes": 1503,
+          "sha256": "dd85bb4eb8e5005cbf386225e9ffec8b3bf5de7819adc22d946bb8f5943d6f45"
+        },
+        {
+          "path": "data/runs/prompt_probe_r2_earliest_public/data/dividend_data.csv",
+          "bytes": 2,
+          "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+        },
+        {
+          "path": "data/runs/prompt_probe_r2_earliest_public/data/llm_usage.csv",
+          "bytes": 653,
+          "sha256": "079bac7bd89ff4b52cea17ea5411d442e897a44bc1df864507101dc3c7c02951"
+        },
+        {
+          "path": "data/runs/prompt_probe_r2_earliest_public/data/market_data.csv",
+          "bytes": 458,
+          "sha256": "7dc401f1d7a7698a01baf4f69d88bc7e12718acf9708e6f3db00e005ce127afe"
+        },
+        {
+          "path": "data/runs/prompt_probe_r2_earliest_public/data/order_data.csv",
+          "bytes": 744,
+          "sha256": "1b911b0b2f785d63d233a543ed55f8c5491c3871f9a606b6816e10edfe3ce4f7"
+        },
+        {
+          "path": "data/runs/prompt_probe_r2_earliest_public/data/rendered_prompts.jsonl",
+          "bytes": 30540,
+          "sha256": "6c37a1f1a30bba1cda7c89d92419e868443ac23cc453da27195f5cb818d32b61"
+        },
+        {
+          "path": "data/runs/prompt_probe_r2_earliest_public/data/trade_data.csv",
+          "bytes": 118,
+          "sha256": "1350ce213d5325c7367a0d59c90c279105bba95ec1757c1ff7e354c7644c3639"
+        }
+      ]
+    },
+    "prompt_probe_r2_mandatory_two_sided": {
+      "study": "prompt_hierarchy_probe",
+      "repeat": 2,
+      "arm": "mandatory_two_sided",
+      "original_local_source": "logs/prompt_hierarchy_probe_20261021_mechanism_r2_mandatory_two_sided/20261021_213157",
+      "files": [
+        {
+          "path": "data/runs/prompt_probe_r2_mandatory_two_sided/metadata.json",
+          "bytes": 5636,
+          "sha256": "010368f24bdfcdb1584630907b2b0d59f12d1f0cbee0222c50589d80d892624a"
+        },
+        {
+          "path": "data/runs/prompt_probe_r2_mandatory_two_sided/parameters.json",
+          "bytes": 3334,
+          "sha256": "61f412aec2cc917a25fa050877e40dfe303a727bf085b89f46caa6f7e1bec018"
+        },
+        {
+          "path": "data/runs/prompt_probe_r2_mandatory_two_sided/structured_decisions.csv",
+          "bytes": 7280,
+          "sha256": "0c1e146eaa48ab425e4fc27e8c5a281e499b15f386035e3fbb3f3c236b8ccab6"
+        },
+        {
+          "path": "data/runs/prompt_probe_r2_mandatory_two_sided/validation_errors.csv",
+          "bytes": 80,
+          "sha256": "bff90e089773e58ccb5ec40d05351d374c2eb7b42fff7b7483a8c8d8c762ed64"
+        },
+        {
+          "path": "data/runs/prompt_probe_r2_mandatory_two_sided/order_state.txt",
+          "bytes": 14006,
+          "sha256": "6f323f64da18204d82b5e374a3e47498e501fb3aad1392b6b98fb610a4b4e5ba"
+        },
+        {
+          "path": "data/runs/prompt_probe_r2_mandatory_two_sided/comparison_trace.json",
+          "bytes": 12377,
+          "sha256": "67085c6586a59d773b6f04cca5dd5c0696297cfca927c0d0889038795fcfd373"
+        },
+        {
+          "path": "data/runs/prompt_probe_r2_mandatory_two_sided/data/agent_data.csv",
+          "bytes": 1500,
+          "sha256": "cc76e603569781c9a3f13f68573da183d5e128f70459847859c26a6e4d027c6e"
+        },
+        {
+          "path": "data/runs/prompt_probe_r2_mandatory_two_sided/data/dividend_data.csv",
+          "bytes": 2,
+          "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+        },
+        {
+          "path": "data/runs/prompt_probe_r2_mandatory_two_sided/data/llm_usage.csv",
+          "bytes": 654,
+          "sha256": "1d5f657ee73bd2272a34ab1ddc67fe06d7f1ff9e28c8cce4c20cd039ee6e4ed7"
+        },
+        {
+          "path": "data/runs/prompt_probe_r2_mandatory_two_sided/data/market_data.csv",
+          "bytes": 460,
+          "sha256": "a6d869722b9694fdbb78b27ea1424312c819384be2efd6ff64b7baa7ae2ead7a"
+        },
+        {
+          "path": "data/runs/prompt_probe_r2_mandatory_two_sided/data/order_data.csv",
+          "bytes": 731,
+          "sha256": "22fadc128e5a37a9be5edc7b6716069096f3731391c8b6620be6ac4e63b007b3"
+        },
+        {
+          "path": "data/runs/prompt_probe_r2_mandatory_two_sided/data/rendered_prompts.jsonl",
+          "bytes": 29468,
+          "sha256": "809fc5ef6c029d0d019b964e2c48993bb06000c239ff8ba40b7abc227b64bd6f"
+        },
+        {
+          "path": "data/runs/prompt_probe_r2_mandatory_two_sided/data/trade_data.csv",
+          "bytes": 235,
+          "sha256": "e774654b55e9fe320dfbb0f98121d2a1f691498c12f71445c7a8350c38b2013d"
+        }
+      ]
+    },
+    "prompt_probe_r3_current": {
+      "study": "prompt_hierarchy_probe",
+      "repeat": 3,
+      "arm": "current",
+      "original_local_source": "logs/prompt_hierarchy_probe_20261021_mechanism_r3_current/20261021_213237",
+      "files": [
+        {
+          "path": "data/runs/prompt_probe_r3_current/metadata.json",
+          "bytes": 5968,
+          "sha256": "ffedb9c454f39773acec5f996246e184bf4a5c0dfebfb120af6ffa8be4753701"
+        },
+        {
+          "path": "data/runs/prompt_probe_r3_current/parameters.json",
+          "bytes": 3687,
+          "sha256": "e61106d85c41e01be1dc96f420eb1bd140d7ab63c1684339d2ff6988aada9272"
+        },
+        {
+          "path": "data/runs/prompt_probe_r3_current/structured_decisions.csv",
+          "bytes": 6584,
+          "sha256": "983e848dea3f822294792d3621b2cbb83a25224e3873ca8790b53b55955cd8b4"
+        },
+        {
+          "path": "data/runs/prompt_probe_r3_current/validation_errors.csv",
+          "bytes": 80,
+          "sha256": "bff90e089773e58ccb5ec40d05351d374c2eb7b42fff7b7483a8c8d8c762ed64"
+        },
+        {
+          "path": "data/runs/prompt_probe_r3_current/order_state.txt",
+          "bytes": 13807,
+          "sha256": "272249f0ee35de2e190859442c714e3a8b1790b6e61ae4086004bb8f73c0e28c"
+        },
+        {
+          "path": "data/runs/prompt_probe_r3_current/comparison_trace.json",
+          "bytes": 7326,
+          "sha256": "8a0a98da6311f577643732fa503f272803f92b0d620c66eb497101c2f02870da"
+        },
+        {
+          "path": "data/runs/prompt_probe_r3_current/data/agent_data.csv",
+          "bytes": 1477,
+          "sha256": "9adc83a7606ab57ec619e95d4fa25da5cd2d4857acdf7a2aae5df45b43fed5cb"
+        },
+        {
+          "path": "data/runs/prompt_probe_r3_current/data/dividend_data.csv",
+          "bytes": 2,
+          "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+        },
+        {
+          "path": "data/runs/prompt_probe_r3_current/data/llm_usage.csv",
+          "bytes": 655,
+          "sha256": "290b81f7c381a47ebb7ece9aae8da1878e708de5b7a2a80611f7e23a3fb280fb"
+        },
+        {
+          "path": "data/runs/prompt_probe_r3_current/data/market_data.csv",
+          "bytes": 448,
+          "sha256": "8e3e3b50089f502566fbebe918988267a15c64a55cf68a04d7f0f3fbd532949d"
+        },
+        {
+          "path": "data/runs/prompt_probe_r3_current/data/order_data.csv",
+          "bytes": 732,
+          "sha256": "32e0c4d5891cfbcd17c15c95cc37874f2387ae9a419c6701be5d126d930db51e"
+        },
+        {
+          "path": "data/runs/prompt_probe_r3_current/data/rendered_prompts.jsonl",
+          "bytes": 30174,
+          "sha256": "92d04f95dfebd6fb18f99fa9fd6a41f64cd033121289287de33b169d1a055418"
+        },
+        {
+          "path": "data/runs/prompt_probe_r3_current/data/trade_data.csv",
+          "bytes": 176,
+          "sha256": "ad5da8e485336d9fe56c02844f72a33140cbe8f81f6daade764102b6720a82c6"
+        }
+      ]
+    },
+    "prompt_probe_r3_earliest_public": {
+      "study": "prompt_hierarchy_probe",
+      "repeat": 3,
+      "arm": "earliest_public",
+      "original_local_source": "logs/prompt_hierarchy_probe_20261021_mechanism_r3_earliest_public/20261021_213313",
+      "files": [
+        {
+          "path": "data/runs/prompt_probe_r3_earliest_public/metadata.json",
+          "bytes": 6166,
+          "sha256": "e0b1c5419530a74332e8209d0c80d8a8b3f10649bfb5864b87e9e110186544fc"
+        },
+        {
+          "path": "data/runs/prompt_probe_r3_earliest_public/parameters.json",
+          "bytes": 3869,
+          "sha256": "6e71e0a665763e419389b01a051d3f8ba33a54655ac65faac8deb196d772c2be"
+        },
+        {
+          "path": "data/runs/prompt_probe_r3_earliest_public/structured_decisions.csv",
+          "bytes": 6242,
+          "sha256": "6b5b6af8236bd36c0d01732f5c616cbdb600a50d7664311787205ffc23096655"
+        },
+        {
+          "path": "data/runs/prompt_probe_r3_earliest_public/validation_errors.csv",
+          "bytes": 80,
+          "sha256": "bff90e089773e58ccb5ec40d05351d374c2eb7b42fff7b7483a8c8d8c762ed64"
+        },
+        {
+          "path": "data/runs/prompt_probe_r3_earliest_public/order_state.txt",
+          "bytes": 11855,
+          "sha256": "307499a181799a15740e0e4edd470370e84c4cd67e05d83a751f267d80b102b0"
+        },
+        {
+          "path": "data/runs/prompt_probe_r3_earliest_public/comparison_trace.json",
+          "bytes": 9836,
+          "sha256": "99785c73f7f98b82213d62654c169bb7cf1d22a622063c0b62a3cb6f58f93481"
+        },
+        {
+          "path": "data/runs/prompt_probe_r3_earliest_public/data/agent_data.csv",
+          "bytes": 1485,
+          "sha256": "67b2d4951e6c5b17a9851a42806ca23330a8ba117722cd5eecfaaf9d6ad2019d"
+        },
+        {
+          "path": "data/runs/prompt_probe_r3_earliest_public/data/dividend_data.csv",
+          "bytes": 2,
+          "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+        },
+        {
+          "path": "data/runs/prompt_probe_r3_earliest_public/data/llm_usage.csv",
+          "bytes": 655,
+          "sha256": "8fb41f445e744cf1bcd214aa00df18f52e867a46ebad2b589209f4c9e40e3ae2"
+        },
+        {
+          "path": "data/runs/prompt_probe_r3_earliest_public/data/market_data.csv",
+          "bytes": 440,
+          "sha256": "ee29058187921cfe55b996466454fadc00698abe9a14f13e2053cb671b25e079"
+        },
+        {
+          "path": "data/runs/prompt_probe_r3_earliest_public/data/order_data.csv",
+          "bytes": 627,
+          "sha256": "69238a10f536c047fce4a18cf2951d6ecfc8851484347b729ded60cb12c52c62"
+        },
+        {
+          "path": "data/runs/prompt_probe_r3_earliest_public/data/rendered_prompts.jsonl",
+          "bytes": 30540,
+          "sha256": "6c37a1f1a30bba1cda7c89d92419e868443ac23cc453da27195f5cb818d32b61"
+        },
+        {
+          "path": "data/runs/prompt_probe_r3_earliest_public/data/trade_data.csv",
+          "bytes": 2,
+          "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+        }
+      ]
+    },
+    "prompt_probe_r3_mandatory_two_sided": {
+      "study": "prompt_hierarchy_probe",
+      "repeat": 3,
+      "arm": "mandatory_two_sided",
+      "original_local_source": "logs/prompt_hierarchy_probe_20261021_mechanism_r3_mandatory_two_sided/20261021_213346",
+      "files": [
+        {
+          "path": "data/runs/prompt_probe_r3_mandatory_two_sided/metadata.json",
+          "bytes": 5633,
+          "sha256": "45c429d966ceff6eb0bee0a9287cce9ddd55ebd81f36b8d69cbf374729ea7411"
+        },
+        {
+          "path": "data/runs/prompt_probe_r3_mandatory_two_sided/parameters.json",
+          "bytes": 3334,
+          "sha256": "61f412aec2cc917a25fa050877e40dfe303a727bf085b89f46caa6f7e1bec018"
+        },
+        {
+          "path": "data/runs/prompt_probe_r3_mandatory_two_sided/structured_decisions.csv",
+          "bytes": 7417,
+          "sha256": "f8a8eeda30be5d746635e460d72aa32ed35ddcbe81b99383a92338c548f229f3"
+        },
+        {
+          "path": "data/runs/prompt_probe_r3_mandatory_two_sided/validation_errors.csv",
+          "bytes": 80,
+          "sha256": "bff90e089773e58ccb5ec40d05351d374c2eb7b42fff7b7483a8c8d8c762ed64"
+        },
+        {
+          "path": "data/runs/prompt_probe_r3_mandatory_two_sided/order_state.txt",
+          "bytes": 13817,
+          "sha256": "5e4d1cc330f3dc60ddfc6d61c7a0189beedb20fba9945d1fcb512772b526630b"
+        },
+        {
+          "path": "data/runs/prompt_probe_r3_mandatory_two_sided/comparison_trace.json",
+          "bytes": 12357,
+          "sha256": "2f558f3cd530f35f9d42366e8625e9d523ff84e474caa3e3fdd5968e373b36d7"
+        },
+        {
+          "path": "data/runs/prompt_probe_r3_mandatory_two_sided/data/agent_data.csv",
+          "bytes": 1501,
+          "sha256": "21278f6ebe88248066b8d0cedcfe6410446e939b4cc62070c9d1217312ae0146"
+        },
+        {
+          "path": "data/runs/prompt_probe_r3_mandatory_two_sided/data/dividend_data.csv",
+          "bytes": 2,
+          "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+        },
+        {
+          "path": "data/runs/prompt_probe_r3_mandatory_two_sided/data/llm_usage.csv",
+          "bytes": 653,
+          "sha256": "aea4607bb2d27007331a8f237aed26e68b8bf02659e5aedb7cb07320e05f83da"
+        },
+        {
+          "path": "data/runs/prompt_probe_r3_mandatory_two_sided/data/market_data.csv",
+          "bytes": 458,
+          "sha256": "c05fa00b7e1abb6715ecb781b6a84ba4f86cd953af9bba85d342ac8c9435a7c1"
+        },
+        {
+          "path": "data/runs/prompt_probe_r3_mandatory_two_sided/data/order_data.csv",
+          "bytes": 734,
+          "sha256": "c6409f85a189e465265883721b184cb67790aceaa4ddbb1c4513e10bb943cbc2"
+        },
+        {
+          "path": "data/runs/prompt_probe_r3_mandatory_two_sided/data/rendered_prompts.jsonl",
+          "bytes": 29468,
+          "sha256": "809fc5ef6c029d0d019b964e2c48993bb06000c239ff8ba40b7abc227b64bd6f"
+        },
+        {
+          "path": "data/runs/prompt_probe_r3_mandatory_two_sided/data/trade_data.csv",
+          "bytes": 176,
+          "sha256": "0b9949cd74c12a2c2ae702620fb53bfbb7d7e64287f70bd9b9a7d8d7cba5aadf"
+        }
+      ]
+    }
+  },
+  "traces": [
+    {
+      "path": "data/traces/prompt_hierarchy_repeat_1.json",
+      "bytes": 12460,
+      "sha256": "f6a99a3e2ceb30389b4d46b0f2a799b8773ad76a926dff08e1270340c55033eb"
+    },
+    {
+      "path": "data/traces/prompt_hierarchy_repeat_2.json",
+      "bytes": 12500,
+      "sha256": "e3b3437c7a9f481d9fa76cba98a6e28b2d1636af585b8fb9d4d9fdc92b67c4c2"
+    },
+    {
+      "path": "data/traces/prompt_hierarchy_repeat_3.json",
+      "bytes": 12490,
+      "sha256": "52075a4cee576616fcbf7cb4f382258ed24e5d53ba60f1d0c7c1ce1bbe1f4b64"
+    }
+  ]
+}

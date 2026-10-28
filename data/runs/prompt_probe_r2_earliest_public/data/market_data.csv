@@ -1,0 +1,2 @@
+round,stock_id,price,fundamental_price,total_volume,num_trades,timestamp,price_fundamental_ratio,best_bid,best_ask,market_depth,pre_match_best_bid,pre_match_best_ask,post_match_best_bid,post_match_best_ask,post_match_midpoint,last_executed_trade_price,last_executed_trade_round,short_interest
+1,DEFAULT_STOCK,56.0,27.999999999999996,1000,1,2026-10-21T21:31:38.091746,2.0000000000000004,,,"{'buy_levels': [], 'sell_levels': []}",,,54.32,55.0,54.66,56.0,1,0

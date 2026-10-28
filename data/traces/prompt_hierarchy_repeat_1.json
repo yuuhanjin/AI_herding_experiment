@@ -1,0 +1,243 @@
+{
+  "purpose": "One-round market-maker prompt hierarchy mechanism probe",
+  "not_historical_replication": true,
+  "created_at": "2026-10-21T21:28:43.626270",
+  "git_commit": "a09d51b48ff7ac02b127e0fdcf0cc530f9ead90d",
+  "scenario": "paper_price_discovery_above",
+  "model": "gpt-4o-2024-11-20",
+  "num_rounds": 1,
+  "random_seed": 42,
+  "llm_seed": 42,
+  "temperature": 0.0,
+  "soft_budget_usd": 5.0,
+  "prior_four_run_cost_usd": 2.901765,
+  "estimated_probe_cost_usd": 0.14508825,
+  "earliest_public_commit": "027bbf5",
+  "arms": {
+    "current": {
+      "status": "complete",
+      "system_prompt": "You are a professional market maker who provides liquidity to the market.\n\n        Your profit comes from capturing the spread between bid and ask prices, not from directional price movement.\n\n        Short selling is permitted when shares can be borrowed. Manage both long and short inventory carefully.\n\n        Trading Guidelines:\n        - Place LIMIT buy orders slightly below the current market price (1-3% lower)\n        - Place LIMIT sell orders slightly above the current market price (1-3% higher)\n        - Your spread should be proportional to volatility but typically 2-6% of price\n        - NEVER place sell orders more than 10% above your buy orders\n        - Adjust your spread width based on recent price volatility\n\n        Inventory Management:\n        - Monitor your current inventory including borrowed shares\n        - You may sell shares you do not own by borrowing them when available\n        - If inventory grows too large in either direction, adjust your orders\n        - Balance buy and sell orders based on current net position\n\n        Example: If price = $100, you might place buy orders at $97-99 and sell orders at $101-103.\n\n        Remember that extreme spreads (e.g., buying at $3 and selling at $30) will not execute and will lead to losses.",
+      "system_prompt_sha256": "c1e27e511753da031e5e4b7bd617941dbdf24945519f1c5e859637273f25e473",
+      "started_at": "2026-10-21T21:28:43.718201",
+      "completed_at": "2026-10-21T21:29:22.946537",
+      "run_dir": "logs\\prompt_hierarchy_probe_20261021_mechanism_current\\20261021_212843",
+      "rendered_prompts_log": "logs\\prompt_hierarchy_probe_20261021_mechanism_current\\20261021_212843\\data\\rendered_prompts.jsonl",
+      "verified_prompt_records": 8,
+      "llm_usage": {
+        "calls": 8,
+        "successful_calls": 8,
+        "failed_calls": 0,
+        "attempts": 8,
+        "prompt_tokens": 9618,
+        "completion_tokens": 1634,
+        "total_tokens": 11252,
+        "cost_usd": 0.040382,
+        "avg_tokens_per_call": 1406.5,
+        "avg_prompt_tokens_per_call": 1202.2,
+        "avg_completion_tokens_per_call": 204.2,
+        "by_model": {
+          "gpt-4o-2024-11-20": {
+            "calls": 8,
+            "successful_calls": 8,
+            "failed_calls": 0,
+            "attempts": 8,
+            "prompt_tokens": 9618,
+            "completion_tokens": 1634,
+            "total_tokens": 11252,
+            "cost_usd": 0.040382,
+            "avg_tokens_per_call": 1406.5,
+            "avg_prompt_tokens_per_call": 1202.2,
+            "avg_completion_tokens_per_call": 204.2
+          }
+        },
+        "by_call_type": {
+          "decision": {
+            "calls": 8,
+            "successful_calls": 8,
+            "failed_calls": 0,
+            "attempts": 8,
+            "prompt_tokens": 9618,
+            "completion_tokens": 1634,
+            "total_tokens": 11252,
+            "cost_usd": 0.040382,
+            "avg_tokens_per_call": 1406.5,
+            "avg_prompt_tokens_per_call": 1202.2,
+            "avg_completion_tokens_per_call": 204.2
+          }
+        },
+        "pricing_backend": "self_hosted",
+        "unpriced_models": []
+      },
+      "result": {
+        "arm": "current",
+        "run_dir": "logs\\prompt_hierarchy_probe_20261021_mechanism_current\\20261021_212843",
+        "cost_usd": 0.040382,
+        "successful_decisions": 8,
+        "all_proposed_buys": 0,
+        "all_proposed_sells": 9,
+        "all_holds": 1,
+        "mm_proposed_buys": 0,
+        "mm_proposed_sells": 4,
+        "mm_holds": 0,
+        "mm_agents_quoting_both_sides": 0,
+        "accepted_buys": 0,
+        "accepted_sells": 9,
+        "trades": 0,
+        "trade_volume": 0,
+        "final_recorded_price": 50.4,
+        "last_trade_price": null
+      }
+    },
+    "earliest_public": {
+      "status": "complete",
+      "system_prompt": "You are a professional market maker who provides liquidity to the market.\n\n        Your profit comes from capturing the spread between bid and ask prices, not from directional price movement.\n\n        IMPORTANT: There is NO SHORT SELLING allowed. You can only sell shares you already own.\n\n        Trading Guidelines:\n        - Place LIMIT buy orders slightly below the current market price (1-3% lower)\n        - Place LIMIT sell orders slightly above the current market price (1-3% higher)\n        - Your spread should be proportional to volatility but typically 2-6% of price\n        - NEVER place sell orders more than 10% above your buy orders\n        - Adjust your spread width based on recent price volatility\n\n        Inventory Management (No Short Selling):\n        - Monitor your current inventory in the market data\n        - Only place sell orders for quantities you actually own\n        - If you have no inventory, focus on buy orders first\n        - As you acquire inventory, gradually place sell orders\n        - If inventory grows too large, reduce or pause buy orders\n        - Adjust your buy/sell ratio based on current inventory level\n        \n        Example: If price = $100, you might place buy orders at $97-99 and sell orders at $101-103,\n        but limit your sell quantity to what you currently own.\n        \n        Remember that extreme spreads (e.g., buying at $3 and selling at $30) will not execute and will lead to losses.",
+      "system_prompt_sha256": "53117f4775dd9a14d36accc4cc6e67a0b3dd01e3137b501d0bc7b6ab4d988e5b",
+      "started_at": "2026-10-21T21:29:22.948896",
+      "completed_at": "2026-10-21T21:29:55.641606",
+      "run_dir": "logs\\prompt_hierarchy_probe_20261021_mechanism_earliest_public\\20261021_212922",
+      "rendered_prompts_log": "logs\\prompt_hierarchy_probe_20261021_mechanism_earliest_public\\20261021_212922\\data\\rendered_prompts.jsonl",
+      "verified_prompt_records": 8,
+      "llm_usage": {
+        "calls": 8,
+        "successful_calls": 8,
+        "failed_calls": 0,
+        "attempts": 8,
+        "prompt_tokens": 9700,
+        "completion_tokens": 1465,
+        "total_tokens": 11165,
+        "cost_usd": 0.038898,
+        "avg_tokens_per_call": 1395.6,
+        "avg_prompt_tokens_per_call": 1212.5,
+        "avg_completion_tokens_per_call": 183.1,
+        "by_model": {
+          "gpt-4o-2024-11-20": {
+            "calls": 8,
+            "successful_calls": 8,
+            "failed_calls": 0,
+            "attempts": 8,
+            "prompt_tokens": 9700,
+            "completion_tokens": 1465,
+            "total_tokens": 11165,
+            "cost_usd": 0.038898,
+            "avg_tokens_per_call": 1395.6,
+            "avg_prompt_tokens_per_call": 1212.5,
+            "avg_completion_tokens_per_call": 183.1
+          }
+        },
+        "by_call_type": {
+          "decision": {
+            "calls": 8,
+            "successful_calls": 8,
+            "failed_calls": 0,
+            "attempts": 8,
+            "prompt_tokens": 9700,
+            "completion_tokens": 1465,
+            "total_tokens": 11165,
+            "cost_usd": 0.038898,
+            "avg_tokens_per_call": 1395.6,
+            "avg_prompt_tokens_per_call": 1212.5,
+            "avg_completion_tokens_per_call": 183.1
+          }
+        },
+        "pricing_backend": "self_hosted",
+        "unpriced_models": []
+      },
+      "result": {
+        "arm": "earliest_public",
+        "run_dir": "logs\\prompt_hierarchy_probe_20261021_mechanism_earliest_public\\20261021_212922",
+        "cost_usd": 0.038898,
+        "successful_decisions": 8,
+        "all_proposed_buys": 1,
+        "all_proposed_sells": 8,
+        "all_holds": 1,
+        "mm_proposed_buys": 0,
+        "mm_proposed_sells": 4,
+        "mm_holds": 0,
+        "mm_agents_quoting_both_sides": 0,
+        "accepted_buys": 1,
+        "accepted_sells": 8,
+        "trades": 1,
+        "trade_volume": 1000,
+        "final_recorded_price": 56.0,
+        "last_trade_price": 56.0
+      }
+    },
+    "mandatory_two_sided": {
+      "status": "complete",
+      "system_prompt": "You are a professional market maker whose mandatory role is to provide two-sided liquidity.\n\nYour profit comes from capturing the spread between bid and ask prices, not from taking a directional position.\n\nShort selling is NOT allowed. You can only sell shares you already own.\n\nMandatory quoting rule:\n- In every round, submit at least one LIMIT buy order and at least one LIMIT sell order whenever your available cash and owned shares permit.\n- This two-sided quoting requirement overrides your directional valuation view.\n- Place buy orders 1-3% below the current market price and sell orders 1-3% above the current market price.\n- Use a total spread of approximately 2-6% and never place the sell quote more than 10% above the buy quote.\n- Do not use market orders.\n\nManage order quantities so that they remain within available cash and owned inventory. If both sides are feasible, a one-sided decision or Hold is not permitted.",
+      "system_prompt_sha256": "3198d6a83a85d10652d44ed1d78e20f4a6ac9ffba9711e482d7ed9fd30b997cf",
+      "started_at": "2026-10-21T21:29:55.645246",
+      "completed_at": "2026-10-21T21:30:20.605119",
+      "run_dir": "logs\\prompt_hierarchy_probe_20261021_mechanism_mandatory_two_sided\\20261021_212955",
+      "rendered_prompts_log": "logs\\prompt_hierarchy_probe_20261021_mechanism_mandatory_two_sided\\20261021_212955\\data\\rendered_prompts.jsonl",
+      "verified_prompt_records": 8,
+      "llm_usage": {
+        "calls": 8,
+        "successful_calls": 8,
+        "failed_calls": 0,
+        "attempts": 8,
+        "prompt_tokens": 9484,
+        "completion_tokens": 1626,
+        "total_tokens": 11110,
+        "cost_usd": 0.03997,
+        "avg_tokens_per_call": 1388.8,
+        "avg_prompt_tokens_per_call": 1185.5,
+        "avg_completion_tokens_per_call": 203.2,
+        "by_model": {
+          "gpt-4o-2024-11-20": {
+            "calls": 8,
+            "successful_calls": 8,
+            "failed_calls": 0,
+            "attempts": 8,
+            "prompt_tokens": 9484,
+            "completion_tokens": 1626,
+            "total_tokens": 11110,
+            "cost_usd": 0.03997,
+            "avg_tokens_per_call": 1388.8,
+            "avg_prompt_tokens_per_call": 1185.5,
+            "avg_completion_tokens_per_call": 203.2
+          }
+        },
+        "by_call_type": {
+          "decision": {
+            "calls": 8,
+            "successful_calls": 8,
+            "failed_calls": 0,
+            "attempts": 8,
+            "prompt_tokens": 9484,
+            "completion_tokens": 1626,
+            "total_tokens": 11110,
+            "cost_usd": 0.03997,
+            "avg_tokens_per_call": 1388.8,
+            "avg_prompt_tokens_per_call": 1185.5,
+            "avg_completion_tokens_per_call": 203.2
+          }
+        },
+        "pricing_backend": "self_hosted",
+        "unpriced_models": []
+      },
+      "result": {
+        "arm": "mandatory_two_sided",
+        "run_dir": "logs\\prompt_hierarchy_probe_20261021_mechanism_mandatory_two_sided\\20261021_212955",
+        "cost_usd": 0.03997,
+        "successful_decisions": 8,
+        "all_proposed_buys": 2,
+        "all_proposed_sells": 7,
+        "all_holds": 1,
+        "mm_proposed_buys": 2,
+        "mm_proposed_sells": 2,
+        "mm_holds": 0,
+        "mm_agents_quoting_both_sides": 2,
+        "accepted_buys": 2,
+        "accepted_sells": 7,
+        "trades": 2,
+        "trade_volume": 2000,
+        "final_recorded_price": 54.32,
+        "last_trade_price": 54.32
+      }
+    }
+  },
+  "completed_at": "2026-10-21T21:30:20.609120",
+  "actual_probe_cost_usd": 0.11925,
+  "cumulative_cost_usd": 3.0210150000000002
+}

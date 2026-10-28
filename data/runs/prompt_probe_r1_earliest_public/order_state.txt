@@ -1,0 +1,197 @@
+2026-10-21 21:29:27,816 - 
+Start of Round 0
+2026-10-21 21:29:27,816 - === Detailed Order Book Round 1 ===
+2026-10-21 21:29:27,816 - No buy orders
+2026-10-21 21:29:27,816 - No sell orders
+2026-10-21 21:29:27,816 - 
+=== Aggregated Order Book Round 1 ===
+2026-10-21 21:29:27,816 - No buy orders
+2026-10-21 21:29:27,816 - No sell orders
+2026-10-21 21:29:27,816 - Updating market depth - Best bid: None, Best ask: None, Midpoint: None
+2026-10-21 21:29:27,816 - Updating market depth - Best bid: None, Best ask: None, Midpoint: None
+2026-10-21 21:29:30,736 - Order a0b316f3-fa51-4b7f-b440-2056b22b5e22 validated and committed
+2026-10-21 21:29:30,736 - Order a0b316f3-fa51-4b7f-b440-2056b22b5e22 has history: History for Order a0b316f3-fa51-4b7f-b440-2056b22b5e22:
+  2026-10-21 21:29:30.735: INIT ¡ú input (notes: [share_commit=0, orig_share_commit=0, released_shares=0])
+  2026-10-21 21:29:30.736: input ¡ú validated (notes: Passed validations [share_commit=0, orig_share_commit=0, released_shares=0])
+  2026-10-21 21:29:30.736: validated ¡ú committed (notes: Committed: 100000.00 [share_commit=100000, orig_share_commit=100000, released_shares=0])
+2026-10-21 21:29:30,738 - Order b473955d-bcce-49b1-92d6-db5940f54109 validated and committed
+2026-10-21 21:29:30,739 - Order b473955d-bcce-49b1-92d6-db5940f54109 has history: History for Order b473955d-bcce-49b1-92d6-db5940f54109:
+  2026-10-21 21:29:30.737: INIT ¡ú input (notes: [share_commit=0, orig_share_commit=0, released_shares=0])
+  2026-10-21 21:29:30.738: input ¡ú validated (notes: Passed validations [share_commit=0, orig_share_commit=0, released_shares=0])
+  2026-10-21 21:29:30.738: validated ¡ú committed (notes: Committed: 100000.00 [share_commit=100000, orig_share_commit=100000, released_shares=0])
+2026-10-21 21:29:30,741 - Order d5f98cbd-4fd9-40be-bdf6-23fb9040c2df validated and committed
+2026-10-21 21:29:30,742 - Order d5f98cbd-4fd9-40be-bdf6-23fb9040c2df has history: History for Order d5f98cbd-4fd9-40be-bdf6-23fb9040c2df:
+  2026-10-21 21:29:30.739: INIT ¡ú input (notes: [share_commit=0, orig_share_commit=0, released_shares=0])
+  2026-10-21 21:29:30.741: input ¡ú validated (notes: Passed validations [share_commit=0, orig_share_commit=0, released_shares=0])
+  2026-10-21 21:29:30.741: validated ¡ú committed (notes: Committed: 1000.00 [share_commit=1000, orig_share_commit=1000, released_shares=0])
+2026-10-21 21:29:30,743 - Order ce449b76-9e0b-4401-ae5b-3a0038c7c7ef validated and committed
+2026-10-21 21:29:30,744 - Order ce449b76-9e0b-4401-ae5b-3a0038c7c7ef has history: History for Order ce449b76-9e0b-4401-ae5b-3a0038c7c7ef:
+  2026-10-21 21:29:30.742: INIT ¡ú input (notes: [share_commit=0, orig_share_commit=0, released_shares=0])
+  2026-10-21 21:29:30.743: input ¡ú validated (notes: Passed validations [share_commit=0, orig_share_commit=0, released_shares=0])
+  2026-10-21 21:29:30.743: validated ¡ú committed (notes: Committed: 1000.00 [share_commit=1000, orig_share_commit=1000, released_shares=0])
+2026-10-21 21:29:30,745 - Order 9a9978ba-f64b-41c9-a8a4-898b55d550ef validated and committed
+2026-10-21 21:29:30,746 - Order 9a9978ba-f64b-41c9-a8a4-898b55d550ef has history: History for Order 9a9978ba-f64b-41c9-a8a4-898b55d550ef:
+  2026-10-21 21:29:30.745: INIT ¡ú input (notes: [cash_commit=0.00, orig_cash_commit=0.00, released_cash=0.00])
+  2026-10-21 21:29:30.745: input ¡ú validated (notes: Passed validations [cash_commit=0.00, orig_cash_commit=0.00, released_cash=0.00])
+  2026-10-21 21:29:30.745: validated ¡ú committed (notes: Committed: 56000.00 [cash_commit=56000.00, orig_cash_commit=56000.00, released_cash=0.00])
+2026-10-21 21:29:30,747 - Order baa4b9ee-aa8b-4297-8c19-45fde17bbf9a validated and committed
+2026-10-21 21:29:30,747 - Order baa4b9ee-aa8b-4297-8c19-45fde17bbf9a has history: History for Order baa4b9ee-aa8b-4297-8c19-45fde17bbf9a:
+  2026-10-21 21:29:30.746: INIT ¡ú input (notes: [share_commit=0, orig_share_commit=0, released_shares=0])
+  2026-10-21 21:29:30.747: input ¡ú validated (notes: Passed validations [share_commit=0, orig_share_commit=0, released_shares=0])
+  2026-10-21 21:29:30.747: validated ¡ú committed (notes: Committed: 100000.00 [share_commit=100000, orig_share_commit=100000, released_shares=0])
+2026-10-21 21:29:30,748 - Order 597d699f-8785-4aa1-a8c8-8f244806d591 validated and committed
+2026-10-21 21:29:30,748 - Order 597d699f-8785-4aa1-a8c8-8f244806d591 has history: History for Order 597d699f-8785-4aa1-a8c8-8f244806d591:
+  2026-10-21 21:29:30.747: INIT ¡ú input (notes: [share_commit=0, orig_share_commit=0, released_shares=0])
+  2026-10-21 21:29:30.748: input ¡ú validated (notes: Passed validations [share_commit=0, orig_share_commit=0, released_shares=0])
+  2026-10-21 21:29:30.748: validated ¡ú committed (notes: Committed: 100000.00 [share_commit=100000, orig_share_commit=100000, released_shares=0])
+2026-10-21 21:29:30,753 - Order 0661ea4a-8b02-4e55-8dcb-e1dfd4036026 validated and committed
+2026-10-21 21:29:30,753 - Order 0661ea4a-8b02-4e55-8dcb-e1dfd4036026 has history: History for Order 0661ea4a-8b02-4e55-8dcb-e1dfd4036026:
+  2026-10-21 21:29:30.749: INIT ¡ú input (notes: [share_commit=0, orig_share_commit=0, released_shares=0])
+  2026-10-21 21:29:30.752: input ¡ú validated (notes: Passed validations [share_commit=0, orig_share_commit=0, released_shares=0])
+  2026-10-21 21:29:30.752: validated ¡ú committed (notes: Committed: 1000.00 [share_commit=1000, orig_share_commit=1000, released_shares=0])
+2026-10-21 21:29:30,755 - Order dc7fd232-d795-4bfe-ad6d-7684c9be9866 validated and committed
+2026-10-21 21:29:30,756 - Order dc7fd232-d795-4bfe-ad6d-7684c9be9866 has history: History for Order dc7fd232-d795-4bfe-ad6d-7684c9be9866:
+  2026-10-21 21:29:30.753: INIT ¡ú input (notes: [share_commit=0, orig_share_commit=0, released_shares=0])
+  2026-10-21 21:29:30.755: input ¡ú validated (notes: Passed validations [share_commit=0, orig_share_commit=0, released_shares=0])
+  2026-10-21 21:29:30.755: validated ¡ú committed (notes: Committed: 1000.00 [share_commit=1000, orig_share_commit=1000, released_shares=0])
+2026-10-21 21:29:30,756 - Updating market depth - Best bid: None, Best ask: None, Midpoint: None
+2026-10-21 21:29:30,763 - 
+After New Orders Round 0
+2026-10-21 21:29:30,763 - === Detailed Order Book Round 1 ===
+2026-10-21 21:29:30,763 - No buy orders
+2026-10-21 21:29:30,763 - No sell orders
+2026-10-21 21:29:30,763 - 
+=== Aggregated Order Book Round 1 ===
+2026-10-21 21:29:30,763 - No buy orders
+2026-10-21 21:29:30,763 - No sell orders
+2026-10-21 21:29:30,763 - 
+=== Pre-Match State ===
+2026-10-21 21:29:30,763 - 
+Current Order Book State
+2026-10-21 21:29:30,763 - === Detailed Order Book Round 1 ===
+2026-10-21 21:29:30,763 - No buy orders
+2026-10-21 21:29:30,763 - No sell orders
+2026-10-21 21:29:30,763 - 
+=== Aggregated Order Book Round 1 ===
+2026-10-21 21:29:30,763 - No buy orders
+2026-10-21 21:29:30,763 - No sell orders
+2026-10-21 21:29:30,764 - Adding limit order: SELL 1000 @ $56.00
+2026-10-21 21:29:30,764 - Adding limit order: SELL 100000 @ $57.12
+2026-10-21 21:29:30,764 - Adding limit order: SELL 100000 @ $58.24
+2026-10-21 21:29:30,765 - Adding limit order: SELL 100000 @ $57.12
+2026-10-21 21:29:30,765 - Adding limit order: SELL 1000 @ $56.00
+2026-10-21 21:29:30,765 - Adding limit order: SELL 1000 @ $56.00
+2026-10-21 21:29:30,765 - Adding limit order: SELL 100000 @ $58.24
+2026-10-21 21:29:30,766 - 
+=== Post-Limit Order State ===
+2026-10-21 21:29:30,766 - 
+Current Order Book State
+2026-10-21 21:29:30,766 - === Detailed Order Book Round 1 ===
+2026-10-21 21:29:30,766 - No buy orders
+2026-10-21 21:29:30,766 - Sell Orders:
+2026-10-21 21:29:30,766 -   Agent 7: 1000 @ $56.00
+2026-10-21 21:29:30,766 -   Agent 0: 1000 @ $56.00
+2026-10-21 21:29:30,766 -   Agent 1: 1000 @ $56.00
+2026-10-21 21:29:30,766 -   Agent 4: 100000 @ $57.12
+2026-10-21 21:29:30,766 -   Agent 5: 100000 @ $57.12
+2026-10-21 21:29:30,766 -   Agent 4: 100000 @ $58.24
+2026-10-21 21:29:30,766 -   Agent 5: 100000 @ $58.24
+2026-10-21 21:29:30,766 - 
+=== Aggregated Order Book Round 1 ===
+2026-10-21 21:29:30,766 - No buy orders
+2026-10-21 21:29:30,766 - Sell Side:
+2026-10-21 21:29:30,766 -   3000 @ $56.00
+2026-10-21 21:29:30,766 -   200000 @ $57.12
+2026-10-21 21:29:30,766 -   200000 @ $58.24
+2026-10-21 21:29:30,767 - Released 56000.00 cash for order 9a9978ba-f64b-41c9-a8a4-898b55d550ef
+2026-10-21 21:29:30,767 - Released 1000.00 shares for order d5f98cbd-4fd9-40be-bdf6-23fb9040c2df
+2026-10-21 21:29:30,768 - Updated 2: cash -56000.00, shares +1000
+2026-10-21 21:29:30,768 - Updated 6: cash +56000.00, shares +0
+2026-10-21 21:29:30,768 - Trade executed: 1000 @ $56.00 (Buyer: 2, Seller: 6)
+2026-10-21 21:29:30,768 - 
+=== Market Trade Execution ===
+2026-10-21 21:29:30,768 - Trade: 1000 @ $56.00
+2026-10-21 21:29:30,768 - 
+=== Post-Market Order State ===
+2026-10-21 21:29:30,768 - 
+Current Order Book State
+2026-10-21 21:29:30,768 - === Detailed Order Book Round 1 ===
+2026-10-21 21:29:30,768 - No buy orders
+2026-10-21 21:29:30,768 - Sell Orders:
+2026-10-21 21:29:30,768 -   Agent 7: 1000 @ $56.00
+2026-10-21 21:29:30,768 -   Agent 0: 1000 @ $56.00
+2026-10-21 21:29:30,768 -   Agent 1: 1000 @ $56.00
+2026-10-21 21:29:30,768 -   Agent 4: 100000 @ $57.12
+2026-10-21 21:29:30,768 -   Agent 5: 100000 @ $57.12
+2026-10-21 21:29:30,768 -   Agent 4: 100000 @ $58.24
+2026-10-21 21:29:30,768 -   Agent 5: 100000 @ $58.24
+2026-10-21 21:29:30,768 - 
+=== Aggregated Order Book Round 1 ===
+2026-10-21 21:29:30,768 - No buy orders
+2026-10-21 21:29:30,768 - Sell Side:
+2026-10-21 21:29:30,768 -   3000 @ $56.00
+2026-10-21 21:29:30,768 -   200000 @ $57.12
+2026-10-21 21:29:30,768 -   200000 @ $58.24
+2026-10-21 21:29:30,768 - Round: 1, Trade executed - Price: $56.00, Quantity: 1000, Buyer: 2, Seller: 6, BuyerOrderID: 9a9978ba-f64b-41c9-a8a4-898b55d550ef, SellerOrderID: d5f98cbd-4fd9-40be-bdf6-23fb9040c2df
+2026-10-21 21:29:30,769 - 
+=== End of Round State ===
+2026-10-21 21:29:30,769 - 
+Current Order Book State
+2026-10-21 21:29:30,769 - === Detailed Order Book Round 1 ===
+2026-10-21 21:29:30,769 - No buy orders
+2026-10-21 21:29:30,769 - Sell Orders:
+2026-10-21 21:29:30,769 -   Agent 7: 1000 @ $56.00
+2026-10-21 21:29:30,769 -   Agent 0: 1000 @ $56.00
+2026-10-21 21:29:30,769 -   Agent 1: 1000 @ $56.00
+2026-10-21 21:29:30,769 -   Agent 4: 100000 @ $57.12
+2026-10-21 21:29:30,769 -   Agent 5: 100000 @ $57.12
+2026-10-21 21:29:30,769 -   Agent 4: 100000 @ $58.24
+2026-10-21 21:29:30,769 -   Agent 5: 100000 @ $58.24
+2026-10-21 21:29:30,769 - 
+=== Aggregated Order Book Round 1 ===
+2026-10-21 21:29:30,769 - No buy orders
+2026-10-21 21:29:30,769 - Sell Side:
+2026-10-21 21:29:30,769 -   3000 @ $56.00
+2026-10-21 21:29:30,769 -   200000 @ $57.12
+2026-10-21 21:29:30,769 -   200000 @ $58.24
+2026-10-21 21:29:30,769 - Updating market depth - Best bid: None, Best ask: 56.0, Midpoint: None
+2026-10-21 21:29:30,775 - 
+After Trades Matched Round 0
+2026-10-21 21:29:30,775 - === Detailed Order Book Round 2 ===
+2026-10-21 21:29:30,775 - No buy orders
+2026-10-21 21:29:30,775 - Sell Orders:
+2026-10-21 21:29:30,775 -   Agent 7: 1000 @ $56.00
+2026-10-21 21:29:30,775 -   Agent 0: 1000 @ $56.00
+2026-10-21 21:29:30,775 -   Agent 1: 1000 @ $56.00
+2026-10-21 21:29:30,775 -   Agent 4: 100000 @ $57.12
+2026-10-21 21:29:30,775 -   Agent 5: 100000 @ $57.12
+2026-10-21 21:29:30,775 -   Agent 4: 100000 @ $58.24
+2026-10-21 21:29:30,775 -   Agent 5: 100000 @ $58.24
+2026-10-21 21:29:30,775 - 
+=== Aggregated Order Book Round 2 ===
+2026-10-21 21:29:30,775 - No buy orders
+2026-10-21 21:29:30,775 - Sell Side:
+2026-10-21 21:29:30,775 -   3000 @ $56.00
+2026-10-21 21:29:30,776 -   200000 @ $57.12
+2026-10-21 21:29:30,776 -   200000 @ $58.24
+2026-10-21 21:29:30,780 - 
+End of Round 0
+2026-10-21 21:29:30,780 - === Detailed Order Book Round 2 ===
+2026-10-21 21:29:30,780 - No buy orders
+2026-10-21 21:29:30,780 - Sell Orders:
+2026-10-21 21:29:30,780 -   Agent 7: 1000 @ $56.00
+2026-10-21 21:29:30,780 -   Agent 0: 1000 @ $56.00
+2026-10-21 21:29:30,780 -   Agent 1: 1000 @ $56.00
+2026-10-21 21:29:30,780 -   Agent 4: 100000 @ $57.12
+2026-10-21 21:29:30,780 -   Agent 5: 100000 @ $57.12
+2026-10-21 21:29:30,780 -   Agent 4: 100000 @ $58.24
+2026-10-21 21:29:30,780 -   Agent 5: 100000 @ $58.24
+2026-10-21 21:29:30,780 - 
+=== Aggregated Order Book Round 2 ===
+2026-10-21 21:29:30,780 - No buy orders
+2026-10-21 21:29:30,780 - Sell Side:
+2026-10-21 21:29:30,780 -   3000 @ $56.00
+2026-10-21 21:29:30,780 -   200000 @ $57.12
+2026-10-21 21:29:30,780 -   200000 @ $58.24
+2026-10-21 21:29:30,780 - Updating market depth - Best bid: None, Best ask: 56.0, Midpoint: None
+2026-10-21 21:29:30,787 - Updating market depth - Best bid: None, Best ask: 56.0, Midpoint: None

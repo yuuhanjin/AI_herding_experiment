@@ -1,0 +1,132 @@
+{
+    "sim_type": "prompt_hierarchy_probe_20261021_mechanism_r2_mandatory_two_sided",
+    "description": "Price discovery: Initial price 2x above fundamental (infinite horizon)",
+    "timestamp": "20261021_213157",
+    "run_id": "prompt_hierarchy_probe_20261021_mechanism_r2_mandatory_two_sided_20261021_213157",
+    "config_hash": "c1183ca5060c4c41f77e63750b00168de82ac56418d23a1c7bcac93e70b89d39",
+    "parameters": {
+        "RANDOM_SEED": 42,
+        "NUM_ROUNDS": 1,
+        "INFINITE_ROUNDS": true,
+        "FUNDAMENTAL_INFO_MODE": "process_only",
+        "NEWS_ENABLED": false,
+        "INITIAL_PRICE": 56.0,
+        "TRANSACTION_COST": 0.0,
+        "LENDABLE_SHARES": 0,
+        "MODEL_OPEN_AI": "gpt-4o-2024-11-20",
+        "LLM_TEMPERATURE": 0.0,
+        "LLM_SEED": 42,
+        "LLM_MAX_CONCURRENCY": 8,
+        "SYSTEM_PROMPT_OVERRIDES": {
+            "market_maker": "You are a professional market maker whose mandatory role is to provide two-sided liquidity.\n\nYour profit comes from capturing the spread between bid and ask prices, not from taking a directional position.\n\nShort selling is NOT allowed. You can only sell shares you already own.\n\nMandatory quoting rule:\n- In every round, submit at least one LIMIT buy order and at least one LIMIT sell order whenever your available cash and owned shares permit.\n- This two-sided quoting requirement overrides your directional valuation view.\n- Place buy orders 1-3% below the current market price and sell orders 1-3% above the current market price.\n- Use a total spread of approximately 2-6% and never place the sell quote more than 10% above the buy quote.\n- Do not use market orders.\n\nManage order quantities so that they remain within available cash and owned inventory. If both sides are feasible, a one-sided decision or Hold is not permitted."
+        },
+        "PROMPT_FAMILY": "baseline",
+        "AGENT_PARAMS": {
+            "MEMORY_ENABLED": false,
+            "SOCIAL_ENABLED": false,
+            "SELF_MODIFY_ENABLED": false,
+            "CONFIDENCE_ENABLED": false,
+            "SECOND_ORDER_ENABLED": false,
+            "allow_short_selling": false,
+            "margin_requirement": 0.5,
+            "margin_base": "cash",
+            "borrow_model": {
+                "rate": 0.01,
+                "payment_frequency": 1,
+                "allow_partial_borrows": true
+            },
+            "leverage_params": {
+                "max_leverage_ratio": 1.0,
+                "initial_margin": 0.5,
+                "maintenance_margin": 0.25,
+                "interest_rate": 0.05,
+                "cash_lending_pool": Infinity,
+                "allow_partial_borrows": true,
+                "enabled": false
+            },
+            "position_limit": 100000000,
+            "initial_cash": 1000000.0,
+            "initial_shares": 10000,
+            "max_order_size": 1000,
+            "agent_composition": {
+                "default": 2,
+                "optimistic": 2,
+                "market_maker": 2,
+                "speculator": 2
+            },
+            "deterministic_params": {
+                "gap_trader": {
+                    "threshold": 0.05,
+                    "max_proportion": 0.5,
+                    "scaling_factor": 2.0
+                }
+            },
+            "type_specific_params": {
+                "market_maker": {
+                    "initial_cash": 20000000.0,
+                    "initial_shares": 200000
+                }
+            }
+        },
+        "INTEREST_MODEL": {
+            "rate": 0.05,
+            "compound_frequency": "per_round",
+            "destination": "dividend"
+        },
+        "DIVIDEND_PARAMS": {
+            "type": "stochastic",
+            "base_dividend": 1.4,
+            "dividend_frequency": 1,
+            "dividend_growth": 0.0,
+            "dividend_probability": 0.5,
+            "dividend_variation": 1.0,
+            "destination": "dividend"
+        },
+        "FUNDAMENTAL_PRICE": 27.999999999999996
+    },
+    "llm_usage": {
+        "calls": 8,
+        "successful_calls": 8,
+        "failed_calls": 0,
+        "attempts": 8,
+        "prompt_tokens": 9484,
+        "completion_tokens": 1580,
+        "total_tokens": 11064,
+        "cost_usd": 0.03951,
+        "avg_tokens_per_call": 1383.0,
+        "avg_prompt_tokens_per_call": 1185.5,
+        "avg_completion_tokens_per_call": 197.5,
+        "by_model": {
+            "gpt-4o-2024-11-20": {
+                "calls": 8,
+                "successful_calls": 8,
+                "failed_calls": 0,
+                "attempts": 8,
+                "prompt_tokens": 9484,
+                "completion_tokens": 1580,
+                "total_tokens": 11064,
+                "cost_usd": 0.03951,
+                "avg_tokens_per_call": 1383.0,
+                "avg_prompt_tokens_per_call": 1185.5,
+                "avg_completion_tokens_per_call": 197.5
+            }
+        },
+        "by_call_type": {
+            "decision": {
+                "calls": 8,
+                "successful_calls": 8,
+                "failed_calls": 0,
+                "attempts": 8,
+                "prompt_tokens": 9484,
+                "completion_tokens": 1580,
+                "total_tokens": 11064,
+                "cost_usd": 0.03951,
+                "avg_tokens_per_call": 1383.0,
+                "avg_prompt_tokens_per_call": 1185.5,
+                "avg_completion_tokens_per_call": 197.5
+            }
+        },
+        "pricing_backend": "self_hosted",
+        "unpriced_models": []
+    }
+}
