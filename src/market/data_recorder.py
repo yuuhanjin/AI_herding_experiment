@@ -169,6 +169,16 @@ class DataRecorder:
                 })
         else:
             # Single-stock: Original behavior
+            # The agent-facing market_state was captured before matching, while
+            # context/public_info have already been updated after matching.
+            # Keep the legacy quote columns for compatibility and expose both
+            # snapshots explicitly for price-formation audits.
+            post_match_book = self.context.public_info['order_book_state']
+            # public_info['last_trade']['price'] is also overwritten by the
+            # current_price setter on quote-only moves, so it is not a reliable
+            # execution price. Use the immutable executed-trade history instead.
+            trade_history = self.context.public_info.get('trade_history', [])
+            last_execution = trade_history[-1] if trade_history else None
             self.market_data.append({
                 'round': round_number + 1,
                 'stock_id': 'DEFAULT_STOCK',
@@ -183,6 +193,16 @@ class DataRecorder:
                 'best_bid': market_state.get('best_bid'),
                 'best_ask': market_state.get('best_ask'),
                 'market_depth': market_state.get('market_depth', {}),
+                'pre_match_best_bid': market_state.get('best_bid'),
+                'pre_match_best_ask': market_state.get('best_ask'),
+                'post_match_best_bid': post_match_book.get('best_bid'),
+                'post_match_best_ask': post_match_book.get('best_ask'),
+                'post_match_midpoint': post_match_book.get('midpoint'),
+                'last_executed_trade_price': (
+                    last_execution['price'] if last_execution else None),
+                # Trade objects use zero-based rounds; market_data is one-based.
+                'last_executed_trade_round': (
+                    last_execution['round'] + 1 if last_execution else None),
                 'short_interest': self.context.public_info.get('short_interest', 0)
             })
 
