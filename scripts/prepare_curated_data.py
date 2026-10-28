@@ -12,7 +12,6 @@ from __future__ import annotations
 
 import hashlib
 import json
-import shutil
 import subprocess
 from datetime import date
 from pathlib import Path
@@ -143,7 +142,10 @@ def sha256(path: Path) -> str:
 
 def copy_and_describe(source: Path, destination: Path) -> dict[str, object]:
     destination.parent.mkdir(parents=True, exist_ok=True)
-    shutil.copy2(source, destination)
+    # Normalize line endings before hashing. Git is configured to retain LF for
+    # curated evidence, so the checksum is identical on Windows, macOS, Linux,
+    # and in the repository blob itself.
+    destination.write_bytes(source.read_bytes().replace(b"\r\n", b"\n"))
     return {
         "path": destination.relative_to(ROOT).as_posix(),
         "bytes": destination.stat().st_size,
