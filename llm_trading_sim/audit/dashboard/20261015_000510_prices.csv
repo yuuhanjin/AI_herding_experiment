@@ -1,0 +1,16 @@
+round,recorded_price,fundamental_price,last_execution_price_this_round,last_execution_price_to_date,execution_price_is_stale,best_bid_post_match,best_ask_post_match,midpoint_post_match,quote_timing_verified,legacy_best_bid_unverified,legacy_best_ask_unverified,trade_count,volume
+1,50.4,27.999999999999996,,,False,,,,False,,,0,0
+2,50.4,27.999999999999996,,,False,,,,False,,50.4,0,0
+3,50.4,27.999999999999996,,,False,,,,False,,50.4,0,0
+4,50.4,27.999999999999996,,,False,,,,False,,50.4,0,0
+5,50.4,27.999999999999996,,,False,,,,False,,50.4,0,0
+6,50.4,27.999999999999996,,,False,,,,False,,50.4,0,0
+7,50.4,27.999999999999996,,,False,,,,False,,50.4,0,0
+8,50.4,27.999999999999996,,,False,,,,False,,50.4,0,0
+9,50.4,27.999999999999996,,,False,,,,False,,50.4,0,0
+10,50.4,27.999999999999996,,,False,,,,False,,50.4,0,0
+11,50.4,27.999999999999996,,,False,,,,False,,50.4,0,0
+12,50.4,27.999999999999996,,,False,,,,False,,50.4,0,0
+13,50.4,27.999999999999996,,,False,,,,False,,50.4,0,0
+14,50.4,27.999999999999996,,,False,,,,False,,50.4,0,0
+15,50.4,27.999999999999996,,,False,,,,False,,50.4,0,0

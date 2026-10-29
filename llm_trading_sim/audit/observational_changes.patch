@@ -1,0 +1,47 @@
+--- upstream/src/market/data_recorder.py
++++ local/src/market/data_recorder.py
+@@ -183,7 +183,8 @@
+                 'best_bid': market_state.get('best_bid'),
+                 'best_ask': market_state.get('best_ask'),
+                 'market_depth': market_state.get('market_depth', {}),
+-                'short_interest': self.context.public_info.get('short_interest', 0)
++                'short_interest': self.context.public_info.get('short_interest', 0),
++                **getattr(self.context, 'audit_price_snapshot', {})
+             })
+ 
+     def _record_trade_data(self, round_number, trades, timestamp):
+--- upstream/src/market/engine/match_engine.py
++++ local/src/market/engine/match_engine.py
+@@ -209,6 +209,14 @@
+                 f"[MARGIN_CALL] Hit max iterations ({max_margin_iterations}) - possible margin spiral"
+             )
+ 
++        # Observational audit only: direct end-of-matching book snapshot.
++        # Never write these values into public_info or pricing inputs.
++        from replication_audit import price_snapshot
++        self.context.audit_price_snapshot = price_snapshot(
++            trades, self.order_book.get_best_bid(), self.order_book.get_best_ask(),
++            new_price, getattr(self.context, 'audit_price_snapshot', {}).get(
++                'last_execution_price_to_date'))
++
+         # Update agent wealth and log final state
+         # In multi-stock mode, wealth is updated centrally with all stock prices
+         if not self.is_multi_stock:
+--- upstream/src/run_base_sim.py
++++ local/src/run_base_sim.py
+@@ -275,7 +275,14 @@
+ 
+     # Save parameters and run simulation
+     save_parameters(simulation.run_dir, params)
+-    simulation.run()
++    from replication_audit import write_manifest
++    write_manifest(simulation.run_dir, params, status="started")
++    try:
++        simulation.run()
++    except BaseException:
++        write_manifest(simulation.run_dir, params, status="failed")
++        raise
++    write_manifest(simulation.run_dir, params, status="completed")
+     save_plots(simulation, params)
+ 
+     # Fold realized LLM token/cost accounting into metadata.json (issue #104)

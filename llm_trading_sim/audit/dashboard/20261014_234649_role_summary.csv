@@ -1,0 +1,5 @@
+agent_type,n_agent_rounds,n_valid_valuations,valuation_median,valuation_min,valuation_max,valuation_population_sd,median_abs_relative_error,fraction_within_10pct,n_agent_rounds_with_limit_quotes,median_agent_round_quote_gap
+default,30,30,28.0,28.0,28.0,0.0,1.268826313857322e-16,1.0,30,0.46633928571428573
+market_maker,30,30,28.0,28.0,28.0,0.0,1.268826313857322e-16,1.0,30,0.46428571428571436
+optimistic,30,30,40.8,40.0,41.6,0.8000000000000007,0.45714285714285735,0.0,0,
+speculator,30,30,28.0,28.0,28.0,0.0,1.268826313857322e-16,1.0,28,0.46339285714285716

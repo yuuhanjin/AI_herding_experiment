@@ -1,0 +1,175 @@
+--- upstream/src/market/data_recorder.py
++++ local/src/market/data_recorder.py
+@@ -183,7 +183,8 @@
+                 'best_bid': market_state.get('best_bid'),
+                 'best_ask': market_state.get('best_ask'),
+                 'market_depth': market_state.get('market_depth', {}),
+-                'short_interest': self.context.public_info.get('short_interest', 0)
++                'short_interest': self.context.public_info.get('short_interest', 0),
++                **getattr(self.context, 'audit_price_snapshot', {})
+             })
+ 
+     def _record_trade_data(self, round_number, trades, timestamp):
+--- upstream/src/market/engine/match_engine.py
++++ local/src/market/engine/match_engine.py
+@@ -209,6 +209,14 @@
+                 f"[MARGIN_CALL] Hit max iterations ({max_margin_iterations}) - possible margin spiral"
+             )
+ 
++        # Observational audit only: direct end-of-matching book snapshot.
++        # Never write these values into public_info or pricing inputs.
++        from replication_audit import price_snapshot
++        self.context.audit_price_snapshot = price_snapshot(
++            trades, self.order_book.get_best_bid(), self.order_book.get_best_ask(),
++            new_price, getattr(self.context, 'audit_price_snapshot', {}).get(
++                'last_execution_price_to_date'))
++
+         # Update agent wealth and log final state
+         # In multi-stock mode, wealth is updated centrally with all stock prices
+         if not self.is_multi_stock:
+--- upstream/src/market/engine/services/order_processing_service.py
++++ local/src/market/engine/services/order_processing_service.py
+@@ -5,10 +5,11 @@
+ class OrderProcessingService:
+     def __init__(self, order_book):
+         self.order_book = order_book
++        self.rng = random  # Legacy default; controlled runs inject a separate stream.
+ 
+     def split_orders_by_type(self, orders: List[Order]) -> Tuple[List[Order], List[Order]]:
+         """Split orders into market and limit orders"""
+-        random.shuffle(orders)  # Randomize processing order
++        self.rng.shuffle(orders)  # Randomize processing order
+         market_orders = [o for o in orders if o.order_type == 'market']
+         limit_orders = [o for o in orders if o.order_type == 'limit']
+         return market_orders, limit_orders
+--- upstream/src/market/state/services/dividend_service.py
++++ local/src/market/state/services/dividend_service.py
+@@ -39,10 +39,11 @@
+     style_contribution: float = 0.0  # gamma * style_shock
+ class DividendCalculator:
+     """Pure calculation logic - no state"""
+-    def __init__(self, dividend_params: dict):
++    def __init__(self, dividend_params: dict, rng=None):
+         if not dividend_params:
+             raise ValueError("dividend_params is required")
+         self.model = dividend_params
++        self.rng = rng if rng is not None else random
+ 
+     def calculate_dividend(self, systematic_shock: float = 0.0, style_shock: float = 0.0) -> DividendRealization:
+         """Calculate actual dividend payment with optional factor shocks.
+@@ -66,7 +67,7 @@
+         gamma = self.model.get('style_gamma', 1.0)
+ 
+         # Idiosyncratic component (existing stochastic logic)
+-        if random.random() < prob:
++        if self.rng.random() < prob:
+             idio = variation
+         else:
+             idio = -variation
+@@ -275,6 +276,10 @@
+         self.payment_processor = DividendPaymentProcessor(agent_repository, logger, stock_id)
+         self.stock_id = stock_id
+         self.dividend_history = []  # List of DividendRealization objects
++        self.audit_payment_events = []
++        self.audit_dividend_mode = "legacy"
++        self.audit_replay = None
++        self.audit_rng = None
+         self.redemption_value = redemption_value
+         self.current_round = 0
+         self._should_pay_this_round = False
+@@ -314,7 +319,7 @@
+             self._active_regime_round = active_start
+             self._last_shift_round = round_number
+             active_params = resolve_regime_params(self.dividend_params, round_number)
+-            self.calculator = DividendCalculator(active_params)
++            self.calculator = DividendCalculator(active_params, rng=self.audit_rng)
+             LoggingService.get_logger('dividend').info(
+                 f"Dividend regime shift for {self.stock_id} at round {round_number}: "
+                 f"base={active_params.get('base_dividend')}, "
+@@ -338,10 +343,22 @@
+         Returns:
+             DividendPaymentResult with payment details
+         """
+-        realization = self.calculator.calculate_dividend(
+-            systematic_shock=systematic_shock,
+-            style_shock=style_shock
+-        )
++        if self.audit_dividend_mode != "legacy" and any(
++                e['payment_round_zero_based'] == round_number for e in self.audit_payment_events):
++            raise ValueError(f"Duplicate controlled dividend payment at round {round_number}")
++        if self.audit_replay is not None:
++            if systematic_shock != 0 or style_shock != 0:
++                raise ValueError("Replay supports stationary single-stock dividends without factor shocks")
++            if round_number not in self.audit_replay:
++                raise ValueError(f"Missing replay dividend for payment round {round_number}")
++            value = self.audit_replay[round_number]
++            base = self.calculator.model['base_dividend']
++            realization = DividendRealization(value, base, value - base)
++        else:
++            realization = self.calculator.calculate_dividend(
++                systematic_shock=systematic_shock,
++                style_shock=style_shock
++            )
+         self.dividend_history.append(realization)
+ 
+         LoggingService.get_logger('dividend').info(
+@@ -350,11 +367,19 @@
+             f"sys={realization.systematic_contribution:.4f}, style={realization.style_contribution:.4f})"
+         )
+ 
+-        return self.payment_processor._process_dividend_payment(
++        result = self.payment_processor._process_dividend_payment(
+             realization.total_dividend,
+             self.dividend_destination,
+             round_number
+         )
++        self.audit_payment_events.append({
++            'payment_round_zero_based': round_number,
++            'display_round': round_number + 1,
++            'dividend_per_share': realization.total_dividend,
++            'mode': self.audit_dividend_mode,
++            'payment_success': result.success,
++        })
++        return result
+ 
+     def process_round_end(
+         self,
+--- upstream/src/run_base_sim.py
++++ local/src/run_base_sim.py
+@@ -208,6 +208,10 @@
+ 
+     # Label used for the output directory (sweep cells override this).
+     sim_type = sim_type_override or scenario.name
++
++    # Validate controlled-path configuration before any simulation/model construction.
++    from dividend_controls import prepare_control, configure_control, save_payment_events
++    prepare_control(params)
+ 
+     # Set random seeds for reproducibility
+     np.random.seed(params["RANDOM_SEED"])
+@@ -273,9 +277,24 @@
+             news_enabled=params.get("NEWS_ENABLED", False)
+         )
+ 
++    configure_control(simulation, params)
++
+     # Save parameters and run simulation
+     save_parameters(simulation.run_dir, params)
+-    simulation.run()
++    from replication_audit import write_manifest
++    write_manifest(simulation.run_dir, params, status="started")
++    try:
++        simulation.run()
++    except BaseException:
++        save_payment_events(simulation, params, require_complete=False)
++        write_manifest(simulation.run_dir, params, status="failed")
++        raise
++    try:
++        save_payment_events(simulation, params, require_complete=True)
++    except Exception:
++        write_manifest(simulation.run_dir, params, status="audit_failed")
++        raise
++    write_manifest(simulation.run_dir, params, status="completed")
+     save_plots(simulation, params)
+ 
+     # Fold realized LLM token/cost accounting into metadata.json (issue #104)

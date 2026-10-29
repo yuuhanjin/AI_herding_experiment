@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-28",
+  "paid_api_calls": 0,
+  "related_tests_passed": 72,
+  "legacy_input_hashes_unchanged": true,
+  "runs_analyzed": 6,
+  "agent_rounds_analyzed": 720,
+  "valuation_conflicts": 0,
+  "javascript": "syntax and mock DOM behavior checks passed",
+  "browser_visual_qa": "not performed; local file URL blocked previously",
+  "figure_visual_qa": "PNG inspected",
+  "dividend_payment_test": "15 actual AgentRepository payments verified against replay path",
+  "live_gpt_validation": "pending",
+  "scope": "stationary single-stock without factor shocks",
+  "reference_commit": "a09d51b48ff7ac02b127e0fdcf0cc530f9ead90d"
+}

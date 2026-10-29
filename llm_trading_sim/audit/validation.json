@@ -1,0 +1,12 @@
+{
+  "tracked_source_files_changed": [
+    "src/market/data_recorder.py",
+    "src/market/engine/match_engine.py",
+    "src/run_base_sim.py"
+  ],
+  "pytest_passed": 46,
+  "paid_calls": 0,
+  "legacy_runs_audited": 6,
+  "browser_visual_qa": "blocked by local-file URL policy",
+  "javascript_checks": "syntax and mock DOM passed"
+}
