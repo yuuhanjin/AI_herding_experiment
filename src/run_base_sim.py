@@ -12,7 +12,6 @@ import warnings
 from pathlib import Path
 from datetime import datetime
 from services.logging_service import LoggingService
-from services.random_streams import set_dividend_seed
 from scenarios import get_scenario, list_scenarios
 from scenarios.base import merge_params, normalize_fundamental_info_mode
 import shutil
@@ -213,8 +212,6 @@ def run_scenario(
     # Set random seeds for reproducibility
     np.random.seed(params["RANDOM_SEED"])
     random.seed(params["RANDOM_SEED"])
-    # Optional dedicated dividend stream (see services/random_streams.py)
-    set_dividend_seed(params.get("DIVIDEND_SEED"))
 
     # Create run directory with scenario info
     run_dir = create_run_directory(

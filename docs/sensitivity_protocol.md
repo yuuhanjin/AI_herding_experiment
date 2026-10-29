@@ -6,9 +6,9 @@
 
 **Gate 1: Price measure.** `src/market/data_recorder.py` already records the last executed trade and post-match midpoint. With no trade, the simulator records the best ask as the price, so our $56 runs fell from $56 to $46 with zero volume. Primary outcome: **last executed trade price** (carried forward). Secondary: post-match bid-ask midpoint when both sides are quoted. The simulator's recorded price is reported only for comparison with the paper.
 
-**Gate 2: Dividend control.** Dividend draws used to share Python's global random stream with the agent and order shuffles. Because the number of draws the shuffles use depends on how many orders the LLM submits, our two seed-42 $56 runs had different dividend paths from round 5 (cumulative dividends $19.6 vs $23.6).
+**Gate 2: Dividend control.** In the legacy code, dividend draws share Python's global random stream with the agent and order shuffles. Because the number of draws the shuffles use depends on how many orders the LLM submits, our two seed-42 $56 runs had different dividend paths from round 5 (cumulative dividends $19.6 vs $23.6).
 
-Implemented on branch `ruixin/sensitivity`: setting `DIVIDEND_SEED` gives dividend and shock draws their own generator (`src/services/random_streams.py`), while `RANDOM_SEED` keeps controlling agent and order sequencing and `LLM_SEED` the API seed. Leaving `DIVIDEND_SEED` unset keeps the old behaviour. Offline checks: `tests/test_dividend_seed_isolation.py` passes; `scripts/matched_seed_regression.py` shows all 13 existing seeded scenarios unchanged; and a 15-round deterministic run with a different agent mix gives an identical dividend path with `DIVIDEND_SEED` set but diverges from round 7 without it. Dividend paths D1 to D3 below correspond to `DIVIDEND_SEED` 1 to 3.
+Status: the comparability workstream has implemented three random-control modes (`legacy`, `independent`, `replay`). `independent` separates dividend draws from order shuffling, and `replay` reuses a fixed dividend-payment path. Dividend paths D1 to D3 below should be fixed with one of these modes; check that `dividend_data.csv` is identical within each matched group before analysis.
 
 ## Experimental design
 
