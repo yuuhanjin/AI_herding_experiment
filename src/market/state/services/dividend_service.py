@@ -1,4 +1,4 @@
-import random
+from services.random_streams import dividend_rng
 from dataclasses import dataclass
 from agents.agent_manager.services.payment_services import PaymentDestination
 from typing import Optional
@@ -66,7 +66,7 @@ class DividendCalculator:
         gamma = self.model.get('style_gamma', 1.0)
 
         # Idiosyncratic component (existing stochastic logic)
-        if random.random() < prob:
+        if dividend_rng().random() < prob:
             idio = variation
         else:
             idio = -variation

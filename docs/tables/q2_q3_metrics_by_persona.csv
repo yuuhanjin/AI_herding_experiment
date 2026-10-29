@@ -1,0 +1,17 @@
+run,agent_type,n_orders,limit_share,buy_share,two_sided_share,mean_abs_imbalance,median_dist_ref_pct,median_dist_best_pct,resting_qty,depth_share
+$56 baseline,market_maker,56,100.00,0.00,0.00,1.00,2.17,2.17,488000.00,72.84
+$56 baseline,default,25,100.00,0.00,0.00,1.00,0.00,0.00,86000.00,12.84
+$56 baseline,speculator,14,78.57,0.00,0.00,1.00,0.00,0.00,66000.00,9.85
+$56 baseline,optimistic,8,87.50,0.00,0.00,1.00,11.11,11.11,30000.00,4.48
+$56 prompt adjusted,market_maker,73,100.00,0.00,0.00,1.00,2.18,2.18,1070000.00,68.90
+$56 prompt adjusted,default,10,100.00,0.00,0.00,1.00,0.00,0.00,123000.00,7.92
+$56 prompt adjusted,speculator,18,100.00,0.00,0.00,1.00,0.00,0.00,114000.00,7.34
+$56 prompt adjusted,optimistic,19,89.47,0.00,0.00,1.00,0.00,0.00,246000.00,15.84
+$14 baseline,market_maker,67,100.00,74.63,50.00,0.51,1.00,0.66,453000.00,46.32
+$14 baseline,default,52,100.00,100.00,0.00,1.00,0.67,0.10,170900.00,17.48
+$14 baseline,speculator,40,95.00,100.00,0.00,1.00,0.84,0.00,354000.00,36.20
+$14 baseline,optimistic,30,0.00,100.00,0.00,1.00,,,0.00,0.00
+$14 prompt adjusted,market_maker,82,100.00,51.22,100.00,0.04,2.93,0.65,1884000.00,62.65
+$14 prompt adjusted,default,26,100.00,100.00,0.00,1.00,2.83,0.00,585000.00,19.45
+$14 prompt adjusted,speculator,25,96.00,100.00,0.00,1.00,2.89,0.00,538400.00,17.90
+$14 prompt adjusted,optimistic,30,0.00,100.00,0.00,1.00,,,0.00,0.00

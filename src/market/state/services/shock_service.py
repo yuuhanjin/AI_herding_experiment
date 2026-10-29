@@ -1,10 +1,10 @@
 """Systematic / style-level dividend shock generation.
 
 Extracted from BaseSimulation: pure draw logic with no simulation state.
-Uses the module-level `random` generator (seeded per run in run_base_sim) so
-extraction preserves reproducibility of seeded runs.
+Draws from services.random_streams.dividend_rng(): the shared module-level
+generator by default, or a dedicated one when DIVIDEND_SEED is set.
 """
-import random
+from services.random_streams import dividend_rng
 
 
 def generate_dividend_shocks(shock_config: dict, enabled: bool, logger=None) -> dict:
@@ -23,14 +23,14 @@ def generate_dividend_shocks(shock_config: dict, enabled: bool, logger=None) -> 
 
     # Draw systematic shock (affects all stocks)
     systematic_volatility = shock_config.get('systematic_volatility', 0.0)
-    systematic_shock = random.gauss(0, systematic_volatility) if systematic_volatility > 0 else 0.0
+    systematic_shock = dividend_rng().gauss(0, systematic_volatility) if systematic_volatility > 0 else 0.0
 
     # Draw style-level shocks (affects stocks in same style)
     style_shocks = {}
     style_config = shock_config.get('styles', {})
     for style, config in style_config.items():
         vol = config.get('volatility', 0.0) if isinstance(config, dict) else config
-        style_shocks[style] = random.gauss(0, vol) if vol > 0 else 0.0
+        style_shocks[style] = dividend_rng().gauss(0, vol) if vol > 0 else 0.0
 
     shocks = {
         'systematic': systematic_shock,
