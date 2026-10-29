@@ -1,0 +1,8 @@
+sample,test,method,statistic,p_value,n
+$56 runs,Order type (limit vs market) independent of persona,"Chi-square, dof=3",17.31,0.0006109,223
+$56 runs,Market-maker limit prices closer to current price,"Mann-Whitney U, one-sided",9781,1,217
+$14 runs,Order type (limit vs market) independent of persona,"Chi-square, dof=3",332.5,9.057e-72,352
+$14 runs,Buy/sell mix independent of persona,"Chi-square, dof=3",92.66,5.869e-20,352
+$14 runs,Directionality equal across personas,Kruskal-Wallis,156.3,1.157e-33,230
+$14 runs,Market makers less directional than others,"Mann-Whitney U, one-sided",1282,3.733e-36,230
+$14 runs,Market-maker limit prices closer to current price,"Mann-Whitney U, one-sided",1.163e+04,0.9552,289

@@ -213,7 +213,10 @@ The most useful research documents are:
 - `docs/prompt_hierarchy_mechanism_report.md`: prompt hierarchy, order-size
   compliance, fill mechanics, and stochasticity;
 - `docs/prompt_mechanism_findings.html`: presentation-ready synthesis;
-- `docs/ai_herding_research_direction.md`: broader research design.
+- `docs/ai_herding_research_direction.md`: broader research design;
+- `docs/q2_q3_persona_liquidity.md`: persona behaviour and market-maker
+  liquidity metrics (Q2/Q3);
+- `docs/sensitivity_protocol.md`: sensitivity-test design, gates, and budget.
 
 Current evidence supports narrower mechanism statements than “AI agents cause
 a market crash.” In the high-price runs, agents generated one-sided sell
