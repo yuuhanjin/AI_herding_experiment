@@ -1,0 +1,30 @@
+{
+  "successful_calls": 16,
+  "cost_usd_provider_reported": 0.082155,
+  "prompt_tokens": 22002,
+  "completion_tokens": 3147,
+  "proposed_orders": 20,
+  "order_states": {
+    "active": 20
+  },
+  "all_proposals_within_cap": true,
+  "trades": 0,
+  "volume": 0.0,
+  "recorded_prices": [
+    15.400000000000002,
+    15.41
+  ],
+  "execution_prices": [
+    null,
+    null
+  ],
+  "quantity_reduction_without_fill": 5,
+  "dividend_check": {
+    "mode": "replay",
+    "scope": "actual payment events; not lagged observation CSV",
+    "payment_count": 2,
+    "complete": true,
+    "path_match": true,
+    "path_content_sha256": "316fbc34cdc15923dd77140d068f68a048afcc741c3b27b62ae726df06bf131e"
+  }
+}

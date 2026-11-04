@@ -1,0 +1,25 @@
+{
+  "agent_id": 8,
+  "orders": [
+    {
+      "order_id": "49d7b90c-b6eb-41df-a94b-d385a069984e",
+      "side": "buy",
+      "quantity": 500,
+      "price": 12.5
+    },
+    {
+      "order_id": "15c6be88-c02b-4cfd-9095-83b0caa5516f",
+      "side": "sell",
+      "quantity": 500,
+      "price": 13.0
+    },
+    {
+      "order_id": "ee87b94b-6f74-4fc3-a1fc-0b83d4deed6a",
+      "side": "sell",
+      "quantity": 250,
+      "price": 13.01
+    }
+  ],
+  "refresh": false,
+  "scope": "controlled execution test, not replication"
+}

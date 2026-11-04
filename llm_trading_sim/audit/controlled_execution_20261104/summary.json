@@ -1,0 +1,45 @@
+{
+  "calls": 16,
+  "provider_cost_usd": 0.084815,
+  "model": [
+    "openai/gpt-4o-2024-11-20"
+  ],
+  "gpt_proposed_orders": 20,
+  "proposed_quantity_counts": {
+    "1000": 16,
+    "500": 4
+  },
+  "all_proposals_within_cap": true,
+  "trade_count": 2,
+  "trade_volume": 750,
+  "account_checks_passed": true,
+  "gpt_order_states": {
+    "active": 20
+  },
+  "seed_order_states": {
+    "active": 1,
+    "filled": 2
+  },
+  "orders_with_partial_fill_history": [
+    "a0ac31a9-c60b-42ef-a121-11d49898aeac",
+    "780ec4a9-1a09-4674-b1ed-6c6ee25dc5ba"
+  ],
+  "recorded_prices": [
+    13.0,
+    13.01
+  ],
+  "last_execution_per_round": [
+    "13.0",
+    "13.01"
+  ],
+  "dividend_check": {
+    "mode": "replay",
+    "scope": "actual payment events; not lagged observation CSV",
+    "payment_count": 2,
+    "complete": true,
+    "path_match": true,
+    "path_content_sha256": "316fbc34cdc15923dd77140d068f68a048afcc741c3b27b62ae726df06bf131e"
+  },
+  "run_dir": "/Users/xinyi/Desktop/ColumbiaU/Q1/IEORE4742 Deep Learning for FE & OR/AI Herding/llm_trading_sim/logs/controlled_execution_20261104_live/20261104_024550",
+  "order_fills_reconcile_to_trades": true
+}

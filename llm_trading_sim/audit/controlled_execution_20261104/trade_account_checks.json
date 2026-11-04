@@ -1,0 +1,72 @@
+[
+  {
+    "buyer_id": 7,
+    "seller_id": 8,
+    "buyer_order_id": "a0ac31a9-c60b-42ef-a121-11d49898aeac",
+    "seller_order_id": "15c6be88-c02b-4cfd-9095-83b0caa5516f",
+    "quantity": 500,
+    "price": 13.0,
+    "before": {
+      "buyer": {
+        "cash_total": 1000000.0,
+        "shares_total": 10000.0
+      },
+      "seller": {
+        "cash_total": 1000000.0,
+        "shares_total": 10000.0
+      }
+    },
+    "after": {
+      "buyer": {
+        "cash_total": 993500.0,
+        "shares_total": 10500.0
+      },
+      "seller": {
+        "cash_total": 1006500.0,
+        "shares_total": 9500.0
+      }
+    },
+    "checks": {
+      "execution_success": true,
+      "buyer_cash": true,
+      "seller_cash": true,
+      "buyer_shares": true,
+      "seller_shares": true
+    }
+  },
+  {
+    "buyer_id": 0,
+    "seller_id": 8,
+    "buyer_order_id": "780ec4a9-1a09-4674-b1ed-6c6ee25dc5ba",
+    "seller_order_id": "ee87b94b-6f74-4fc3-a1fc-0b83d4deed6a",
+    "quantity": 250,
+    "price": 13.01,
+    "before": {
+      "buyer": {
+        "cash_total": 1000000.0,
+        "shares_total": 10000.0
+      },
+      "seller": {
+        "cash_total": 1006500.0,
+        "shares_total": 9500.0
+      }
+    },
+    "after": {
+      "buyer": {
+        "cash_total": 996747.5,
+        "shares_total": 10250.0
+      },
+      "seller": {
+        "cash_total": 1009752.5,
+        "shares_total": 9250.0
+      }
+    },
+    "checks": {
+      "execution_success": true,
+      "buyer_cash": true,
+      "seller_cash": true,
+      "buyer_shares": true,
+      "seller_shares": true
+    }
+  }
+]

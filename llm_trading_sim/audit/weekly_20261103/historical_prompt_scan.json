@@ -1,0 +1,27 @@
+[
+  {
+    "path": "logs/replication_above/20261013_155208/data/rendered_prompts.jsonl",
+    "records": 120,
+    "explicit_size_limit_mentions": 0
+  },
+  {
+    "path": "logs/replication_below/20261013_155851/data/rendered_prompts.jsonl",
+    "records": 120,
+    "explicit_size_limit_mentions": 0
+  },
+  {
+    "path": "logs/replication_pilot/20261013_114407/data/rendered_prompts.jsonl",
+    "records": 16,
+    "explicit_size_limit_mentions": 0
+  },
+  {
+    "path": "logs/replication_pilot/20261013_150434/data/rendered_prompts.jsonl",
+    "records": 16,
+    "explicit_size_limit_mentions": 0
+  },
+  {
+    "path": "logs/replication_pilot/20261013_153827/data/rendered_prompts.jsonl",
+    "records": 16,
+    "explicit_size_limit_mentions": 0
+  }
+]

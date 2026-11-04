@@ -1,0 +1,38 @@
+{
+  "0": {
+    "cash_total": 1000000.0,
+    "shares_total": 10000.0
+  },
+  "1": {
+    "cash_total": 1000000.0,
+    "shares_total": 10000.0
+  },
+  "2": {
+    "cash_total": 1000000.0,
+    "shares_total": 10000.0
+  },
+  "3": {
+    "cash_total": 1000000.0,
+    "shares_total": 10000.0
+  },
+  "4": {
+    "cash_total": 20000000.0,
+    "shares_total": 200000.0
+  },
+  "5": {
+    "cash_total": 20000000.0,
+    "shares_total": 200000.0
+  },
+  "6": {
+    "cash_total": 1000000.0,
+    "shares_total": 10000.0
+  },
+  "7": {
+    "cash_total": 1000000.0,
+    "shares_total": 10000.0
+  },
+  "8": {
+    "cash_total": 1000000.0,
+    "shares_total": 10000.0
+  }
+}

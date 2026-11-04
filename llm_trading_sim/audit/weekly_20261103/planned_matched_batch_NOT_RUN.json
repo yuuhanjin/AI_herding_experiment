@@ -1,0 +1,1715 @@
+{
+  "status": "NOT RUN; requires API budget approval",
+  "cells": [
+    {
+      "label": "above_42_legacy",
+      "scenario": "paper_price_discovery_above",
+      "param_overrides": {
+        "NUM_ROUNDS": 15,
+        "MODEL_OPEN_AI": "openai/gpt-4o-2024-11-20",
+        "LLM_TEMPERATURE": 0,
+        "LLM_SEED": 42,
+        "LLM_MAX_CONCURRENCY": 1,
+        "AGENT_PARAMS": {
+          "max_order_size": 1000,
+          "order_size_mode": "legacy"
+        },
+        "DIVIDEND_CONTROL": {
+          "mode": "replay",
+          "path": {
+            "schema": 1,
+            "round_convention": "zero_based_payment_round",
+            "num_rounds": 15,
+            "infinite_rounds": true,
+            "model": {
+              "base_dividend": 1.4,
+              "dividend_variation": 1.0,
+              "dividend_probability": 0.5,
+              "dividend_frequency": 1
+            },
+            "generation_seed": 42,
+            "payments": [
+              {
+                "payment_round_zero_based": 0,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 1,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 2,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 3,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 4,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 5,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 6,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 7,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 8,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 9,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 10,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 11,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 12,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 13,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 14,
+                "dividend_per_share": 0.3999999999999999
+              }
+            ]
+          },
+          "seed": 42,
+          "order_seed": 42
+        }
+      }
+    },
+    {
+      "label": "above_42_prompt",
+      "scenario": "paper_price_discovery_above",
+      "param_overrides": {
+        "NUM_ROUNDS": 15,
+        "MODEL_OPEN_AI": "openai/gpt-4o-2024-11-20",
+        "LLM_TEMPERATURE": 0,
+        "LLM_SEED": 42,
+        "LLM_MAX_CONCURRENCY": 1,
+        "AGENT_PARAMS": {
+          "max_order_size": 1000,
+          "order_size_mode": "prompt"
+        },
+        "DIVIDEND_CONTROL": {
+          "mode": "replay",
+          "path": {
+            "schema": 1,
+            "round_convention": "zero_based_payment_round",
+            "num_rounds": 15,
+            "infinite_rounds": true,
+            "model": {
+              "base_dividend": 1.4,
+              "dividend_variation": 1.0,
+              "dividend_probability": 0.5,
+              "dividend_frequency": 1
+            },
+            "generation_seed": 42,
+            "payments": [
+              {
+                "payment_round_zero_based": 0,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 1,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 2,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 3,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 4,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 5,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 6,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 7,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 8,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 9,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 10,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 11,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 12,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 13,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 14,
+                "dividend_per_share": 0.3999999999999999
+              }
+            ]
+          },
+          "seed": 42,
+          "order_seed": 42
+        }
+      }
+    },
+    {
+      "label": "above_42_enforced",
+      "scenario": "paper_price_discovery_above",
+      "param_overrides": {
+        "NUM_ROUNDS": 15,
+        "MODEL_OPEN_AI": "openai/gpt-4o-2024-11-20",
+        "LLM_TEMPERATURE": 0,
+        "LLM_SEED": 42,
+        "LLM_MAX_CONCURRENCY": 1,
+        "AGENT_PARAMS": {
+          "max_order_size": 1000,
+          "order_size_mode": "enforced"
+        },
+        "DIVIDEND_CONTROL": {
+          "mode": "replay",
+          "path": {
+            "schema": 1,
+            "round_convention": "zero_based_payment_round",
+            "num_rounds": 15,
+            "infinite_rounds": true,
+            "model": {
+              "base_dividend": 1.4,
+              "dividend_variation": 1.0,
+              "dividend_probability": 0.5,
+              "dividend_frequency": 1
+            },
+            "generation_seed": 42,
+            "payments": [
+              {
+                "payment_round_zero_based": 0,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 1,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 2,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 3,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 4,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 5,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 6,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 7,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 8,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 9,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 10,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 11,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 12,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 13,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 14,
+                "dividend_per_share": 0.3999999999999999
+              }
+            ]
+          },
+          "seed": 42,
+          "order_seed": 42
+        }
+      }
+    },
+    {
+      "label": "below_42_legacy",
+      "scenario": "paper_price_discovery_below",
+      "param_overrides": {
+        "NUM_ROUNDS": 15,
+        "MODEL_OPEN_AI": "openai/gpt-4o-2024-11-20",
+        "LLM_TEMPERATURE": 0,
+        "LLM_SEED": 42,
+        "LLM_MAX_CONCURRENCY": 1,
+        "AGENT_PARAMS": {
+          "max_order_size": 1000,
+          "order_size_mode": "legacy"
+        },
+        "DIVIDEND_CONTROL": {
+          "mode": "replay",
+          "path": {
+            "schema": 1,
+            "round_convention": "zero_based_payment_round",
+            "num_rounds": 15,
+            "infinite_rounds": true,
+            "model": {
+              "base_dividend": 1.4,
+              "dividend_variation": 1.0,
+              "dividend_probability": 0.5,
+              "dividend_frequency": 1
+            },
+            "generation_seed": 42,
+            "payments": [
+              {
+                "payment_round_zero_based": 0,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 1,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 2,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 3,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 4,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 5,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 6,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 7,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 8,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 9,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 10,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 11,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 12,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 13,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 14,
+                "dividend_per_share": 0.3999999999999999
+              }
+            ]
+          },
+          "seed": 42,
+          "order_seed": 42
+        }
+      }
+    },
+    {
+      "label": "below_42_prompt",
+      "scenario": "paper_price_discovery_below",
+      "param_overrides": {
+        "NUM_ROUNDS": 15,
+        "MODEL_OPEN_AI": "openai/gpt-4o-2024-11-20",
+        "LLM_TEMPERATURE": 0,
+        "LLM_SEED": 42,
+        "LLM_MAX_CONCURRENCY": 1,
+        "AGENT_PARAMS": {
+          "max_order_size": 1000,
+          "order_size_mode": "prompt"
+        },
+        "DIVIDEND_CONTROL": {
+          "mode": "replay",
+          "path": {
+            "schema": 1,
+            "round_convention": "zero_based_payment_round",
+            "num_rounds": 15,
+            "infinite_rounds": true,
+            "model": {
+              "base_dividend": 1.4,
+              "dividend_variation": 1.0,
+              "dividend_probability": 0.5,
+              "dividend_frequency": 1
+            },
+            "generation_seed": 42,
+            "payments": [
+              {
+                "payment_round_zero_based": 0,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 1,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 2,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 3,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 4,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 5,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 6,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 7,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 8,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 9,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 10,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 11,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 12,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 13,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 14,
+                "dividend_per_share": 0.3999999999999999
+              }
+            ]
+          },
+          "seed": 42,
+          "order_seed": 42
+        }
+      }
+    },
+    {
+      "label": "below_42_enforced",
+      "scenario": "paper_price_discovery_below",
+      "param_overrides": {
+        "NUM_ROUNDS": 15,
+        "MODEL_OPEN_AI": "openai/gpt-4o-2024-11-20",
+        "LLM_TEMPERATURE": 0,
+        "LLM_SEED": 42,
+        "LLM_MAX_CONCURRENCY": 1,
+        "AGENT_PARAMS": {
+          "max_order_size": 1000,
+          "order_size_mode": "enforced"
+        },
+        "DIVIDEND_CONTROL": {
+          "mode": "replay",
+          "path": {
+            "schema": 1,
+            "round_convention": "zero_based_payment_round",
+            "num_rounds": 15,
+            "infinite_rounds": true,
+            "model": {
+              "base_dividend": 1.4,
+              "dividend_variation": 1.0,
+              "dividend_probability": 0.5,
+              "dividend_frequency": 1
+            },
+            "generation_seed": 42,
+            "payments": [
+              {
+                "payment_round_zero_based": 0,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 1,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 2,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 3,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 4,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 5,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 6,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 7,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 8,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 9,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 10,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 11,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 12,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 13,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 14,
+                "dividend_per_share": 0.3999999999999999
+              }
+            ]
+          },
+          "seed": 42,
+          "order_seed": 42
+        }
+      }
+    },
+    {
+      "label": "above_43_legacy",
+      "scenario": "paper_price_discovery_above",
+      "param_overrides": {
+        "NUM_ROUNDS": 15,
+        "MODEL_OPEN_AI": "openai/gpt-4o-2024-11-20",
+        "LLM_TEMPERATURE": 0,
+        "LLM_SEED": 42,
+        "LLM_MAX_CONCURRENCY": 1,
+        "AGENT_PARAMS": {
+          "max_order_size": 1000,
+          "order_size_mode": "legacy"
+        },
+        "DIVIDEND_CONTROL": {
+          "mode": "replay",
+          "path": {
+            "schema": 1,
+            "round_convention": "zero_based_payment_round",
+            "num_rounds": 15,
+            "infinite_rounds": true,
+            "model": {
+              "base_dividend": 1.4,
+              "dividend_variation": 1.0,
+              "dividend_probability": 0.5,
+              "dividend_frequency": 1
+            },
+            "generation_seed": 43,
+            "payments": [
+              {
+                "payment_round_zero_based": 0,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 1,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 2,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 3,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 4,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 5,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 6,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 7,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 8,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 9,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 10,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 11,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 12,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 13,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 14,
+                "dividend_per_share": 2.4
+              }
+            ]
+          },
+          "seed": 43,
+          "order_seed": 43
+        }
+      }
+    },
+    {
+      "label": "above_43_prompt",
+      "scenario": "paper_price_discovery_above",
+      "param_overrides": {
+        "NUM_ROUNDS": 15,
+        "MODEL_OPEN_AI": "openai/gpt-4o-2024-11-20",
+        "LLM_TEMPERATURE": 0,
+        "LLM_SEED": 42,
+        "LLM_MAX_CONCURRENCY": 1,
+        "AGENT_PARAMS": {
+          "max_order_size": 1000,
+          "order_size_mode": "prompt"
+        },
+        "DIVIDEND_CONTROL": {
+          "mode": "replay",
+          "path": {
+            "schema": 1,
+            "round_convention": "zero_based_payment_round",
+            "num_rounds": 15,
+            "infinite_rounds": true,
+            "model": {
+              "base_dividend": 1.4,
+              "dividend_variation": 1.0,
+              "dividend_probability": 0.5,
+              "dividend_frequency": 1
+            },
+            "generation_seed": 43,
+            "payments": [
+              {
+                "payment_round_zero_based": 0,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 1,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 2,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 3,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 4,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 5,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 6,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 7,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 8,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 9,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 10,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 11,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 12,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 13,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 14,
+                "dividend_per_share": 2.4
+              }
+            ]
+          },
+          "seed": 43,
+          "order_seed": 43
+        }
+      }
+    },
+    {
+      "label": "above_43_enforced",
+      "scenario": "paper_price_discovery_above",
+      "param_overrides": {
+        "NUM_ROUNDS": 15,
+        "MODEL_OPEN_AI": "openai/gpt-4o-2024-11-20",
+        "LLM_TEMPERATURE": 0,
+        "LLM_SEED": 42,
+        "LLM_MAX_CONCURRENCY": 1,
+        "AGENT_PARAMS": {
+          "max_order_size": 1000,
+          "order_size_mode": "enforced"
+        },
+        "DIVIDEND_CONTROL": {
+          "mode": "replay",
+          "path": {
+            "schema": 1,
+            "round_convention": "zero_based_payment_round",
+            "num_rounds": 15,
+            "infinite_rounds": true,
+            "model": {
+              "base_dividend": 1.4,
+              "dividend_variation": 1.0,
+              "dividend_probability": 0.5,
+              "dividend_frequency": 1
+            },
+            "generation_seed": 43,
+            "payments": [
+              {
+                "payment_round_zero_based": 0,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 1,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 2,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 3,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 4,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 5,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 6,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 7,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 8,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 9,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 10,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 11,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 12,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 13,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 14,
+                "dividend_per_share": 2.4
+              }
+            ]
+          },
+          "seed": 43,
+          "order_seed": 43
+        }
+      }
+    },
+    {
+      "label": "below_43_legacy",
+      "scenario": "paper_price_discovery_below",
+      "param_overrides": {
+        "NUM_ROUNDS": 15,
+        "MODEL_OPEN_AI": "openai/gpt-4o-2024-11-20",
+        "LLM_TEMPERATURE": 0,
+        "LLM_SEED": 42,
+        "LLM_MAX_CONCURRENCY": 1,
+        "AGENT_PARAMS": {
+          "max_order_size": 1000,
+          "order_size_mode": "legacy"
+        },
+        "DIVIDEND_CONTROL": {
+          "mode": "replay",
+          "path": {
+            "schema": 1,
+            "round_convention": "zero_based_payment_round",
+            "num_rounds": 15,
+            "infinite_rounds": true,
+            "model": {
+              "base_dividend": 1.4,
+              "dividend_variation": 1.0,
+              "dividend_probability": 0.5,
+              "dividend_frequency": 1
+            },
+            "generation_seed": 43,
+            "payments": [
+              {
+                "payment_round_zero_based": 0,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 1,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 2,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 3,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 4,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 5,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 6,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 7,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 8,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 9,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 10,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 11,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 12,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 13,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 14,
+                "dividend_per_share": 2.4
+              }
+            ]
+          },
+          "seed": 43,
+          "order_seed": 43
+        }
+      }
+    },
+    {
+      "label": "below_43_prompt",
+      "scenario": "paper_price_discovery_below",
+      "param_overrides": {
+        "NUM_ROUNDS": 15,
+        "MODEL_OPEN_AI": "openai/gpt-4o-2024-11-20",
+        "LLM_TEMPERATURE": 0,
+        "LLM_SEED": 42,
+        "LLM_MAX_CONCURRENCY": 1,
+        "AGENT_PARAMS": {
+          "max_order_size": 1000,
+          "order_size_mode": "prompt"
+        },
+        "DIVIDEND_CONTROL": {
+          "mode": "replay",
+          "path": {
+            "schema": 1,
+            "round_convention": "zero_based_payment_round",
+            "num_rounds": 15,
+            "infinite_rounds": true,
+            "model": {
+              "base_dividend": 1.4,
+              "dividend_variation": 1.0,
+              "dividend_probability": 0.5,
+              "dividend_frequency": 1
+            },
+            "generation_seed": 43,
+            "payments": [
+              {
+                "payment_round_zero_based": 0,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 1,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 2,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 3,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 4,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 5,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 6,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 7,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 8,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 9,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 10,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 11,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 12,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 13,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 14,
+                "dividend_per_share": 2.4
+              }
+            ]
+          },
+          "seed": 43,
+          "order_seed": 43
+        }
+      }
+    },
+    {
+      "label": "below_43_enforced",
+      "scenario": "paper_price_discovery_below",
+      "param_overrides": {
+        "NUM_ROUNDS": 15,
+        "MODEL_OPEN_AI": "openai/gpt-4o-2024-11-20",
+        "LLM_TEMPERATURE": 0,
+        "LLM_SEED": 42,
+        "LLM_MAX_CONCURRENCY": 1,
+        "AGENT_PARAMS": {
+          "max_order_size": 1000,
+          "order_size_mode": "enforced"
+        },
+        "DIVIDEND_CONTROL": {
+          "mode": "replay",
+          "path": {
+            "schema": 1,
+            "round_convention": "zero_based_payment_round",
+            "num_rounds": 15,
+            "infinite_rounds": true,
+            "model": {
+              "base_dividend": 1.4,
+              "dividend_variation": 1.0,
+              "dividend_probability": 0.5,
+              "dividend_frequency": 1
+            },
+            "generation_seed": 43,
+            "payments": [
+              {
+                "payment_round_zero_based": 0,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 1,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 2,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 3,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 4,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 5,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 6,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 7,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 8,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 9,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 10,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 11,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 12,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 13,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 14,
+                "dividend_per_share": 2.4
+              }
+            ]
+          },
+          "seed": 43,
+          "order_seed": 43
+        }
+      }
+    },
+    {
+      "label": "above_44_legacy",
+      "scenario": "paper_price_discovery_above",
+      "param_overrides": {
+        "NUM_ROUNDS": 15,
+        "MODEL_OPEN_AI": "openai/gpt-4o-2024-11-20",
+        "LLM_TEMPERATURE": 0,
+        "LLM_SEED": 42,
+        "LLM_MAX_CONCURRENCY": 1,
+        "AGENT_PARAMS": {
+          "max_order_size": 1000,
+          "order_size_mode": "legacy"
+        },
+        "DIVIDEND_CONTROL": {
+          "mode": "replay",
+          "path": {
+            "schema": 1,
+            "round_convention": "zero_based_payment_round",
+            "num_rounds": 15,
+            "infinite_rounds": true,
+            "model": {
+              "base_dividend": 1.4,
+              "dividend_variation": 1.0,
+              "dividend_probability": 0.5,
+              "dividend_frequency": 1
+            },
+            "generation_seed": 44,
+            "payments": [
+              {
+                "payment_round_zero_based": 0,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 1,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 2,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 3,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 4,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 5,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 6,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 7,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 8,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 9,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 10,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 11,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 12,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 13,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 14,
+                "dividend_per_share": 0.3999999999999999
+              }
+            ]
+          },
+          "seed": 44,
+          "order_seed": 44
+        }
+      }
+    },
+    {
+      "label": "above_44_prompt",
+      "scenario": "paper_price_discovery_above",
+      "param_overrides": {
+        "NUM_ROUNDS": 15,
+        "MODEL_OPEN_AI": "openai/gpt-4o-2024-11-20",
+        "LLM_TEMPERATURE": 0,
+        "LLM_SEED": 42,
+        "LLM_MAX_CONCURRENCY": 1,
+        "AGENT_PARAMS": {
+          "max_order_size": 1000,
+          "order_size_mode": "prompt"
+        },
+        "DIVIDEND_CONTROL": {
+          "mode": "replay",
+          "path": {
+            "schema": 1,
+            "round_convention": "zero_based_payment_round",
+            "num_rounds": 15,
+            "infinite_rounds": true,
+            "model": {
+              "base_dividend": 1.4,
+              "dividend_variation": 1.0,
+              "dividend_probability": 0.5,
+              "dividend_frequency": 1
+            },
+            "generation_seed": 44,
+            "payments": [
+              {
+                "payment_round_zero_based": 0,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 1,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 2,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 3,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 4,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 5,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 6,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 7,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 8,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 9,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 10,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 11,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 12,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 13,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 14,
+                "dividend_per_share": 0.3999999999999999
+              }
+            ]
+          },
+          "seed": 44,
+          "order_seed": 44
+        }
+      }
+    },
+    {
+      "label": "above_44_enforced",
+      "scenario": "paper_price_discovery_above",
+      "param_overrides": {
+        "NUM_ROUNDS": 15,
+        "MODEL_OPEN_AI": "openai/gpt-4o-2024-11-20",
+        "LLM_TEMPERATURE": 0,
+        "LLM_SEED": 42,
+        "LLM_MAX_CONCURRENCY": 1,
+        "AGENT_PARAMS": {
+          "max_order_size": 1000,
+          "order_size_mode": "enforced"
+        },
+        "DIVIDEND_CONTROL": {
+          "mode": "replay",
+          "path": {
+            "schema": 1,
+            "round_convention": "zero_based_payment_round",
+            "num_rounds": 15,
+            "infinite_rounds": true,
+            "model": {
+              "base_dividend": 1.4,
+              "dividend_variation": 1.0,
+              "dividend_probability": 0.5,
+              "dividend_frequency": 1
+            },
+            "generation_seed": 44,
+            "payments": [
+              {
+                "payment_round_zero_based": 0,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 1,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 2,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 3,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 4,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 5,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 6,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 7,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 8,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 9,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 10,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 11,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 12,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 13,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 14,
+                "dividend_per_share": 0.3999999999999999
+              }
+            ]
+          },
+          "seed": 44,
+          "order_seed": 44
+        }
+      }
+    },
+    {
+      "label": "below_44_legacy",
+      "scenario": "paper_price_discovery_below",
+      "param_overrides": {
+        "NUM_ROUNDS": 15,
+        "MODEL_OPEN_AI": "openai/gpt-4o-2024-11-20",
+        "LLM_TEMPERATURE": 0,
+        "LLM_SEED": 42,
+        "LLM_MAX_CONCURRENCY": 1,
+        "AGENT_PARAMS": {
+          "max_order_size": 1000,
+          "order_size_mode": "legacy"
+        },
+        "DIVIDEND_CONTROL": {
+          "mode": "replay",
+          "path": {
+            "schema": 1,
+            "round_convention": "zero_based_payment_round",
+            "num_rounds": 15,
+            "infinite_rounds": true,
+            "model": {
+              "base_dividend": 1.4,
+              "dividend_variation": 1.0,
+              "dividend_probability": 0.5,
+              "dividend_frequency": 1
+            },
+            "generation_seed": 44,
+            "payments": [
+              {
+                "payment_round_zero_based": 0,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 1,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 2,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 3,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 4,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 5,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 6,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 7,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 8,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 9,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 10,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 11,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 12,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 13,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 14,
+                "dividend_per_share": 0.3999999999999999
+              }
+            ]
+          },
+          "seed": 44,
+          "order_seed": 44
+        }
+      }
+    },
+    {
+      "label": "below_44_prompt",
+      "scenario": "paper_price_discovery_below",
+      "param_overrides": {
+        "NUM_ROUNDS": 15,
+        "MODEL_OPEN_AI": "openai/gpt-4o-2024-11-20",
+        "LLM_TEMPERATURE": 0,
+        "LLM_SEED": 42,
+        "LLM_MAX_CONCURRENCY": 1,
+        "AGENT_PARAMS": {
+          "max_order_size": 1000,
+          "order_size_mode": "prompt"
+        },
+        "DIVIDEND_CONTROL": {
+          "mode": "replay",
+          "path": {
+            "schema": 1,
+            "round_convention": "zero_based_payment_round",
+            "num_rounds": 15,
+            "infinite_rounds": true,
+            "model": {
+              "base_dividend": 1.4,
+              "dividend_variation": 1.0,
+              "dividend_probability": 0.5,
+              "dividend_frequency": 1
+            },
+            "generation_seed": 44,
+            "payments": [
+              {
+                "payment_round_zero_based": 0,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 1,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 2,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 3,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 4,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 5,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 6,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 7,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 8,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 9,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 10,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 11,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 12,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 13,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 14,
+                "dividend_per_share": 0.3999999999999999
+              }
+            ]
+          },
+          "seed": 44,
+          "order_seed": 44
+        }
+      }
+    },
+    {
+      "label": "below_44_enforced",
+      "scenario": "paper_price_discovery_below",
+      "param_overrides": {
+        "NUM_ROUNDS": 15,
+        "MODEL_OPEN_AI": "openai/gpt-4o-2024-11-20",
+        "LLM_TEMPERATURE": 0,
+        "LLM_SEED": 42,
+        "LLM_MAX_CONCURRENCY": 1,
+        "AGENT_PARAMS": {
+          "max_order_size": 1000,
+          "order_size_mode": "enforced"
+        },
+        "DIVIDEND_CONTROL": {
+          "mode": "replay",
+          "path": {
+            "schema": 1,
+            "round_convention": "zero_based_payment_round",
+            "num_rounds": 15,
+            "infinite_rounds": true,
+            "model": {
+              "base_dividend": 1.4,
+              "dividend_variation": 1.0,
+              "dividend_probability": 0.5,
+              "dividend_frequency": 1
+            },
+            "generation_seed": 44,
+            "payments": [
+              {
+                "payment_round_zero_based": 0,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 1,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 2,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 3,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 4,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 5,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 6,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 7,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 8,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 9,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 10,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 11,
+                "dividend_per_share": 0.3999999999999999
+              },
+              {
+                "payment_round_zero_based": 12,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 13,
+                "dividend_per_share": 2.4
+              },
+              {
+                "payment_round_zero_based": 14,
+                "dividend_per_share": 0.3999999999999999
+              }
+            ]
+          },
+          "seed": 44,
+          "order_seed": 44
+        }
+      }
+    }
+  ]
+}

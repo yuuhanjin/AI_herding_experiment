@@ -1,0 +1,174 @@
+[
+  {
+    "mode": "legacy",
+    "run_dir": "logs/offline_size_synthetic_legacy/20261103_142823",
+    "orders": [
+      {
+        "order_id": "55041ff7-6522-4865-afaa-03f08a5c9516",
+        "agent_id": 3,
+        "side": "sell",
+        "quantity": 1001,
+        "filled_quantity": 1001,
+        "remaining_quantity": 0,
+        "state": "filled",
+        "history": "History for Order 55041ff7-6522-4865-afaa-03f08a5c9516:\n  2026-11-03 14:28:23.969: INIT \u2192 input (notes: [share_commit=0, orig_share_commit=0, released_shares=0])\n  2026-11-03 14:28:23.970: input \u2192 validated (notes: Passed validations [share_commit=0, orig_share_commit=0, released_shares=0])\n  2026-11-03 14:28:23.970: validated \u2192 committed (notes: Committed: 1001.00 [share_commit=1001, orig_share_commit=1001, released_shares=0])\n  2026-11-03 14:28:23.994: committed \u2192 matching (notes: Starting limit order sequence [share_commit=1001, orig_share_commit=1001, released_shares=0])\n  2026-11-03 14:28:23.994: matching \u2192 limit_matching (notes: Moving to limit matching [share_commit=1001, orig_share_commit=1001, released_shares=0])\n  2026-11-03 14:28:23.994: limit_matching \u2192 pending (notes: Ready to add to book [share_commit=1001, orig_share_commit=1001, released_shares=0])\n  2026-11-03 14:28:23.995: pending \u2192 active (notes: Order successfully added to book [share_commit=1001, orig_share_commit=1001, released_shares=0])\n  2026-11-03 14:28:23.997: active \u2192 partially_filled (filled: 1000, price: $28.00, notes: [share_commit=1001, orig_share_commit=1001, released_shares=0])\n  2026-11-03 14:28:23.999: partially_filled \u2192 filled (filled: 1, price: $28.00, notes: [share_commit=1, orig_share_commit=1001, released_shares=1000])"
+      },
+      {
+        "order_id": "8cdd7c1b-cfff-484f-a6dd-83213bf909fc",
+        "agent_id": 4,
+        "side": "buy",
+        "quantity": 100000,
+        "filled_quantity": 100000,
+        "remaining_quantity": 0,
+        "state": "filled",
+        "history": "History for Order 8cdd7c1b-cfff-484f-a6dd-83213bf909fc:\n  2026-11-03 14:28:23.971: INIT \u2192 input (notes: [cash_commit=0.00, orig_cash_commit=0.00, released_cash=0.00])\n  2026-11-03 14:28:23.971: input \u2192 validated (notes: Passed validations [cash_commit=0.00, orig_cash_commit=0.00, released_cash=0.00])\n  2026-11-03 14:28:23.971: validated \u2192 committed (notes: Committed: 2800000.00 [cash_commit=2800000.00, orig_cash_commit=2800000.00, released_cash=0.00])\n  2026-11-03 14:28:24.004: committed \u2192 matching (notes: Starting limit order matching [cash_commit=2800000.00, orig_cash_commit=2800000.00, released_cash=0.00])\n  2026-11-03 14:28:24.004: matching \u2192 limit_matching (notes: Ready for limit matching [cash_commit=2800000.00, orig_cash_commit=2800000.00, released_cash=0.00])\n  2026-11-03 14:28:24.005: limit_matching \u2192 partially_filled (filled: 99000, price: $28.00, notes: [cash_commit=2800000.00, orig_cash_commit=2800000.00, released_cash=0.00])\n  2026-11-03 14:28:24.007: partially_filled \u2192 filled (filled: 1000, price: $28.00, notes: [cash_commit=28000.00, orig_cash_commit=2800000.00, released_cash=2772000.00])"
+      },
+      {
+        "order_id": "3b1c02d3-b9ab-4c2c-ba72-0955a8fce45d",
+        "agent_id": 6,
+        "side": "buy",
+        "quantity": 1000,
+        "filled_quantity": 1000,
+        "remaining_quantity": 0,
+        "state": "filled",
+        "history": "History for Order 3b1c02d3-b9ab-4c2c-ba72-0955a8fce45d:\n  2026-11-03 14:28:23.972: INIT \u2192 input (notes: [cash_commit=0.00, orig_cash_commit=0.00, released_cash=0.00])\n  2026-11-03 14:28:23.972: input \u2192 validated (notes: Passed validations [cash_commit=0.00, orig_cash_commit=0.00, released_cash=0.00])\n  2026-11-03 14:28:23.972: validated \u2192 committed (notes: Committed: 28000.00 [cash_commit=28000.00, orig_cash_commit=28000.00, released_cash=0.00])\n  2026-11-03 14:28:23.996: committed \u2192 matching (notes: Starting limit order matching [cash_commit=28000.00, orig_cash_commit=28000.00, released_cash=0.00])\n  2026-11-03 14:28:23.996: matching \u2192 limit_matching (notes: Ready for limit matching [cash_commit=28000.00, orig_cash_commit=28000.00, released_cash=0.00])\n  2026-11-03 14:28:23.997: limit_matching \u2192 filled (filled: 1000, price: $28.00, notes: [cash_commit=28000.00, orig_cash_commit=28000.00, released_cash=0.00])"
+      },
+      {
+        "order_id": "4db1af9b-3330-44ae-99c3-0ed6497acafe",
+        "agent_id": 7,
+        "side": "sell",
+        "quantity": 1000,
+        "filled_quantity": 1000,
+        "remaining_quantity": 0,
+        "state": "filled",
+        "history": "History for Order 4db1af9b-3330-44ae-99c3-0ed6497acafe:\n  2026-11-03 14:28:23.973: INIT \u2192 input (notes: [share_commit=0, orig_share_commit=0, released_shares=0])\n  2026-11-03 14:28:23.974: input \u2192 validated (notes: Passed validations [share_commit=0, orig_share_commit=0, released_shares=0])\n  2026-11-03 14:28:23.974: validated \u2192 committed (notes: Committed: 1000.00 [share_commit=1000, orig_share_commit=1000, released_shares=0])\n  2026-11-03 14:28:23.993: committed \u2192 matching (notes: Starting limit order sequence [share_commit=1000, orig_share_commit=1000, released_shares=0])\n  2026-11-03 14:28:23.993: matching \u2192 limit_matching (notes: Moving to limit matching [share_commit=1000, orig_share_commit=1000, released_shares=0])\n  2026-11-03 14:28:23.993: limit_matching \u2192 pending (notes: Ready to add to book [share_commit=1000, orig_share_commit=1000, released_shares=0])\n  2026-11-03 14:28:23.994: pending \u2192 active (notes: Order successfully added to book [share_commit=1000, orig_share_commit=1000, released_shares=0])\n  2026-11-03 14:28:24.001: active \u2192 filled (filled: 1000, price: $28.00, notes: [share_commit=1000, orig_share_commit=1000, released_shares=0])"
+      },
+      {
+        "order_id": "43513ff2-1419-442e-9500-a6fa35737ee7",
+        "agent_id": 2,
+        "side": "buy",
+        "quantity": 1001,
+        "filled_quantity": 1001,
+        "remaining_quantity": 0,
+        "state": "filled",
+        "history": "History for Order 43513ff2-1419-442e-9500-a6fa35737ee7:\n  2026-11-03 14:28:23.975: INIT \u2192 input (notes: [cash_commit=0.00, orig_cash_commit=0.00, released_cash=0.00])\n  2026-11-03 14:28:23.975: input \u2192 validated (notes: Passed validations [cash_commit=0.00, orig_cash_commit=0.00, released_cash=0.00])\n  2026-11-03 14:28:23.975: validated \u2192 committed (notes: Committed: 28028.00 [cash_commit=28028.00, orig_cash_commit=28028.00, released_cash=0.00])\n  2026-11-03 14:28:23.998: committed \u2192 matching (notes: Starting limit order matching [cash_commit=28028.00, orig_cash_commit=28028.00, released_cash=0.00])\n  2026-11-03 14:28:23.998: matching \u2192 limit_matching (notes: Ready for limit matching [cash_commit=28028.00, orig_cash_commit=28028.00, released_cash=0.00])\n  2026-11-03 14:28:23.999: limit_matching \u2192 partially_filled (filled: 1, price: $28.00, notes: [cash_commit=28028.00, orig_cash_commit=28028.00, released_cash=0.00])\n  2026-11-03 14:28:24.001: partially_filled \u2192 filled (filled: 1000, price: $28.00, notes: [cash_commit=28000.00, orig_cash_commit=28028.00, released_cash=28.00])"
+      },
+      {
+        "order_id": "bb2dcb35-ceb6-4ed2-b3cf-b56b06566bac",
+        "agent_id": 5,
+        "side": "sell",
+        "quantity": 100000,
+        "filled_quantity": 100000,
+        "remaining_quantity": 0,
+        "state": "filled",
+        "history": "History for Order bb2dcb35-ceb6-4ed2-b3cf-b56b06566bac:\n  2026-11-03 14:28:23.976: INIT \u2192 input (notes: [share_commit=0, orig_share_commit=0, released_shares=0])\n  2026-11-03 14:28:23.976: input \u2192 validated (notes: Passed validations [share_commit=0, orig_share_commit=0, released_shares=0])\n  2026-11-03 14:28:23.976: validated \u2192 committed (notes: Committed: 100000.00 [share_commit=100000, orig_share_commit=100000, released_shares=0])\n  2026-11-03 14:28:23.995: committed \u2192 matching (notes: Starting limit order sequence [share_commit=100000, orig_share_commit=100000, released_shares=0])\n  2026-11-03 14:28:23.995: matching \u2192 limit_matching (notes: Moving to limit matching [share_commit=100000, orig_share_commit=100000, released_shares=0])\n  2026-11-03 14:28:23.995: limit_matching \u2192 pending (notes: Ready to add to book [share_commit=100000, orig_share_commit=100000, released_shares=0])\n  2026-11-03 14:28:23.995: pending \u2192 active (notes: Order successfully added to book [share_commit=100000, orig_share_commit=100000, released_shares=0])\n  2026-11-03 14:28:24.003: active \u2192 partially_filled (filled: 1000, price: $28.00, notes: [share_commit=100000, orig_share_commit=100000, released_shares=0])\n  2026-11-03 14:28:24.005: partially_filled \u2192 filled (filled: 99000, price: $28.00, notes: [share_commit=99000, orig_share_commit=100000, released_shares=1000])"
+      },
+      {
+        "order_id": "7fb1ac74-a891-4867-b3c9-957da751afba",
+        "agent_id": 0,
+        "side": "buy",
+        "quantity": 1000,
+        "filled_quantity": 1000,
+        "remaining_quantity": 0,
+        "state": "filled",
+        "history": "History for Order 7fb1ac74-a891-4867-b3c9-957da751afba:\n  2026-11-03 14:28:23.977: INIT \u2192 input (notes: [cash_commit=0.00, orig_cash_commit=0.00, released_cash=0.00])\n  2026-11-03 14:28:23.977: input \u2192 validated (notes: Passed validations [cash_commit=0.00, orig_cash_commit=0.00, released_cash=0.00])\n  2026-11-03 14:28:23.977: validated \u2192 committed (notes: Committed: 28000.00 [cash_commit=28000.00, orig_cash_commit=28000.00, released_cash=0.00])\n  2026-11-03 14:28:24.003: committed \u2192 matching (notes: Starting limit order matching [cash_commit=28000.00, orig_cash_commit=28000.00, released_cash=0.00])\n  2026-11-03 14:28:24.003: matching \u2192 limit_matching (notes: Ready for limit matching [cash_commit=28000.00, orig_cash_commit=28000.00, released_cash=0.00])\n  2026-11-03 14:28:24.003: limit_matching \u2192 filled (filled: 1000, price: $28.00, notes: [cash_commit=28000.00, orig_cash_commit=28000.00, released_cash=0.00])"
+      },
+      {
+        "order_id": "0433a1a8-9b92-43a3-81d9-93e0f7481d7d",
+        "agent_id": 1,
+        "side": "sell",
+        "quantity": 1000,
+        "filled_quantity": 1000,
+        "remaining_quantity": 0,
+        "state": "filled",
+        "history": "History for Order 0433a1a8-9b92-43a3-81d9-93e0f7481d7d:\n  2026-11-03 14:28:23.978: INIT \u2192 input (notes: [share_commit=0, orig_share_commit=0, released_shares=0])\n  2026-11-03 14:28:23.979: input \u2192 validated (notes: Passed validations [share_commit=0, orig_share_commit=0, released_shares=0])\n  2026-11-03 14:28:23.979: validated \u2192 committed (notes: Committed: 1000.00 [share_commit=1000, orig_share_commit=1000, released_shares=0])\n  2026-11-03 14:28:23.994: committed \u2192 matching (notes: Starting limit order sequence [share_commit=1000, orig_share_commit=1000, released_shares=0])\n  2026-11-03 14:28:23.994: matching \u2192 limit_matching (notes: Moving to limit matching [share_commit=1000, orig_share_commit=1000, released_shares=0])\n  2026-11-03 14:28:23.994: limit_matching \u2192 pending (notes: Ready to add to book [share_commit=1000, orig_share_commit=1000, released_shares=0])\n  2026-11-03 14:28:23.994: pending \u2192 active (notes: Order successfully added to book [share_commit=1000, orig_share_commit=1000, released_shares=0])\n  2026-11-03 14:28:24.007: active \u2192 filled (filled: 1000, price: $28.00, notes: [share_commit=1000, orig_share_commit=1000, released_shares=0])"
+      }
+    ]
+  },
+  {
+    "mode": "enforced",
+    "run_dir": "logs/offline_size_synthetic_enforced/20261103_142824",
+    "orders": [
+      {
+        "order_id": "f682f364-ffce-49fb-8865-85335d1dcd15",
+        "agent_id": 3,
+        "side": "sell",
+        "quantity": 1001,
+        "filled_quantity": 0,
+        "remaining_quantity": 1001,
+        "state": "cancelled",
+        "history": "History for Order f682f364-ffce-49fb-8865-85335d1dcd15:\n  2026-11-03 14:28:24.255: INIT \u2192 input (notes: [share_commit=0, orig_share_commit=0, released_shares=0])\n  2026-11-03 14:28:24.255: input \u2192 cancelled (notes: MAX_ORDER_SIZE_EXCEEDED: requested 1001, cap 1000 shares per order [share_commit=0, orig_share_commit=0, released_shares=0])"
+      },
+      {
+        "order_id": "15f4fefc-8d54-4687-8a6a-e6b8fefbf950",
+        "agent_id": 4,
+        "side": "buy",
+        "quantity": 100000,
+        "filled_quantity": 0,
+        "remaining_quantity": 100000,
+        "state": "cancelled",
+        "history": "History for Order 15f4fefc-8d54-4687-8a6a-e6b8fefbf950:\n  2026-11-03 14:28:24.256: INIT \u2192 input (notes: [cash_commit=0.00, orig_cash_commit=0.00, released_cash=0.00])\n  2026-11-03 14:28:24.256: input \u2192 cancelled (notes: MAX_ORDER_SIZE_EXCEEDED: requested 100000, cap 1000 shares per order [cash_commit=0.00, orig_cash_commit=0.00, released_cash=0.00])"
+      },
+      {
+        "order_id": "973b4627-683f-4252-af2c-ceb478198810",
+        "agent_id": 6,
+        "side": "buy",
+        "quantity": 1000,
+        "filled_quantity": 1000,
+        "remaining_quantity": 0,
+        "state": "filled",
+        "history": "History for Order 973b4627-683f-4252-af2c-ceb478198810:\n  2026-11-03 14:28:24.257: INIT \u2192 input (notes: [cash_commit=0.00, orig_cash_commit=0.00, released_cash=0.00])\n  2026-11-03 14:28:24.257: input \u2192 validated (notes: Passed validations [cash_commit=0.00, orig_cash_commit=0.00, released_cash=0.00])\n  2026-11-03 14:28:24.257: validated \u2192 committed (notes: Committed: 28000.00 [cash_commit=28000.00, orig_cash_commit=28000.00, released_cash=0.00])\n  2026-11-03 14:28:24.281: committed \u2192 matching (notes: Starting limit order matching [cash_commit=28000.00, orig_cash_commit=28000.00, released_cash=0.00])\n  2026-11-03 14:28:24.281: matching \u2192 limit_matching (notes: Ready for limit matching [cash_commit=28000.00, orig_cash_commit=28000.00, released_cash=0.00])\n  2026-11-03 14:28:24.281: limit_matching \u2192 filled (filled: 1000, price: $28.00, notes: [cash_commit=28000.00, orig_cash_commit=28000.00, released_cash=0.00])"
+      },
+      {
+        "order_id": "ed557f26-ed4d-4a47-bc23-2985955f46a0",
+        "agent_id": 7,
+        "side": "sell",
+        "quantity": 1000,
+        "filled_quantity": 1000,
+        "remaining_quantity": 0,
+        "state": "filled",
+        "history": "History for Order ed557f26-ed4d-4a47-bc23-2985955f46a0:\n  2026-11-03 14:28:24.258: INIT \u2192 input (notes: [share_commit=0, orig_share_commit=0, released_shares=0])\n  2026-11-03 14:28:24.258: input \u2192 validated (notes: Passed validations [share_commit=0, orig_share_commit=0, released_shares=0])\n  2026-11-03 14:28:24.258: validated \u2192 committed (notes: Committed: 1000.00 [share_commit=1000, orig_share_commit=1000, released_shares=0])\n  2026-11-03 14:28:24.277: committed \u2192 matching (notes: Starting limit order sequence [share_commit=1000, orig_share_commit=1000, released_shares=0])\n  2026-11-03 14:28:24.277: matching \u2192 limit_matching (notes: Moving to limit matching [share_commit=1000, orig_share_commit=1000, released_shares=0])\n  2026-11-03 14:28:24.277: limit_matching \u2192 pending (notes: Ready to add to book [share_commit=1000, orig_share_commit=1000, released_shares=0])\n  2026-11-03 14:28:24.277: pending \u2192 active (notes: Order successfully added to book [share_commit=1000, orig_share_commit=1000, released_shares=0])\n  2026-11-03 14:28:24.279: active \u2192 filled (filled: 1000, price: $28.00, notes: [share_commit=1000, orig_share_commit=1000, released_shares=0])"
+      },
+      {
+        "order_id": "fb626140-9348-45e7-857b-a5225c3b01d9",
+        "agent_id": 2,
+        "side": "buy",
+        "quantity": 1001,
+        "filled_quantity": 0,
+        "remaining_quantity": 1001,
+        "state": "cancelled",
+        "history": "History for Order fb626140-9348-45e7-857b-a5225c3b01d9:\n  2026-11-03 14:28:24.259: INIT \u2192 input (notes: [cash_commit=0.00, orig_cash_commit=0.00, released_cash=0.00])\n  2026-11-03 14:28:24.259: input \u2192 cancelled (notes: MAX_ORDER_SIZE_EXCEEDED: requested 1001, cap 1000 shares per order [cash_commit=0.00, orig_cash_commit=0.00, released_cash=0.00])"
+      },
+      {
+        "order_id": "f25dcea7-d917-46fe-8df5-9f097a68b132",
+        "agent_id": 5,
+        "side": "sell",
+        "quantity": 100000,
+        "filled_quantity": 0,
+        "remaining_quantity": 100000,
+        "state": "cancelled",
+        "history": "History for Order f25dcea7-d917-46fe-8df5-9f097a68b132:\n  2026-11-03 14:28:24.260: INIT \u2192 input (notes: [share_commit=0, orig_share_commit=0, released_shares=0])\n  2026-11-03 14:28:24.260: input \u2192 cancelled (notes: MAX_ORDER_SIZE_EXCEEDED: requested 100000, cap 1000 shares per order [share_commit=0, orig_share_commit=0, released_shares=0])"
+      },
+      {
+        "order_id": "a4dc056f-6468-4920-81d2-d293474040b9",
+        "agent_id": 0,
+        "side": "buy",
+        "quantity": 1000,
+        "filled_quantity": 1000,
+        "remaining_quantity": 0,
+        "state": "filled",
+        "history": "History for Order a4dc056f-6468-4920-81d2-d293474040b9:\n  2026-11-03 14:28:24.260: INIT \u2192 input (notes: [cash_commit=0.00, orig_cash_commit=0.00, released_cash=0.00])\n  2026-11-03 14:28:24.261: input \u2192 validated (notes: Passed validations [cash_commit=0.00, orig_cash_commit=0.00, released_cash=0.00])\n  2026-11-03 14:28:24.261: validated \u2192 committed (notes: Committed: 28000.00 [cash_commit=28000.00, orig_cash_commit=28000.00, released_cash=0.00])\n  2026-11-03 14:28:24.278: committed \u2192 matching (notes: Starting limit order matching [cash_commit=28000.00, orig_cash_commit=28000.00, released_cash=0.00])\n  2026-11-03 14:28:24.278: matching \u2192 limit_matching (notes: Ready for limit matching [cash_commit=28000.00, orig_cash_commit=28000.00, released_cash=0.00])\n  2026-11-03 14:28:24.279: limit_matching \u2192 filled (filled: 1000, price: $28.00, notes: [cash_commit=28000.00, orig_cash_commit=28000.00, released_cash=0.00])"
+      },
+      {
+        "order_id": "4f40ab8a-7b4f-4f28-ad95-db8a2e2d3120",
+        "agent_id": 1,
+        "side": "sell",
+        "quantity": 1000,
+        "filled_quantity": 1000,
+        "remaining_quantity": 0,
+        "state": "filled",
+        "history": "History for Order 4f40ab8a-7b4f-4f28-ad95-db8a2e2d3120:\n  2026-11-03 14:28:24.261: INIT \u2192 input (notes: [share_commit=0, orig_share_commit=0, released_shares=0])\n  2026-11-03 14:28:24.262: input \u2192 validated (notes: Passed validations [share_commit=0, orig_share_commit=0, released_shares=0])\n  2026-11-03 14:28:24.262: validated \u2192 committed (notes: Committed: 1000.00 [share_commit=1000, orig_share_commit=1000, released_shares=0])\n  2026-11-03 14:28:24.277: committed \u2192 matching (notes: Starting limit order sequence [share_commit=1000, orig_share_commit=1000, released_shares=0])\n  2026-11-03 14:28:24.277: matching \u2192 limit_matching (notes: Moving to limit matching [share_commit=1000, orig_share_commit=1000, released_shares=0])\n  2026-11-03 14:28:24.277: limit_matching \u2192 pending (notes: Ready to add to book [share_commit=1000, orig_share_commit=1000, released_shares=0])\n  2026-11-03 14:28:24.277: pending \u2192 active (notes: Order successfully added to book [share_commit=1000, orig_share_commit=1000, released_shares=0])\n  2026-11-03 14:28:24.281: active \u2192 filled (filled: 1000, price: $28.00, notes: [share_commit=1000, orig_share_commit=1000, released_shares=0])"
+      }
+    ]
+  }
+]

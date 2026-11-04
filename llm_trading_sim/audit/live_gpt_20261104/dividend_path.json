@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "round_convention": "zero_based_payment_round",
+  "num_rounds": 2,
+  "infinite_rounds": true,
+  "model": {
+    "base_dividend": 1.4,
+    "dividend_variation": 1.0,
+    "dividend_probability": 0.5,
+    "dividend_frequency": 1
+  },
+  "generation_seed": 42,
+  "payments": [
+    {
+      "payment_round_zero_based": 0,
+      "dividend_per_share": 0.3999999999999999
+    },
+    {
+      "payment_round_zero_based": 1,
+      "dividend_per_share": 2.4
+    }
+  ]
+}

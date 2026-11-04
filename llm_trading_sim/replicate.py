@@ -17,7 +17,11 @@ parser.add_argument('--dividend-mode', choices=['legacy','independent','replay']
 parser.add_argument('--dividend-seed', type=int, default=42)
 parser.add_argument('--order-seed', type=int, default=42)
 parser.add_argument('--dividend-path', help='JSON file with zero-based payment rounds')
+parser.add_argument('--order-size-mode', choices=['legacy','prompt','enforced'], default='legacy')
+parser.add_argument('--max-order-size', type=int, default=1000)
 args = parser.parse_args()
+from order_size_controls import validate_policy
+validate_policy(args.max_order_size, args.order_size_mode)
 if args.mode == "key":
     from dotenv import set_key
     key = getpass.getpass("Paste your API key (hidden), then press Enter: ").strip()
@@ -58,7 +62,9 @@ print(f"Starting {rounds} rounds with 8 agents. This makes paid API requests.")
 run_scenario("paper_price_discovery_" + side,
     param_overrides={"NUM_ROUNDS": rounds, "MODEL_OPEN_AI": DEFAULT_LLM_MODEL,
                      "LLM_MAX_CONCURRENCY": 2,
+                     "AGENT_PARAMS": {"max_order_size": args.max_order_size, "order_size_mode": args.order_size_mode},
                      "DIVIDEND_CONTROL": {"mode": args.dividend_mode,
                          "seed": args.dividend_seed, "order_seed": args.order_seed,
                          **({"path_file": str(Path(args.dividend_path).resolve())} if args.dividend_path else {})}},
-    sim_type_override="replication_" + args.mode + ("_" + args.dividend_mode if args.dividend_mode != "legacy" else ""))
+    sim_type_override="replication_" + args.mode + ("_" + args.dividend_mode if args.dividend_mode != "legacy" else "")
+        + (f"_size_{args.order_size_mode}_{args.max_order_size}" if args.order_size_mode != "legacy" else ""))

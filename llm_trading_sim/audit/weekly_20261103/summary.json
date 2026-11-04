@@ -1,0 +1,10 @@
+{
+  "baseline_requests": 32,
+  "baseline_explicit_cap_mentions": 0,
+  "post_requests": 432,
+  "offline_simulation_checks_passed": 14,
+  "legacy_round_zero_prompts_byte_identical": 16,
+  "regression_tests_passed": 183,
+  "api_calls": 0,
+  "synthetic_engine_probe_runs": 2
+}

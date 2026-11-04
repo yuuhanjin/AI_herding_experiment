@@ -128,6 +128,8 @@ class LLMAgent(BaseAgent):
             # Determine system prompt: use mutable version if self-modify enabled
             system_prompt = self.get_current_system_prompt()
 
+            from order_size_controls import prompt_instruction
+            user_prompt += prompt_instruction(self.max_order_size, self.order_size_mode)
             self.rendered_prompts.append((round_number, system_prompt, user_prompt))
 
             # Create LLM request with enabled features
@@ -140,7 +142,8 @@ class LLMAgent(BaseAgent):
                 is_multi_stock=is_multi_stock,
                 enabled_features=self.enabled_features,
                 temperature=self.llm_temperature,
-                seed=self.llm_seed
+                seed=self.llm_seed,
+                max_order_size=self.max_order_size if self.order_size_mode == "enforced" else None
             )
             
             # Log prompt

@@ -7,7 +7,7 @@
   "agent_rounds_analyzed": 720,
   "valuation_conflicts": 0,
   "javascript": "syntax and mock DOM behavior checks passed",
-  "browser_visual_qa": "not performed; local file URL blocked previously",
+  "browser_visual_qa": "2026-10-28 localhost browser: layout inspected; run/role selection, price toggle, CSV button and no console errors checked; responsive layout corrected",
   "figure_visual_qa": "PNG inspected",
   "dividend_payment_test": "15 actual AgentRepository payments verified against replay path",
   "live_gpt_validation": "pending",

@@ -1,0 +1,19 @@
+{
+  "status": "completed",
+  "model": "openai/gpt-4o-2024-11-20",
+  "endpoint": "https://openrouter.ai/api/v1",
+  "scenario": "below",
+  "initial_price": 14,
+  "rounds": 2,
+  "agents": 8,
+  "size_mode": "enforced",
+  "cap": 1000,
+  "call_limit": 16,
+  "max_completion_tokens": 2048,
+  "reservation_ceiling_usd": 1,
+  "run_dir": "/Users/xinyi/Desktop/ColumbiaU/Q1/IEORE4742 Deep Learning for FE & OR/AI Herding/llm_trading_sim/logs/live_gpt_size_enforced_20261104/20261104_004020",
+  "orders": 20,
+  "requests": 16,
+  "successful_calls": 16,
+  "reserved_usd": 0.6749175000000001
+}

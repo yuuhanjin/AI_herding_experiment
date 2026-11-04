@@ -41,6 +41,20 @@ class OrderStateManager:
     def handle_new_order(self, order: Order, current_price: float) -> Tuple[bool, str]:
         """Handle new order validation, commitment, and initial state transition"""
         try:
+            # Reject before committing cash/shares; retain the original requested quantity.
+            from order_size_controls import rejection_reason
+            agent = self.agent_repository.get_agent(order.agent_id)
+            reason = rejection_reason(order, agent)
+            if reason:
+                self.order_repository.transition_state(order.order_id, OrderState.CANCELLED, notes=reason)
+                from services.logging_service import LoggingService
+                LoggingService.log_validation_error(
+                    round_number=order.round_placed, agent_id=order.agent_id,
+                    agent_type=getattr(getattr(agent, "agent_type", None), "type_id", type(agent).__name__),
+                    error_type="MAX_ORDER_SIZE_EXCEEDED", details=reason,
+                    attempted_action=f"{order.side.upper()} {order.quantity}")
+                self.logger.warning(f"Order {order.order_id}: {reason}")
+                return False, reason
             # Calculate required commitment
             # For limit orders, use limit price; for market orders, use current price
             # Buy commitments include the transaction fee so committed cash
