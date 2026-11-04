@@ -1,4 +1,4 @@
-# Xinyue — Order conversion: next steps 1–4
+# Xinyue — Order conversion: Improvement 1–4
 
 Research question: how agent decisions become proposed, accepted, rejected, and filled orders.
 
