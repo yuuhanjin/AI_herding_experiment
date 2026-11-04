@@ -142,6 +142,17 @@ class AgentDecisionService:
                     self.decisions_logger.error(error_msg)
                     raise ValueError(error_msg)
 
+            # Enforce the per-order share cap by clipping; the log keeps the requested size
+            cap = getattr(self.agent_repository.get_agent(agent_id), 'max_order_size', None)
+            requested = order_details['quantity'] if isinstance(order_details, dict) else order_details.quantity
+            if cap and requested > cap:
+                self.decisions_logger.warning(
+                    f"Agent {agent_id} order quantity clipped from {requested} to {cap} (max_order_size)")
+                if isinstance(order_details, dict):
+                    order_details = {**order_details, 'quantity': cap}
+                else:
+                    order_details = order_details.model_copy(update={'quantity': cap})
+
             # Create order after validation
             if isinstance(order_details, dict):
                 order = Order(

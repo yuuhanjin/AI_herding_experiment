@@ -62,7 +62,7 @@ class FeatureRegistry:
         """
         base_fields = {
             'decision': (Literal["Buy", "Sell"], Field(..., description="Buy or Sell")),
-            'quantity': (int, Field(..., description="Number of shares")),
+            'quantity': (int, Field(..., description="Number of shares, at most your maximum order size")),
             'order_type': (str, Field(..., description="Market or Limit")),
             'price_limit': (Optional[float], Field(None, description="Required for limit orders")),
         }

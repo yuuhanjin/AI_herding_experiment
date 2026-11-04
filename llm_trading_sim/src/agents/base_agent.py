@@ -31,6 +31,7 @@ class BaseAgent(ABC):
     """Base agent with core functionality"""
     def __init__(self, agent_id: str, initial_cash: float = 0,
                  initial_shares: int = 0, position_limit: int = None,
+                 max_order_size: int = None,  # Per-order share cap; None = uncapped
                  allow_short_selling: bool = False,
                  margin_requirement: float = 0.5,  # 50% margin requirement by default
                  margin_base: str = "cash",  # "cash" or "wealth"
@@ -61,6 +62,7 @@ class BaseAgent(ABC):
         self.borrowed_positions = {"DEFAULT_STOCK": 0}
 
         self.position_limit = position_limit
+        self.max_order_size = max_order_size
         self.allow_short_selling = allow_short_selling
         self.margin_requirement = margin_requirement  # Percentage of base required as margin
         self.margin_base = margin_base  # "cash" or "wealth"

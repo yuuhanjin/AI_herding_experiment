@@ -47,6 +47,7 @@ class AgentContext:
     allow_short_selling: bool = False
     borrowed_shares: int = 0
     net_shares: int = 0
+    max_order_size: int = None  # Per-order share cap shown to the agent
 
 class MarketStateFormatter:
     """Formats market state information for LLM consumption"""
@@ -482,7 +483,7 @@ class MarketStateFormatter:
             output += f"  - Dividend Cash: ${agent_context.dividend_cash:.2f}\n"
             output += f"  - Available Cash: ${agent_context.available_cash:.2f}\n"
             output += f"  - Cash in Orders: ${agent_context.committed_cash:.2f}"
-            return output
+            return output + MarketStateFormatter._format_order_size_limit(agent_context)
         else:
             # Single-stock: Clear position header to ensure LLM reads it
             if agent_context.allow_short_selling:
@@ -496,7 +497,14 @@ class MarketStateFormatter:
 - Dividend Cash Account: ${agent_context.dividend_cash:.2f}
 - Total Available Cash: ${agent_context.available_cash:.2f}
 - Shares Committed to Orders: {agent_context.committed_shares} shares
-- Cash Committed to Orders: ${agent_context.committed_cash:.2f}"""
+- Cash Committed to Orders: ${agent_context.committed_cash:.2f}""" + MarketStateFormatter._format_order_size_limit(agent_context)
+
+    @staticmethod
+    def _format_order_size_limit(agent_context: AgentContext) -> str:
+        if not agent_context.max_order_size:
+            return ""
+        return (f"\n- Maximum Order Size: {agent_context.max_order_size} shares per order "
+                f"(larger orders are reduced to this size)")
 
     @staticmethod
     def _format_percent(value: float) -> str:

@@ -50,6 +50,7 @@ class AgentFactory:
             'initial_cash': type_specific_params.get('initial_cash', agent_params['initial_cash']),
             'initial_shares': initial_shares_value,
             'position_limit': type_specific_params.get('position_limit', agent_params['position_limit']),
+            'max_order_size': type_specific_params.get('max_order_size', agent_params.get('max_order_size')),
             'allow_short_selling': type_specific_params.get('allow_short_selling', agent_params['allow_short_selling']),
             # Margin parameters (for short selling)
             'margin_requirement': type_specific_params.get('margin_requirement', agent_params.get('margin_requirement', 0.5)),
