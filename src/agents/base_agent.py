@@ -37,7 +37,12 @@ class BaseAgent(ABC):
                  leverage_ratio: float = 1.0,  # 1.0 = no leverage, 2.0 = 2x leverage
                  initial_margin: float = 0.5,  # 50% down payment required
                  maintenance_margin: float = 0.25,  # 25% minimum margin (liquidation threshold)
-                 logger=None, info_signals_logger=None, initial_price: float = np.nan):
+                 logger=None, info_signals_logger=None, initial_price: float = np.nan,
+                 max_order_size: int = 1000, order_size_mode: str = "legacy"):
+        from order_size_controls import validate_policy
+        validate_policy(max_order_size, order_size_mode)
+        self.max_order_size = max_order_size
+        self.order_size_mode = order_size_mode
         self.agent_id = agent_id
         # Store initial values
         self.initial_cash = initial_cash

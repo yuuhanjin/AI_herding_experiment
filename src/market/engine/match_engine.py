@@ -209,6 +209,14 @@ class MatchingEngine:
                 f"[MARGIN_CALL] Hit max iterations ({max_margin_iterations}) - possible margin spiral"
             )
 
+        # Observational audit only: direct end-of-matching book snapshot.
+        # Never write these values into public_info or pricing inputs.
+        from replication_audit import price_snapshot
+        self.context.audit_price_snapshot = price_snapshot(
+            trades, self.order_book.get_best_bid(), self.order_book.get_best_ask(),
+            new_price, getattr(self.context, 'audit_price_snapshot', {}).get(
+                'last_execution_price_to_date'))
+
         # Update agent wealth and log final state
         # In multi-stock mode, wealth is updated centrally with all stock prices
         if not self.is_multi_stock:

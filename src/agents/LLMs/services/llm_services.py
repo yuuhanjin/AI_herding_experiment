@@ -31,6 +31,7 @@ class LLMRequest:
     enabled_features: Set[Feature] = None  # NEW: Feature configuration for dynamic schema
     temperature: float = 0.0  # Sampling temperature for the LLM API call
     seed: int = 42  # Deterministic sampling seed for the LLM API call
+    max_order_size: Optional[int] = None  # Opt-in schema constraint; legacy remains unchanged
 
     def __post_init__(self):
         """Set default features if none provided (backward compatibility)"""
@@ -122,7 +123,8 @@ IMPORTANT: This is a MULTI-STOCK scenario. You MUST include stock_id for each or
         # Get dynamic schema based on enabled features AND stock mode
         dynamic_schema = FeatureRegistry.get_schema_for_features(
             request.enabled_features,
-            is_multi_stock=request.is_multi_stock
+            is_multi_stock=request.is_multi_stock,
+            max_order_size=request.max_order_size
         )
 
         # Get the response using the parse method with our dynamic schema

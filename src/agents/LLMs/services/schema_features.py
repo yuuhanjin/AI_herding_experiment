@@ -47,7 +47,7 @@ class FeatureRegistry:
     """
 
     @staticmethod
-    def create_order_schema(is_multi_stock: bool = False) -> Type[BaseModel]:
+    def create_order_schema(is_multi_stock: bool = False, max_order_size: Optional[int] = None) -> Type[BaseModel]:
         """
         Create OrderSchema dynamically based on whether it's a multi-stock scenario.
 
@@ -60,9 +60,14 @@ class FeatureRegistry:
         Returns:
             Dynamically created OrderSchema class
         """
+        if max_order_size is not None:
+            from order_size_controls import validate_policy
+            validate_policy(max_order_size, 'enforced')
+        quantity_field = (Field(..., description='Number of shares') if max_order_size is None
+                          else Field(..., ge=1, le=max_order_size, description=f'Number of shares per order, at most {max_order_size}'))
         base_fields = {
             'decision': (Literal["Buy", "Sell"], Field(..., description="Buy or Sell")),
-            'quantity': (int, Field(..., description="Number of shares")),
+            'quantity': (int, quantity_field),
             'order_type': (str, Field(..., description="Market or Limit")),
             'price_limit': (Optional[float], Field(None, description="Required for limit orders")),
         }
@@ -163,7 +168,7 @@ class FeatureRegistry:
 
     @staticmethod
     @lru_cache(maxsize=32)  # Cache schemas for all possible feature+stock combinations
-    def create_trade_decision_model(features_key: str, is_multi_stock: bool = False) -> Type[BaseModel]:
+    def create_trade_decision_model(features_key: str, is_multi_stock: bool = False, max_order_size: Optional[int] = None) -> Type[BaseModel]:
         """
         Dynamically create a Pydantic model based on enabled features and stock mode.
 
@@ -190,7 +195,7 @@ class FeatureRegistry:
             features = {Feature(name) for name in features_key.split(",")}
 
         # Create appropriate OrderSchema for this stock mode
-        OrderSchema = FeatureRegistry.create_order_schema(is_multi_stock)
+        OrderSchema = FeatureRegistry.create_order_schema(is_multi_stock, max_order_size)
 
         # Start with core fields (using the correct OrderSchema)
         field_definitions = FeatureRegistry.get_core_fields(OrderSchema)
@@ -225,7 +230,7 @@ class FeatureRegistry:
         return DynamicModel
 
     @staticmethod
-    def get_schema_for_features(features: Set[Feature], is_multi_stock: bool = False) -> Type[BaseModel]:
+    def get_schema_for_features(features: Set[Feature], is_multi_stock: bool = False, max_order_size: Optional[int] = None) -> Type[BaseModel]:
         """
         Convenience method to get a schema for a set of features and stock mode.
 
@@ -237,7 +242,7 @@ class FeatureRegistry:
             A Pydantic BaseModel class with the appropriate fields
         """
         key = FeatureRegistry._create_feature_set_key(features)
-        return FeatureRegistry.create_trade_decision_model(key, is_multi_stock)
+        return FeatureRegistry.create_trade_decision_model(key, is_multi_stock, max_order_size)
 
     @staticmethod
     def get_all_features() -> Set[Feature]:

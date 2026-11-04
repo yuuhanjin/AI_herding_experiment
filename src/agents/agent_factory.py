@@ -47,6 +47,8 @@ class AgentFactory:
 
         base_params = {
             'agent_id': agent_id,
+            'max_order_size': type_specific_params.get('max_order_size', agent_params.get('max_order_size', 1000)),
+            'order_size_mode': type_specific_params.get('order_size_mode', agent_params.get('order_size_mode', 'legacy')),
             'initial_cash': type_specific_params.get('initial_cash', agent_params['initial_cash']),
             'initial_shares': initial_shares_value,
             'position_limit': type_specific_params.get('position_limit', agent_params['position_limit']),

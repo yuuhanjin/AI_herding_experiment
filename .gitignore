@@ -117,3 +117,11 @@ dmypy.json
 # Backup files (use git instead)
 *.backup
 src/llm_config.py
+
+# Local replication artifacts and credentials
+.env.*
+!.env.example
+!.env.sample
+.DS_Store
+audit/
+audit_backups/

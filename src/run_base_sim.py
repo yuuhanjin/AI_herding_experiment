@@ -209,6 +209,10 @@ def run_scenario(
     # Label used for the output directory (sweep cells override this).
     sim_type = sim_type_override or scenario.name
 
+    # Validate controlled-path configuration before any simulation/model construction.
+    from dividend_controls import prepare_control, configure_control, save_payment_events
+    prepare_control(params)
+
     # Set random seeds for reproducibility
     np.random.seed(params["RANDOM_SEED"])
     random.seed(params["RANDOM_SEED"])
@@ -273,9 +277,24 @@ def run_scenario(
             news_enabled=params.get("NEWS_ENABLED", False)
         )
 
+    configure_control(simulation, params)
+
     # Save parameters and run simulation
     save_parameters(simulation.run_dir, params)
-    simulation.run()
+    from replication_audit import write_manifest
+    write_manifest(simulation.run_dir, params, status="started")
+    try:
+        simulation.run()
+    except BaseException:
+        save_payment_events(simulation, params, require_complete=False)
+        write_manifest(simulation.run_dir, params, status="failed")
+        raise
+    try:
+        save_payment_events(simulation, params, require_complete=True)
+    except Exception:
+        write_manifest(simulation.run_dir, params, status="audit_failed")
+        raise
+    write_manifest(simulation.run_dir, params, status="completed")
     save_plots(simulation, params)
 
     # Fold realized LLM token/cost accounting into metadata.json (issue #104)

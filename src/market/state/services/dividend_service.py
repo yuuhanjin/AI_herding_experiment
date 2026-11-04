@@ -39,10 +39,11 @@ class DividendRealization:
     style_contribution: float = 0.0  # gamma * style_shock
 class DividendCalculator:
     """Pure calculation logic - no state"""
-    def __init__(self, dividend_params: dict):
+    def __init__(self, dividend_params: dict, rng=None):
         if not dividend_params:
             raise ValueError("dividend_params is required")
         self.model = dividend_params
+        self.rng = rng if rng is not None else random
 
     def calculate_dividend(self, systematic_shock: float = 0.0, style_shock: float = 0.0) -> DividendRealization:
         """Calculate actual dividend payment with optional factor shocks.
@@ -66,7 +67,7 @@ class DividendCalculator:
         gamma = self.model.get('style_gamma', 1.0)
 
         # Idiosyncratic component (existing stochastic logic)
-        if random.random() < prob:
+        if self.rng.random() < prob:
             idio = variation
         else:
             idio = -variation
@@ -275,6 +276,10 @@ class DividendService:
         self.payment_processor = DividendPaymentProcessor(agent_repository, logger, stock_id)
         self.stock_id = stock_id
         self.dividend_history = []  # List of DividendRealization objects
+        self.audit_payment_events = []
+        self.audit_dividend_mode = "legacy"
+        self.audit_replay = None
+        self.audit_rng = None
         self.redemption_value = redemption_value
         self.current_round = 0
         self._should_pay_this_round = False
@@ -314,7 +319,7 @@ class DividendService:
             self._active_regime_round = active_start
             self._last_shift_round = round_number
             active_params = resolve_regime_params(self.dividend_params, round_number)
-            self.calculator = DividendCalculator(active_params)
+            self.calculator = DividendCalculator(active_params, rng=self.audit_rng)
             LoggingService.get_logger('dividend').info(
                 f"Dividend regime shift for {self.stock_id} at round {round_number}: "
                 f"base={active_params.get('base_dividend')}, "
@@ -338,10 +343,22 @@ class DividendService:
         Returns:
             DividendPaymentResult with payment details
         """
-        realization = self.calculator.calculate_dividend(
-            systematic_shock=systematic_shock,
-            style_shock=style_shock
-        )
+        if self.audit_dividend_mode != "legacy" and any(
+                e['payment_round_zero_based'] == round_number for e in self.audit_payment_events):
+            raise ValueError(f"Duplicate controlled dividend payment at round {round_number}")
+        if self.audit_replay is not None:
+            if systematic_shock != 0 or style_shock != 0:
+                raise ValueError("Replay supports stationary single-stock dividends without factor shocks")
+            if round_number not in self.audit_replay:
+                raise ValueError(f"Missing replay dividend for payment round {round_number}")
+            value = self.audit_replay[round_number]
+            base = self.calculator.model['base_dividend']
+            realization = DividendRealization(value, base, value - base)
+        else:
+            realization = self.calculator.calculate_dividend(
+                systematic_shock=systematic_shock,
+                style_shock=style_shock
+            )
         self.dividend_history.append(realization)
 
         LoggingService.get_logger('dividend').info(
@@ -350,11 +367,19 @@ class DividendService:
             f"sys={realization.systematic_contribution:.4f}, style={realization.style_contribution:.4f})"
         )
 
-        return self.payment_processor._process_dividend_payment(
+        result = self.payment_processor._process_dividend_payment(
             realization.total_dividend,
             self.dividend_destination,
             round_number
         )
+        self.audit_payment_events.append({
+            'payment_round_zero_based': round_number,
+            'display_round': round_number + 1,
+            'dividend_per_share': realization.total_dividend,
+            'mode': self.audit_dividend_mode,
+            'payment_success': result.success,
+        })
+        return result
 
     def process_round_end(
         self,

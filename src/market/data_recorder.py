@@ -183,7 +183,8 @@ class DataRecorder:
                 'best_bid': market_state.get('best_bid'),
                 'best_ask': market_state.get('best_ask'),
                 'market_depth': market_state.get('market_depth', {}),
-                'short_interest': self.context.public_info.get('short_interest', 0)
+                'short_interest': self.context.public_info.get('short_interest', 0),
+                **getattr(self.context, 'audit_price_snapshot', {})
             })
 
     def _record_trade_data(self, round_number, trades, timestamp):
